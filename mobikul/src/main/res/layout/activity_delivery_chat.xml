@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.webkul.mobikulmp.activity.ChatActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="currentMessage"
+            type="String" />
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.DeliveryChatActivityHandler" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/material_background">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/msg_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/send_message_card_view"
+                android:layout_alignParentTop="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/send_message_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:id="@+id/send_message_button_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_whiteBlack"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/spacing_tiny">
+
+                    <EditText
+                        android:id="@+id/text_msg_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/color_whiteBlack"
+                        android:hint="@string/type_your_message"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:padding="15dp"
+                        android:text="@={currentMessage}"
+                        android:textColor="@color/text_color_primary"
+                        android:textColorHint="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/material_background" />
+
+                    <ImageButton
+                        android:id="@+id/send_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="@{()-> handler.onClickSendButton(currentMessage)}"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_send_msg_wrapper" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="\?android:attr/progressBarStyle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:visibility="@{safeUnbox(isLoading) ? View.VISIBLE : View.GONE}" />
+
+    </FrameLayout>
+</layout>

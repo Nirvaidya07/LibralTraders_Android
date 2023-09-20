@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="isPaymentMethodAvailable"
+            type="boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.checkout.ReviewsAndPaymentsResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.PaymentInfoFragmentHandler" />
+
+        <variable
+            name="checkoutAddressData"
+            type="com.webkul.mobikul.models.checkout.CheckoutAddressInfoResponseModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/main_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="58dp"
+                android:orientation="vertical"
+                android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/billing_address"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/same_as_shipping_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:checked="@={checkoutAddressData.sameAsShipping}"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/same_as_shipping_address"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:visibility="@{data.shippingMethod.empty ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> handler.onClickChangeAddress()}"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="@{checkoutAddressData == null || checkoutAddressData.selectedAddressData == null || checkoutAddressData.selectedAddressData.value.empty || checkoutAddressData.sameAsShipping ? View.GONE : View.VISIBLE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:loadHtmlText="@{checkoutAddressData.selectedAddressData.value}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="@dimen/spacing_generic"
+                        app:srcCompat="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_left_arrow_grey : @drawable/ic_right_arrow_grey}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{checkoutAddressData.sameAsShipping ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="@{checkoutAddressData.sameAsShipping ? View.GONE : View.VISIBLE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/change_add_btn"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:drawableStart="@drawable/ic_edit_wrapper"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> handler.onClickChangeAddress()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/change_address"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        app:appTheme="@{12}"
+                        android:textSize="@dimen/text_size_small"
+                        android:visibility="@{checkoutAddressData.addressData.size() > 0 ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/add_edit_add_btn"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:drawableStart="@{safeUnbox(checkoutAddressData.hasNewAddress) ? @drawable/ic_edit_wrapper : @drawable/ic_add_wrapper}"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> handler.onClickAddEditNewAddress()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@{safeUnbox(checkoutAddressData.hasNewAddress) ? @string/edit_address : @string/new_address}"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small"
+                        app:appTheme="@{12}"
+
+                        android:visibility="@{!safeUnbox(checkoutAddressData.hasNewAddress) || checkoutAddressData.selectedAddressData.id.equals(&quot;new&quot;) ? View.VISIBLE : View.GONE}" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/discount_code_heading"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:background="@color/material_background"
+                    android:drawableEnd="@drawable/ic_up_arrow_grey_wrapper"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> handler.onClickDiscountCodeLabel()}"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/discount_code"
+                    android:textAllCaps="true"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/discount_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_color" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/spacing_normal">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rect_white_bg_black_border_1_dp"
+                            android:focusable="@{data.couponCode.isEmpty()}"
+                            android:focusableInTouchMode="@{data.couponCode.isEmpty()}"
+                            android:hint="@string/enter_discount_code"
+                            android:lines="1"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@={data.couponCode}"
+                            android:textColor="@color/text_color_primary"
+                            android:textColorHint="@color/text_color_secondary"
+                            android:textSize="@dimen/text_size_small" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            app:appTheme="@{0}"
+                            android:gravity="center"
+                            android:onClick="@{() -> handler.onClickApplyOrRemoveCouponBtn(data.couponCode, false)}"
+                            android:padding="@dimen/spacing_small"
+                            android:paddingStart="@dimen/spacing_large"
+                            android:paddingEnd="@dimen/spacing_large"
+                            android:text="@string/apply"
+                            android:textAllCaps="true"
+                            android:textColor="@color/material_background"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="@{data.couponCode.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/remove_coupon_btn"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            app:appTheme="@{0}"
+                            android:gravity="center"
+                            android:onClick="@{() -> handler.onClickApplyOrRemoveCouponBtn(data.couponCode, true)}"
+                            android:paddingStart="@dimen/spacing_large"
+                            android:paddingEnd="@dimen/spacing_large"
+                            android:text="@string/remove"
+                            android:textAllCaps="true"
+                            android:textColor="@color/material_background"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="@{data.couponCode.isEmpty() ? View.GONE : View.VISIBLE}" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/shipping_info"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.shippingAddress.empty &amp;&amp; data.shippingMethod.empty ? View.GONE : View.VISIBLE}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{data.shippingAddress.empty &amp;&amp; data.shippingMethod.empty ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/shipping_address"
+                    android:textAllCaps="true"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.shippingAddress.empty ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:paddingStart="@dimen/spacing_normal"
+                    android:paddingEnd="@dimen/spacing_normal"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:visibility="@{data.shippingAddress.empty ? View.GONE : View.VISIBLE}"
+                    app:loadHtmlText="@{data.shippingAddress}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/shipping_method"
+                    android:textAllCaps="true"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.shippingMethod.empty ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:paddingStart="@dimen/spacing_normal"
+                    android:paddingEnd="@dimen/spacing_normal"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:visibility="@{data.shippingMethod.empty ? View.GONE : View.VISIBLE}"
+                    app:loadHtmlText="@{data.shippingMethod}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:text="@string/payment_methods"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/checkout_no_payment_method"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:visibility="@{isPaymentMethodAvailable ? View.GONE : View.VISIBLE}" />
+
+                <RadioGroup
+                    android:id="@+id/payment_method_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="@{isPaymentMethodAvailable ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/order_summary"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/products_review_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_order_product_review"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:layout_height="100dp"
+                    tools:targetApi="lollipop" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/price_details"
+                    android:textAllCaps="true"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/price_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_color" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/price_details_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        tools:listitem="@layout/item_price_details"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:layout_height="100dp"
+                        tools:targetApi="lollipop" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/place_order_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="@{data != null ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/material_background"
+            app:cardElevation="@dimen/card_elevation_medium">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_generic">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amt_to_be_paid"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.cartTotal}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_large" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/place_order_btn_color"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:onClick="@{()->handler.onClickPlaceOrderBtn()}"
+                    android:text="@string/place_order"
+                    android:textAllCaps="true"
+                    android:textColor="@color/material_background"
+                    android:textSize="@dimen/text_size_medium" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</layout>

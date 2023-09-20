@@ -1,0 +1,161 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.DownloadsList" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.MyDownloadableProductsRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_generic"
+        android:background="@drawable/shape_rect_white_bg_gray_border_half_dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{()->handler.onClickDetailsBtn(data.incrementId)}"
+            android:padding="@dimen/spacing_normal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_tv"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@{&quot;#&quot; + data.incrementId}"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                tools:text="Order ID #123786123621" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/order_id_tv"
+                android:gravity="start"
+                android:text="@{data.proName}"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                tools:text="Vedesh Kumar" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_right_arrow_grey" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:background="@color/divider_color" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:text="@{data.date}"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_size_small"
+            tools:text="Placed on 20th March 2016" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_generic"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_generic"
+            android:paddingTop="@dimen/spacing_tiny"
+            android:paddingEnd="@dimen/spacing_generic"
+            android:paddingBottom="@dimen/spacing_tiny"
+            android:text="@{data.status}"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_medium"
+            app:orderStatusBackground="@{data.state}"
+            app:orderStatusColor="@{data.statusColorCode}"
+            tools:text="DEFAULT STATUS" />
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_generic"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:text="@{@string/remaining_downloads_x_amount(data.remainingDownloads)}"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+            tools:text="Remaining Downloads : Unlimited" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_tiny"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:text="@{data.message}"
+            android:textColor="#ff7c35"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="@{data.isOrderExist ? View.GONE : View.VISIBLE}"
+            tools:text="Sorry This order does not exist" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@color/divider_color" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{()->handler.onClickDownloadBtn(data.hash)}"
+            android:padding="@dimen/spacing_normal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_download_wrapper"
+                android:drawablePadding="@dimen/spacing_generic"
+                android:gravity="center_vertical"
+                android:text="@string/download"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+                tools:text="Details" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

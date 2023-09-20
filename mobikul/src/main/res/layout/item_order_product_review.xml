@@ -1,0 +1,195 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.checkout.OrderReviewItemProduct" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.ProductsReviewRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:background="@color/material_background"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_normal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:background="@color/material_background">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/product_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        app:imageUrl="@{data.thumbNail}"
+                        app:placeholder="@{data.dominantColor}"
+                        tools:src="@drawable/placeholder" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/product_layout_icon_size"
+                    android:layout_height="@dimen/product_layout_icon_size"
+                    android:layout_alignStart="@id/product_image"
+                    android:layout_alignBottom="@id/product_image"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickInfoBtn(data.itemOption)}"
+                    android:visibility="@{data.itemOption.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/ic_information"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_information" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_weight="0.6"
+                android:background="@color/material_background"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{data.productName}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium"
+                    tools:text="Fitness Equipment" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:background="@color/material_background"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price_colon"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="Price" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_generic"
+                        android:text="@{data.price}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="$20" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_generic"
+                        android:background="@drawable/bg_strikethrough"
+                        android:maxLines="1"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        android:text="@{data.originalPrice}"
+                        android:textColor="@color/grey_400"
+                        android:textSize="@dimen/text_size_tiny"
+                        android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+                        tools:text="$50.00" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:background="@color/material_background"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qty_colon"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="Qty" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_generic"
+                        android:text="@{data.qty}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="2" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:background="@color/material_background"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/subtotal_colon"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                    />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_generic"
+                        android:text="@{data.subTotal}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="$100" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

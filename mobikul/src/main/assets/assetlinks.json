@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.libraltraders.android",
+    "sha256_cert_fingerprints":
+    ["20:AB:97:BD:1E:44:21:A2:19:1C:D7:09:03:D2:C4:4A:2E:0E:30:54:CB:91:66:1A:D8:CC:27:F4:09:60:EE:94"]
+  }
+}]
+
+https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://dev.libraltraders.com&relation=delegate_permission/common.handle_all_urls

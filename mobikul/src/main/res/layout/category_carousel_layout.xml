@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="themeType"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.Carousel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_huge"
+        android:background="@color/material_background"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/carousel_label"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:background="@drawable/shape_rect_round_cnr_white_translucent_bg_and_border"
+            android:padding="@dimen/spacing_generic"
+            android:text="@string/shop_by_categories"
+            android:textAllCaps="true"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_small"
+           />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/featured_categories_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            android:visibility="@{data.featuredCategories.size() > 0 ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:layout_height="100dp"
+            tools:targetApi="lollipop" />
+    </LinearLayout>
+</layout>

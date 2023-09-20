@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="verificationEmail"
+            type="String" />
+
+        <variable
+            name="verificationPhone"
+            type="String" />
+
+        <variable
+            name="resend"
+            type="String" />
+
+        <variable
+            name="otp_login"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.LoginFormModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.LoginBottomSheetHandler" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/login_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background"
+        android:theme="@style/AppTheme"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_height="@{Utils.getScreenHeight()}">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:appTheme="@{6}"
+                app:cardElevation="@dimen/card_elevation_low">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_normal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{()->handler.onClickCancelBtn()}"
+                        app:appTheme="@{4}"
+                        app:srcCompat="@drawable/ic_close_accent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/login_title_tv"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_huge"
+                        android:layout_weight="1"
+                        android:text="@string/sign_in_with_email"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold"
+                        app:appTheme="@{5}" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:visibility="gone"
+                android:background="@color/material_background">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/login_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_til"
+                        style="@style/CustomTilStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_generic"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_generic"
+                        app:hintWithAsterisk="@{@string/email_address}"
+                        tools:hint="@string/email_address">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:text="@={data.username}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_small" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_til"
+                        style="@style/CustomTilStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_generic"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_generic"
+                        app:hintWithAsterisk="@{@string/password}"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/text_color_secondary"
+                        tools:hint="@string/password">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:text="@={data.password}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_small" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/forgot_password_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{()->handler.onClickForgotPassword(data.username)}"
+                        android:text="@string/forgot_password"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{()->handler.onClickLogin(data)}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/sign_in"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_whiteBlack"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{0}" />
+
+                    <Button
+                        android:id="@+id/sign_in_with_mobile_bt"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:background="@drawable/shape_rect_gray_bg_black_border_2dp"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{()->handler.onClickOtpLogin()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/sign_in_with_mobile"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{7}" />
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:background="@drawable/shape_rect_gray_bg_black_border_2dp"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{()->handler.onClickSignUp()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/create_an_account"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{7}" />
+
+                    <View
+                        android:id="@+id/keyboard_height_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fingerprint_error_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_small"
+                        android:visibility="gone"
+                        tools:text="Error"
+                        tools:visibility="visible" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/finger_print_iv"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:visibility="gone"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="finger_print.json"
+                        app:lottie_loop="true" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/otp_login_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/material_background"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/mobile_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:text="@string/please_enter_email_for_otp"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_generic"
+                        android:background="@drawable/shape_rect_transparent_bg_black_border_1dp"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/spacing_small">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_normal"
+                            android:layout_marginEnd="@dimen/spacing_normal"
+                            android:weightSum="1"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/spinner_country_code"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.27"
+                                android:background="@null"
+                                android:inputType="phone"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="6789876655"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="@dimen/text_size_medium"
+                                android:visibility="@{data!=null ? View.VISIBLE : View.GONE}" />
+
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edit_mobile_number"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.73"
+                                android:background="@null"
+                                android:digits="0123456789"
+                                android:gravity="bottom"
+                                android:hint="@string/mobile"
+                                android:inputType="phone"
+                                android:maxLines="1"
+                                android:padding="@dimen/spacing_tiny"
+                                android:singleLine="true"
+                                android:text="@={data.mobile}"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="@dimen/text_size_medium" />
+
+
+                            <Button
+                                fontPath="fonts/Montserrat-SemiBold.ttf"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_back_right"
+                                android:onClick="@{()->handler.onClickOtpScreen()}"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{() -> handler.onClickConfirm()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/confirm"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_whiteBlack"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{0}" />
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:background="@drawable/shape_rect_gray_bg_black_border_2dp"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{()->handler.onClickEmailLogin()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/sign_in_with_email"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{7}" />
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:background="@drawable/shape_rect_gray_bg_black_border_2dp"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{()->handler.onClickSignUp()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/create_an_account"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{7}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <LinearLayout
+                    android:id="@+id/otp_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+                    android:background="@color/material_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_huge"
+                        android:text="@string/verification_code"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:padding="@dimen/spacing_generic"
+                        android:textAlignment="center"
+                        android:text="@string/enter_the_verification_code_sent_to"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="@string/enter_the_verification_code_sent_to"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> handler.onClickMobile()}"
+                        android:text="@{verificationPhone}"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_medium"
+                        tools:text="9876543210"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_huge"
+                        android:layout_marginTop="@dimen/spacing_huge"
+                        android:layout_marginEnd="@dimen/spacing_huge"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/card_corner_radius"
+                        app:cardElevation="@dimen/card_elevation_medium">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:background="@color/material_background"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/spacing_small"
+                            android:layoutDirection="locale"
+                            android:paddingBottom="@dimen/spacing_small">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/otp_et"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/spacing_generic"
+                                android:layout_marginEnd="@dimen/spacing_generic"
+                                android:background="@null"
+                                android:inputType="phone"
+                                android:textColorHint="@color/text_color_secondary"
+                                android:letterSpacing="0.8"
+                                android:lines="1"
+                                android:textAlignment="viewStart"
+                                android:textDirection="locale"
+                                android:textColor="@color/text_color_primary"
+                                android:textIsSelectable="false"
+                                android:textSize="34dp"
+                                tools:hint="******" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/resend_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:text="@{@string/resend_the_code_in_x(resend)}"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:visibility="@{resend.isEmpty() ? View.GONE : View.VISIBLE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/resend_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:onClick="@{() -> handler.onClickResend()}"
+                        android:text="@string/resend"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_medium"
+                        android:visibility="@{resend.isEmpty() ? View.VISIBLE : View.GONE}" />
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

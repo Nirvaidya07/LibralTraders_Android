@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.product.ImageGalleryData" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="changeProductsLargeImage">
+
+        <ImageView
+            android:id="@+id/small_image_btn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/white"
+            android:padding="1dp"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{data.smallImage}"
+            app:placeholder="@{data.dominantColor}"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+</layout>

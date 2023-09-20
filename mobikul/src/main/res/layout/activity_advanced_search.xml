@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.catalog.AdvancedSearchFormModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.AdvancedSearchActivityHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/material_background"
+            android:visibility="@{data != null ? View.VISIBLE : View.GONE}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/advance_search_field_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="58dp"
+                android:background="@color/material_background"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_normal" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="@{data != null ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/color_whiteBlack"
+            app:cardElevation="@dimen/card_elevation_medium">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_generic"
+                app:appTheme="@{0}"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:onClick="@{()->handler.onClickSearchBtn()}"
+                android:padding="@dimen/spacing_normal"
+                android:text="@string/search"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_medium" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

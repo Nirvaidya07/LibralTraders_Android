@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <group
+        android:translateX="2.000000"
+        android:translateY="2.000000">
+        <path
+            android:fillColor="@color/grey_500"
+            android:pathData="M18,0 L2,0 C0.9,0 0.01,0.9 0.01,2 L0,20 L4,16 L18,16 C19.1,16 20,15.1 20,14 L20,2 C20,0.9 19.1,0 18,0 Z M18,14 L3.17,14 L2.58,14.59 L2,15.17 L2,2 L18,2 L18,14 Z M8.5,12 L16,12 L16,10 L10.5,10 L8.5,12 Z M12.36,6.13 C12.56,5.93 12.56,5.62 12.36,5.42 L10.59,3.65 C10.39,3.45 10.08,3.45 9.88,3.65 L4,9.53 L4,12 L6.47,12 L12.36,6.13 Z"
+            android:strokeWidth="1" />
+        <path
+            android:fillColor="@color/grey_500"
+            android:pathData="M18,0 L2,0 C0.9,0 0.01,0.9 0.01,2 L0,20 L4,16 L18,16 C19.1,16 20,15.1 20,14 L20,2 C20,0.9 19.1,0 18,0 Z M18,14 L3.17,14 L2.58,14.59 L2,15.17 L2,2 L18,2 L18,14 Z M8.5,12 L16,12 L16,10 L10.5,10 L8.5,12 Z M12.36,6.13 C12.56,5.93 12.56,5.62 12.36,5.42 L10.59,3.65 C10.39,3.45 10.08,3.45 9.88,3.65 L4,9.53 L4,12 L6.47,12 L12.36,6.13 Z"
+            android:strokeWidth="1" />
+    </group>
+</vector>

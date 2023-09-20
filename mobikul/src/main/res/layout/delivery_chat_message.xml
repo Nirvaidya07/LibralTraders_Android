@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.chat.ChatMessage" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_tiny"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/msg_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_generic"
+            android:layout_marginLeft="@dimen/spacing_generic"
+            android:layout_marginEnd="@dimen/spacing_generic"
+            android:layout_marginRight="@dimen/spacing_generic"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/chat_message_iv"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/spacing_generic"
+                    android:layout_marginRight="@dimen/spacing_generic"
+                    android:clickable="false"
+                    android:elevation="1dp"
+                    android:visibility="gone"
+                    app:circleTextDrawable="@{data.sender}"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/placeholder"
+                    tools:targetApi="lollipop"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_small"
+                    android:text="@{data.msg}"
+                    android:textColor="@color/grey_800"
+                    android:textSize="@dimen/text_size_medium"
+                    tools:text="message" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_tiny">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.displayDay}"
+                    android:textColor="@color/grey_500"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="italic"
+                    tools:text="Monday" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - "
+                    android:textColor="@color/grey_500"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="italic"
+                    android:visibility="@{(data.displayDay == null || data.displayDay.empty) ? View.GONE : View.VISIBLE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.displayTime}"
+                    android:textColor="@color/grey_500"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="italic"
+                    tools:text="5:40 p.m" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+</layout>

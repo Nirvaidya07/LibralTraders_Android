@@ -1,0 +1,82 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.extra.SuggestionProductData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SearchSuggestionProductHandler" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="@{()->handler.onProductSelected(data.productId, data.productName, data.dominantColor)}"
+        android:paddingTop="@dimen/spacing_tiny"
+        android:paddingEnd="@dimen/spacing_tiny"
+        android:paddingBottom="@dimen/spacing_tiny">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginEnd="@dimen/spacing_tiny"
+                android:background="@color/material_background"
+                app:imageUrl="@{data.thumbNail}"
+                app:placeholder="@{data.dominantColor}" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/spacing_generic"
+            android:layout_marginEnd="@dimen/spacing_generic"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/product_price_color"
+                app:loadHtmlText="@{data.productName}"
+                tools:text="Magento Marketplace Multi Vendor Module" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.specialPrice}"
+                android:textColor="@color/product_price_color"
+                android:textStyle="bold"
+                android:visibility="@{data.hasSpecialPrice ? View.VISIBLE : View.GONE}"
+                tools:text="$349.00" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{data.hasSpecialPrice ? @drawable/bg_strikethrough : null }"
+                android:text="@{data.price}"
+                android:textColor="@{data.hasSpecialPrice ? @color/grey_400 : @color/product_price_color}"
+                android:textStyle="bold"
+                tools:text="$349.00" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

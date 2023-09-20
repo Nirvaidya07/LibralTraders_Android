@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.Carousel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.HomePageProductCarouselHandler" />
+
+        <variable
+            name="productTileHandler"
+            type="com.webkul.mobikul.handlers.ProductTileHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_huge"
+        android:background="@color/material_background"
+        app:backgroundColor="@{data.color}">
+
+        <ImageView
+            android:id="@+id/carousel_background_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="background_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tiledBackgroundImageUrl="@{data.image}"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/carousel_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/carousel_label"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_round_cnr_white_translucent_bg_and_border"
+                android:padding="@dimen/spacing_generic"
+                android:text="@{data.label}"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Featured Products" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:layout_height="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:paddingStart="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_normal"
+                android:minHeight="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_round_cnr_gray_bg_gray_border_1dp"
+                android:onClick="@{()->handler.onClickViewAllBtn(data.label, data.id)}"
+                android:text="@string/view_all"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_tiny"
+                android:visibility="@{data.productList.size() > 3? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/shape_rect_white_bg_gray_border_half_dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carousel_heading">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".64"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/item_product_grid_view"
+                    app:data="@{data.productList[0]}"
+                    app:handler="@{productTileHandler}"
+                    app:position="@{0}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{data.productList[1] == null ? View.GONE : View.VISIBLE}" />
+
+                <include
+                    layout="@layout/item_product_grid_view"
+                    android:visibility="@{data.productList[1] == null ? View.GONE : View.VISIBLE}"
+                    app:data="@{data.productList[1]}"
+                    app:handler="@{productTileHandler}"
+                    app:position="@{1}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider_color"
+                android:visibility="@{data.productList[2] == null ? View.GONE : View.VISIBLE}" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".36"
+                android:orientation="vertical"
+                android:visibility="@{data.productList[2] == null ? View.GONE : View.VISIBLE}">
+
+                <include
+                    layout="@layout/item_product_grid_view"
+                    android:visibility="@{data.productList[2] == null ? View.GONE : View.VISIBLE}"
+                    app:data="@{data.productList[2]}"
+                    app:handler="@{productTileHandler}"
+                    app:position="@{2}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{data.productList[2] == null ? View.GONE : View.VISIBLE}" />
+
+                <include
+                    layout="@layout/item_product_grid_view"
+                    android:visibility="@{data.productList[3] == null ? View.GONE : View.VISIBLE}"
+                    app:data="@{data.productList[3]}"
+                    app:handler="@{productTileHandler}"
+                    app:position="@{3}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{data.productList[3] == null ? View.GONE : View.VISIBLE}" />
+
+                <include
+                    layout="@layout/item_product_grid_view"
+                    android:visibility="@{data.productList[4] == null ? View.GONE : View.VISIBLE}"
+                    app:data="@{data.productList[4]}"
+                    app:handler="@{productTileHandler}"
+                    app:position="@{4}" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

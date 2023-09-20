@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.OnBoardListData" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/spacing_max"
+        app:walkThroughBackGround="@{data.colorCode}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/spacing_huge"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/on_board_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_infinity"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:walkThroughImageUrl="@{data.image}"
+                app:walkThroughPlaceholder="@{data.imageDominantColor}"
+                app:layout_width="@{(7*Utils.screenWidth)/10}"
+                app:layout_height="@{(7*Utils.screenWidth)/10}"
+                tools:layout_height="300dp"
+                tools:src="@drawable/placeholder" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginEnd="@dimen/spacing_huge"
+                android:ellipsize="end"
+                android:gravity="center|top"
+                android:maxLines="3"
+                android:text="@{data.title}"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:visibility="@{data.title==null || data.title.isEmpty() ? View.GONE :View.VISIBLE}"
+                tools:text="Offline Mode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:layout_marginEnd="@dimen/spacing_huge"
+                android:gravity="center"
+                android:textColor="@color/text_color_walk_through"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="@{data.content==null || data.content.isEmpty() ? View.GONE :View.VISIBLE}"
+                app:loadHtmlText="@{data.content}"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+
+<!--            <WebView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="@dimen/spacing_huge"-->
+<!--                android:layout_marginTop="@dimen/spacing_normal"-->
+<!--                android:layout_marginEnd="@dimen/spacing_huge"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                app:loadWebViewOnBoardingData="@{data.content}"-->
+<!--                app:webBackgroundColor="@{data.colorCode}" />-->
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

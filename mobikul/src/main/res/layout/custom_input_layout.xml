@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.textfield.TextInputLayout style="@style/CustomTilStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginEnd="@dimen/spacing_normal"
+    android:layout_marginBottom="@dimen/spacing_generic"
+    android:layout_marginTop="@dimen/spacing_generic"
+    android:paddingTop="@dimen/spacing_generic"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_size_small" />
+</com.google.android.material.textfield.TextInputLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#90CAF9</color>
+
+    <color name="color_whiteBlack">@android:color/black</color>
+    <color name="actionBarItemsColor">@android:color/white</color>
+
+    <color name="divider_color">#1FFFFFFF</color>
+
+    <!-- Text Colors-->
+    <color name="text_color_primary">#FFFFFFFF</color>
+    <color name="text_color_secondary">#B3FFFFFF</color>
+    <color name="text_color_link">#FF3F60DA</color>
+    <color name="product_price_color">@android:color/white</color>
+
+    <!--Gray Shades-->
+    <color name="grey_800">#ff4d70</color>
+    <color name="grey_700">#ff6685</color>
+    <color name="grey_600">#ff8099</color>
+    <color name="grey_500">#ff9E9E</color>
+    <color name="grey_400">#ffBDBD</color>
+    <color name="grey_300">#9E9E9E</color>
+    <color name="grey_200">#757575</color>
+    <color name="grey_100">#616161</color>
+    <color name="grey_50">#121212</color>
+
+    <!-- Home Page Colors -->
+    <color name="homePageCarouselHeadingColor">@android:color/white</color>
+
+    <!-- Order Status Colors -->
+    <color name="orderStatusCompleteColor">#66BB6A</color>
+    <color name="orderStatusPendingColor">#fead4c</color>
+    <color name="orderStatusProcessingColor">#3F51B5</color>
+    <color name="orderStatusHoldColor">#F9A825</color>
+    <color name="orderStatusCancelColor">#E53935</color>
+    <color name="orderStatusNewColor">#448AFF</color>
+    <color name="orderStatusClosedColor">#e44c53</color>
+
+    <color name="tier_price_light_background">#E1F5FE</color>
+    <color name="tier_price_darker_background">#B3E5FC</color>
+
+    <color name="place_order_btn_color">#59A600</color>
+
+    <color name="product_discount_color">#6BC700</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#ffffff</color>
+
+
+    <!-- Star Rating Color -->
+    <color name="single_star_color">#E51A1A</color>
+    <color name="two_star_color">#FF4848</color>
+    <color name="three_star_color">#FFA100</color>
+    <color name="four_star_color">#FFCC00</color>
+    <color name="five_star_color">#6BC700</color>
+
+    <!-- Settings Page-->
+    <color name="clear_database_button_color">#FE6C6C</color>
+
+    <!-- Catalog page -->
+    <color name="out_of_stock_color">#FF4848</color>
+    <color name="material_background">#1a1a1a</color>
+    <color name="material_surface">@android:color/black</color>
+<!--    <color name="text_color_walk_through">@android:color/white</color>-->
+<!--    <color name="on_boarding_dots">#9E9E9E</color>-->
+
+</resources>

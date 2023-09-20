@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.DownloadableProductsListResponseModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/downloadable_products_rv"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/item_my_downloadable_products"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

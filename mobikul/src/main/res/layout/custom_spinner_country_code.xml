@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.CountryCodeListItem" />
+
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:paddingTop="@dimen/spacing_tiny">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{data.image}" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/card_elevation_low"
+            android:paddingEnd="@dimen/spacing_small"
+            android:background="@color/material_background"
+            android:gravity="end"
+            android:layout_weight="0.9"
+            android:padding="@dimen/spacing_tiny"
+            android:text="@={data.dial_code}"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            app:drawableStartCompat="@drawable/ic_filled_arrow_down_wrapper" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

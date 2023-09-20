@@ -1,0 +1,68 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.WebsiteData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.WebsitesRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/currency_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/spacing_generic"
+        android:onClick="@{(v) -> handler.onClickWebsiteItem(v, data)}"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_normal"
+        android:paddingEnd="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_normal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="@{data.name}"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            tools:text="Fitness Equipment" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{data.id.equals(AppSharedPref.getWebsiteId(context)) ? View.VISIBLE : View.GONE}"
+            app:srcCompat="@drawable/ic_tick_accent" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,56 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.CmsData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.NavDrawerCmsRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:onClick="@{(v) -> handler.onClickItem(v, data.id, data.title)}"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_normal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cms_label"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:singleLine="true"
+                android:text="@{data.title}"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium"
+                tools:text="Fitness Equipment" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:background="@color/divider_color" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

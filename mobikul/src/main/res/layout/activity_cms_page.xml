@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.extra.CMSPageDataModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:padding="1dp">
+
+        <WebView
+            android:id="@+id/cms_page_info_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data == null ? View.GONE :View.VISIBLE}"
+            app:loadCmsData="@{data.content}" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:indeterminate="true"
+            android:visibility="@{data == null ? View.VISIBLE :View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

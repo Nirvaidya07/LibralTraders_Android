@@ -1,0 +1,123 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2019 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.OrderListResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.DashboardRecentOrdersFragmentHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/spacing_normal"
+                    android:background="@color/material_background"
+                    android:visibility="@{data.orderList.size() == 0 ? View.VISIBLE : View.GONE}">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animation_view"
+                        android:layout_width="@dimen/empty_layout_dimen"
+                        android:layout_height="@dimen/empty_layout_dimen"
+                        android:background="@android:color/white"
+                        app:lottie_fileName="empty_order_list.json"
+                        app:lottie_loop="false" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:gravity="center"
+                        android:text="@string/empty_order_list"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/orders_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="60dp"
+                    android:visibility="@{data.orderList.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="@{data != null &amp;&amp; data.orderList.size() > 0 ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/material_background"
+            app:cardElevation="@dimen/card_elevation_low">
+
+            <androidx.appcompat.widget.AppCompatButton
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_generic"
+                app:appTheme="@{0}"
+                android:onClick="@{(v) -> handler.onClickViewAll(v)}"
+                android:padding="@dimen/spacing_normal"
+                android:text="@string/view_all_orders"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

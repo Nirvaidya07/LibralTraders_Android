@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/material_background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_normal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/configurable_attribute_label"
+        fontPath="fonts/Montserrat-SemiBold.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_normal"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_size_medium"
+        tools:text="Color" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/configurable_item_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:nestedScrollingEnabled="false"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:layout_height="60dp"
+        tools:targetApi="lollipop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/configurable_attribute_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:text="@string/this_is_a_required_field"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="@dimen/text_size_small"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</androidx.appcompat.widget.LinearLayoutCompat>
+

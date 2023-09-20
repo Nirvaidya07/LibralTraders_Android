@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.checkout.CheckoutAddressInfoResponseModel" />
+
+        <variable
+            name="shippingData"
+            type="com.webkul.mobikul.models.checkout.ShippingMethodsModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.ShippingInfoFragmentHandler" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="58dp"
+                android:orientation="vertical"
+                android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:gravity="center_vertical|start"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/shipping_address"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> handler.onClickChangeAddress()}"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="@{data == null || data.selectedAddressData == null || data.selectedAddressData.value.empty ? View.GONE : View.VISIBLE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:loadHtmlText="@{data.selectedAddressData.value}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="@dimen/spacing_generic"
+                        app:srcCompat="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_left_arrow_grey : @drawable/ic_right_arrow_grey}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/change_add_btn"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:drawableStart="@drawable/ic_edit_wrapper"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> handler.onClickChangeAddress()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/change_address"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small"
+                        android:visibility="@{data.addressData.size() > 0 ? View.VISIBLE : View.GONE}"
+                        app:appTheme="@{12}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/add_edit_add_btn"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:drawableStart="@{safeUnbox(data.hasNewAddress) ? @drawable/ic_edit_wrapper : @drawable/ic_add_wrapper}"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> handler.onClickAddEditNewAddress()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@{safeUnbox(data.hasNewAddress) ? @string/edit_address : (AppSharedPref.isLoggedIn(context)? @string/new_address : @string/add_shipping_address)}"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small"
+                        android:visibility="@{!safeUnbox(data.hasNewAddress) || data.selectedAddressData.id.equals(&quot;new&quot;) ? View.VISIBLE : View.GONE}"
+                        app:appTheme="@{12}"
+                        tools:text="@string/add_shipping_address" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:gravity="center_vertical|start"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/shipping_methods"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{shippingData == null ? View.GONE : View.VISIBLE}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:visibility="@{shippingData == null ? View.GONE : View.VISIBLE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@string/sorry_no_quotes_are_available_for_this_order_at_this_time"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:visibility="@{shippingData == null || shippingData.shippingMethods.size != 0 ? View.GONE : View.VISIBLE}" />
+
+                <RadioGroup
+                    android:id="@+id/shipping_method_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:paddingStart="@dimen/spacing_normal"
+                    android:visibility="@{shippingData == null || shippingData.shippingMethods.size == 0 ? View.GONE : View.VISIBLE}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/material_background"
+            android:visibility="@{data != null ? ((AppSharedPref.getCustomerCachedNewAddress(context).firstname.isEmpty() &amp;&amp; !AppSharedPref.isLoggedIn(context))? View.GONE : View.VISIBLE) : View.GONE}"
+            app:cardBackgroundColor="@color/material_background"
+            app:cardElevation="@dimen/card_elevation_medium">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_generic">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amt_to_be_paid"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{shippingData.cartTotal}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_large" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:onClick="@{()->handler.onClickNextBtn()}"
+                    android:text="@string/proceed"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_medium"
+                    app:appTheme="@{0}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</layout>

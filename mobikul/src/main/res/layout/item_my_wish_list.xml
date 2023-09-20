@@ -1,0 +1,239 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.ApplicationConstants" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.WishListItem" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.MyWishListRvHandler" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_generic"
+        app:cardBackgroundColor="@color/material_background">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{()->handler.onClickItem(data.productId, data.name, data.dominantColor)}"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/spacing_generic">
+
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/product_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:imageUrl="@{data.thumbNail}"
+                        app:placeholder="@{data.dominantColor}"
+                        tools:src="@drawable/placeholder" />
+
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/product_layout_icon_size"
+                    android:layout_height="@dimen/product_layout_icon_size"
+                    android:layout_alignTop="@id/product_image"
+                    android:layout_alignEnd="@id/product_image"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="@color/material_background"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="@dimen/card_elevation_low">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{()->handler.onClickDeleteItem(position, data.id)}"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/ic_vector_close"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/ic_vector_close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_discount_percentage"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_tiny"
+                    android:text="@{@string/x_off(data.getDiscountPercentage())}"
+                    android:textAllCaps="true"
+                    android:textColor="@color/product_discount_color"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$310.00" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/product_layout_icon_size"
+                    android:layout_height="@dimen/product_layout_icon_size"
+                    android:layout_alignStart="@id/product_image"
+                    android:layout_alignBottom="@id/product_image"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickInfoBtn(data.itemOption)}"
+                    android:visibility="@{data.itemOption.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/ic_information"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_information" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/price_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/product_image"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.webkul.mobikul.customviews.FlowLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_tiny"
+                            android:maxLines="1"
+                            android:text="@{data.formattedFinalPrice}"
+                            android:textColor="@color/product_price_color"
+                            android:textSize="@dimen/text_size_small"
+                            android:textStyle="bold"
+                            tools:text="$210.00" />
+
+                        <TextView
+                            android:id="@+id/product_special_price_tv"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_strikethrough"
+                            android:maxLines="1"
+                            android:paddingStart="2dp"
+                            android:paddingEnd="2dp"
+                            android:text="@{data.formattedPrice}"
+                            android:textColor="@color/grey_400"
+                            android:textSize="@dimen/text_size_tiny"
+                            android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+                            tools:text="$310.00" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                    </com.webkul.mobikul.customviews.FlowLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/product_layout_icon_size"
+                        android:layout_height="@dimen/product_layout_icon_size"
+                        android:layout_marginTop="3dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{()->handler.onClickCommentBtn(position, data.description)}"
+                        app:srcCompat="@{data.description == null || data.description.isEmpty() ? @drawable/ic_comment_blank : @drawable/ic_comment_filled}"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/ic_comment_blank" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/price_ll"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="2"
+                    android:text="@{data.name}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="Fitness Equipment" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/product_label"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{(v)->handler.onClickQtyBtn(v, position)}"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qty_colon"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_tiny"
+                        android:drawableEnd="@drawable/ic_filled_arrow_down_wrapper"
+                        android:drawablePadding="@dimen/spacing_tiny"
+                        android:gravity="center"
+                        android:text="@{data.qty}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="@{data.isAvailable}"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->handler.onClickAddToCartItem(data.productId, data.id, data.qty)}"
+                android:paddingTop="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_small"
+                android:text="@{data.isAvailable ? @string/move_to_cart : data.availability}"
+                android:textAllCaps="true"
+                tools:text="@string/move_to_cart"
+                app:appTheme="@{8}"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

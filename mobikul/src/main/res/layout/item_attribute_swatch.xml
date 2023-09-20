@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.product.SwatchData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.CatalogAttributesSwatchHandler" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/main_swatch_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{data.isSelected ? @drawable/shape_rect_white_bg_black_border_1_dp : @drawable/shape_rectangular_white_bg_gray_border_1dp}"
+            android:clickable="@{data.isEnabled}"
+            android:foreground="@{data.isEnabled ? null : @drawable/shape_rectangular_swatch_strike_through}"
+            android:onClick="@{(v) -> handler.onAttributeSelected(data.position)}"
+            android:padding="1dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/swatch_block_width"
+                android:layout_height="@dimen/swatch_block_height"
+                android:foreground="@{data.isSelected ? @drawable/ic_tick_white : null}"
+                android:scaleType="fitCenter"
+                android:visibility="@{data.type.equals(&quot;0&quot;) ? View.GONE : View.VISIBLE}"
+                app:swatchData="@{data}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@{data.isSelected ? @color/colorAccent : @color/grey_200}"
+                android:gravity="center"
+                android:maxLines="1"
+                android:minWidth="@dimen/swatch_block_width"
+                android:paddingStart="@dimen/spacing_tiny"
+                android:paddingEnd="@dimen/spacing_tiny"
+                android:singleLine="true"
+                android:text="@{data.value}"
+                android:textColor="@{data.isSelected ? @android:color/white : @color/text_color_primary}"
+                android:visibility="@{data.type.equals(&quot;0&quot;) ? View.VISIBLE : View.GONE}" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.Carousel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.HomePageProductCarouselHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_huge"
+        android:background="@color/material_background"
+        app:backgroundColor="@{data.color}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/carousel_background_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/material_background"
+            android:contentDescription="background_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tiledBackgroundImageUrl="@{data.image}"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/carousel_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/carousel_label"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_round_cnr_white_translucent_bg_and_border"
+                android:padding="@dimen/spacing_generic"
+                android:text="@{data.label}"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Featured Products" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:layout_height="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:paddingStart="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_normal"
+                android:minHeight="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_round_cnr_gray_bg_gray_border_1dp"
+                android:onClick="@{()->handler.onClickViewAllBtn(data.label, data.id)}"
+                android:textStyle="bold"
+                android:text="@string/view_all"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_tiny"
+                android:visibility="@{data.id.isEmpty() || data.productList.size() &lt; 3? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/products_carousel_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_horizontal_scroller_product_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carousel_heading"
+            tools:layout_height="100dp"
+            tools:targetApi="lollipop" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

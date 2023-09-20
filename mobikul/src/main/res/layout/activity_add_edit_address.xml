@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="isGuestUser"
+            type="Boolean" />
+
+        <variable
+            name="showSaveInAddressBookSwitch"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.AddressFormResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.AddEditAddressActivityHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/material_background"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_normal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:paddingBottom="@dimen/spacing_tiny"
+                    android:text="@string/contact_information"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_large" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/prefix_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@string/name_prefix"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; data.prefixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/prefix_sp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/text_color_primary"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; data.prefixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/prefix_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/prefix"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_color_secondary"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; !data.prefixHasOptions ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_prefix"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.prefix}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/first_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:textColorHint="@color/text_color_secondary"
+                    app:hintWithAsterisk="@{@string/first_name}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.firstname}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/middle_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:textColorHint="@color/text_color_secondary"
+                    android:visibility="@{data.middleNameVisible ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/middle_name"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.middlename}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/last_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:textColorHint="@color/text_color_secondary"
+                    app:hintWithAsterisk="@{@string/last_name}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.lastname}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/suffix_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@string/name_suffix"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.suffixVisible &amp;&amp; data.suffixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/suffix_sp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/text_color_primary"
+                    android:visibility="@{data.suffixVisible &amp;&amp; data.suffixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/suffix_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/suffix"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.suffixVisible &amp;&amp; !data.suffixHasOptions ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_suffix"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.suffix}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/company"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.companyVisible? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/company"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.company}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.GONE : View.VISIBLE}"
+                    app:hintWithAsterisk="@{@string/email}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_tiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.email}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/telephone"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.telephoneVisible? View.VISIBLE : View.GONE}"
+                    app:hintWithAsterisk="@{@string/phone_number}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.telephone}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fax"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.faxVisible? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/fax"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.fax}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingTop="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:paddingBottom="@dimen/spacing_tiny"
+                    android:text="@string/address"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_large" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/street_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@{@string/street_address}"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_Address_0"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{data.streetLineCount > 0 ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/street_Address_0_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.street[0]}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_Address_1"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{data.streetLineCount > 1 ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/street_Address_1_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.street[1]}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_Address_2"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{data.streetLineCount > 2 ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/street_Address_2_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.street[2]}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_Address_3"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{data.streetLineCount > 3 ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/street_Address_3_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.street[3]}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/city"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:hintWithAsterisk="@{@string/city}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.city}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{data.stateRequired? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/state_sp_til"
+                        style="@style/CustomDropDownTilStyle"
+                        android:layout_marginTop="@dimen/spacing_generic"
+                        android:hint="@string/state_province"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{data.hasStateData ? View.VISIBLE : View.GONE}">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/state_sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:textColor="@color/text_color_primary"
+                            android:focusableInTouchMode="false"
+                            android:inputType="none"
+                            android:textSize="@dimen/text_size_medium" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/state"
+                        style="@style/CustomTilStyle"
+                        android:layout_marginTop="@dimen/spacing_generic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{data.hasStateData ? View.GONE : View.VISIBLE}">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/state_province"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingStart="@dimen/spacing_generic"
+                            android:paddingEnd="@dimen/spacing_generic"
+                            android:text="@={data.addressData.region}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/zip"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/zip_postal_code"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.addressData.postcode}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/CustomDropDownTilStyle"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:layout_marginBottom="@dimen/spacing_generic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/country">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/country_sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:textColor="@color/text_color_primary"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:textSize="@dimen/text_size_medium" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/default_billing_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_generic"
+                    android:visibility="@{data.addressData.defaultBilling &amp;&amp; (isGuestUser || AppSharedPref.isLoggedIn(context)) ? View.GONE : View.VISIBLE}">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={data.addressData.defaultBilling}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/use_as_my_default_billing_address"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_generic"
+                    android:text="@string/its_a_default_billing_address"
+                    android:textColor="@color/three_star_color"
+                    android:visibility="@{!safeUnbox(showSaveInAddressBookSwitch) &amp;&amp; data.addressData.defaultBilling ? View.VISIBLE : View.GONE}" />
+
+                <LinearLayout
+                    android:id="@+id/default_shipping_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_generic"
+                    android:visibility="@{data.addressData.defaultShipping  &amp;&amp; (isGuestUser || AppSharedPref.isLoggedIn(context)) ? View.GONE :  View.VISIBLE}">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={data.addressData.defaultShipping}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/use_as_my_default_shipping_address"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_generic"
+                    android:text="@string/it_s_a_default_shipping_address"
+                    android:textColor="@color/three_star_color"
+                    android:visibility="@{!safeUnbox(showSaveInAddressBookSwitch) &amp;&amp; data.addressData.defaultShipping ? View.VISIBLE : View.GONE}" />
+
+                <LinearLayout
+                    android:id="@+id/save_in_address_book_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_generic"
+                    android:visibility="@{safeUnbox(showSaveInAddressBookSwitch) &amp;&amp; AppSharedPref.isLoggedIn(context) ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={data.addressData.saveInAddressBook}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_in_address_book"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/save_address_btn"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:appTheme="@{0}"
+                    android:background="@color/colorAccent"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickSaveAddress(data)}"
+                    android:padding="@dimen/spacing_normal"
+                    android:text="@{isGuestUser!=null &amp;&amp; isGuestUser ? @string/proceed : @string/save_address}"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    tools:text="@string/proceed" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/current_location_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:onClick="@{()->handler.onClickGetCurrentLocation()}"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}"
+            app:fabSize="mini"
+            app:appTheme="@{9}"
+            app:backgroundTint="@color/colorAccent"
+            app:tint="@android:color/white"
+            app:layout_anchor="@+id/container"
+            app:layout_anchorGravity="top|right|end"
+            app:srcCompat="@drawable/ic_menu_gps" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,37 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <!-- ExtendedViewPager is a custom view and must be referred to by its full package name in XML -->
+
+        <com.webkul.mobikul.customviews.ExtendedViewPager
+            android:id="@+id/full_screen_product_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
+        <HorizontalScrollView
+            android:id="@+id/small_image_btn_hsv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@null"
+            android:fillViewport="true"
+            android:measureAllChildren="false"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/small_image_container"
+                android:layout_width="35dp"
+                android:layout_height="70dp"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+</layout>
+

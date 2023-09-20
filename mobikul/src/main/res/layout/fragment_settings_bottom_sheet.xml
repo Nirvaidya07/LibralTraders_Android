@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.SettingsBottomSheetModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SettingsBottomSheetHandler" />
+
+        <variable
+            name="updatedTime"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/settings_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background"
+        android:orientation="vertical"
+        android:theme="@style/AppTheme"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_height="@{Utils.getScreenHeight()}">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/material_background"
+            app:appTheme="@{6}"
+            app:cardElevation="@dimen/card_elevation_low">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_normal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:appTheme="@{4}"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickCancelBtn()}"
+                    app:srcCompat="@drawable/ic_close_accent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_huge"
+                    android:layout_weight="1"
+                    android:text="@string/settings"
+                    app:appTheme="@{5}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    app:cardBackgroundColor="@color/color_whiteBlack"
+                    app:cardElevation="@dimen/card_elevation_medium">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/material_background"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/notifications"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_secondary"
+                            android:textSize="@dimen/text_size_medium"
+                            tools:text="Sort" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.allNotification}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/all_notifications"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/orders_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.ordersNotification}"
+                            android:enabled="@{data.allNotification}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/orders"
+                            android:textColor="@{data.allNotification ? @color/text_color_primary : @color/text_color_secondary}"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/offers_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.offersNotification}"
+                            android:enabled="@{data.allNotification}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/offers"
+                            android:textColor="@{data.allNotification ? @color/text_color_primary : @color/text_color_secondary}"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/abandoned_cart_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.abandonedCartNotification}"
+                            android:enabled="@{data.allNotification}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/abandoned_cart"
+                            android:textColor="@{data.allNotification ? @color/text_color_primary : @color/text_color_secondary}"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.notificationSound}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:text="@string/notification_sound"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    app:cardBackgroundColor="@color/material_background"
+                    app:cardElevation="@dimen/card_elevation_medium">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/material_background"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/offline_data"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_secondary"
+                            android:textSize="@dimen/text_size_medium"
+                            tools:text="Sort" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.recentlyViewedProducts}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:text="@string/track_and_show_recently_viewed_products"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_normal"
+                            android:onClick="@{() -> handler.onClickClearRecentlyViewedProductsData()}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_tiny"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:paddingBottom="@dimen/spacing_tiny"
+                            android:text="@string/clear_recently_viewed_products"
+                            android:textAllCaps="true"
+                            android:textColor="@color/clear_database_button_color"
+                            android:textSize="@dimen/text_size_medium"
+                            tools:text="Sort" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="@={data.searchHistory}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:text="@string/track_and_show_search_history"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_normal"
+                            android:onClick="@{() -> handler.onClickClearRecentSearchData()}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_tiny"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:paddingBottom="@dimen/spacing_tiny"
+                            android:text="@string/clear_search_history"
+                            android:textAllCaps="true"
+                            android:textColor="@color/clear_database_button_color"
+                            android:textSize="@dimen/text_size_medium"
+                            tools:text="Sort" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/spacing_small"
+                    android:paddingTop="@dimen/spacing_normal"
+                    android:paddingEnd="@dimen/spacing_small"
+                    android:text="@{@string/app_version(Utils.getVersionName(context))}"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/spacing_small"
+                    android:paddingTop="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_small"
+                    android:paddingBottom="@dimen/spacing_normal"
+                    android:text="@{@string/last_updated(updatedTime)}"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <Button
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="@drawable/shape_rect_gray_bg_black_border_2dp"
+                    android:onClick="@{()->handler.onClickDeviceSettingsButton()}"
+                    android:padding="@dimen/spacing_normal"
+                    app:appTheme="@{7}"
+                    android:text="@string/manage_in_devices_settings"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

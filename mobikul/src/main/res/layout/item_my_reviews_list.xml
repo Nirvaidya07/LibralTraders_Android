@@ -1,0 +1,97 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.ReviewsListItem" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.MyReviewsListRvHandler" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_generic"
+        android:background="@drawable/shape_rect_white_bg_gray_border_half_dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:onClick="@{()->handler.onClickDetails(data.id)}"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_normal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:adjustViewBounds="true"
+                app:imageUrl="@{data.thumbNail}"
+                app:placeholder="@{data.dominantColor}"
+                tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_tiny">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:foreground="?attr/selectableItemBackground"
+                android:maxLines="1"
+                android:onClick="@{()->handler.onClickProductName(data)}"
+                android:text="@{data.proName}"
+                android:textColor="@color/text_color_link"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                tools:text="Lafayette Convertable Bag" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{data.customerRating == 0 ? View.GONE : View.VISIBLE}">
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="@{data.customerRating}"
+                    android:stepSize="0.01"
+                    android:theme="@style/RatingBar"
+                    tools:rating="2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_generic"
+                    android:text="@{@string/x_stars(data.customerRating)}"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_left_arrow_grey : @drawable/ic_right_arrow_grey}" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

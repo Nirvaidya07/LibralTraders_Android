@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.webkul.mobikul.BuildConfig" />
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <import type="com.webkul.mobikul.helpers.ApplicationConstants" />
+
+        <variable
+            name="loadingBanner"
+            type="Boolean" />
+
+        <variable
+            name="loadingProfile"
+            type="Boolean" />
+
+        <variable
+            name="showCategories"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.HomePageDataModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.NavDrawerStartFragmentHandler" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_surface"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_layout_height"
+            android:background="?attr/colorAccent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:foreground="#55000000"
+                android:onClick="@{()->handler.onClickBannerImage()}"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/customer_banner_placeholder"
+                tools:src="@drawable/customer_banner_placeholder" />
+
+            <ProgressBar
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/progress_bar_bg"
+                android:indeterminate="true"
+                android:visibility="@{safeUnbox(loadingBanner) ? View.VISIBLE : View.GONE}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_normal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="@dimen/user_profile_image_size"
+                        android:layout_height="@dimen/user_profile_image_size"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/customer_profile_placeholder"
+                        tools:src="@drawable/customer_profile_placeholder" />
+
+                    <ProgressBar
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/progress_bar_bg"
+                        android:indeterminate="true"
+                        android:visibility="@{safeUnbox(loadingProfile) ? View.VISIBLE : View.GONE}" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|start"
+                        android:textAlignment="viewStart"
+                        android:maxLines="1"
+                        android:text="@{AppSharedPref.isLoggedIn(context) ? @string/hello : @string/sign_in}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold"
+                        tools:text="Log in/ Sign Up" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:drawableEnd="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_left_arrow_grey_wrapper : @drawable/ic_right_arrow_grey_wrapper}"
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:maxLines="1"
+                        android:text="@{AppSharedPref.isLoggedIn(context) ? AppSharedPref.getCustomerName(context) : @string/to_your_account}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        tools:text="to your account" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:visibility="@{data.tabCategoryView.equals(`1`)? View.GONE : View.VISIBLE}"
+            android:id="@+id/layout_category"
+            android:layout_width="match_parent"
+            android:background="@color/material_background"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_small"
+                android:text="@string/categories"
+                android:textAllCaps="true"
+                android:gravity="center_vertical|start"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_small"
+                android:visibility="@{data.categories.size > 0 ? View.VISIBLE : View.GONE}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color"
+                android:visibility="@{data.categories.size > 0 ? View.VISIBLE : View.GONE}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nav_drawer_category_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_nav_drawer_category"
+                tools:itemCount="2"
+                android:visibility="@{data.categories.size > 0 ? View.VISIBLE : View.GONE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:targetApi="lollipop" />
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:onClick="@{()->handler.onClickViewCategory()}"
+            android:visibility="@{data.tabCategoryView.equals(`1`)? View.VISIBLE : View.GONE}"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_generic"
+                android:paddingTop="@dimen/spacing_small"
+                android:paddingEnd="@dimen/spacing_generic"
+                android:paddingBottom="@dimen/spacing_small">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/category_image"
+                        android:layout_marginStart="@dimen/spacing_tiny"
+                        android:layout_marginEnd="@dimen/spacing_small"
+                        android:layout_width="@dimen/nav_drawer_item_image_size"
+                        android:layout_height="@dimen/nav_drawer_item_image_size"
+                        app:appTheme="@{11}"
+                        app:srcCompat="@drawable/ic_vector_stroke" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nav_drawer_category_label"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="start|center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/categories"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/subcategory_indicator"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="@dimen/spacing_generic"
+                    app:srcCompat="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_left_arrow_grey : @drawable/ic_right_arrow_grey}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/material_background"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"
+            android:text="@string/account"
+            android:textAllCaps="true"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.VISIBLE : View.GONE}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
+            android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.VISIBLE : View.GONE}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nav_drawer_account_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_nav_drawer_account"
+            tools:itemCount="2"
+            android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:targetApi="lollipop" />
+
+        <ViewStub
+            android:id="@+id/nav_drawer_seller_account_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/material_background"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"
+            android:text="@string/preferences"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_size_small" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nav_drawer_preferences_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_nav_drawer_preferences"
+            tools:itemCount="2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:targetApi="lollipop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/material_background"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"
+            android:text="@string/others"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_size_small" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color" />
+
+        <ViewStub
+            android:id="@+id/nav_drawer_mp_landing_page"
+            android:layout_width="match_parent"
+            android:background="@color/material_surface"
+            android:layout_height="wrap_content"
+           />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nav_drawer_others_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:targetApi="lollipop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:ellipsize="end"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:onClick="@{()->handler.onClickCompareProducts()}"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:singleLine="true"
+            android:text="@string/compare_products"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            android:visibility="@{ApplicationConstants.ENABLE_COMPARE_PRODUCTS ? View.VISIBLE : View.GONE}"
+            tools:text="@string/compare_products" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:background="@color/divider_color" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:ellipsize="end"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:onClick="@{()->handler.onClickOrdersAndReturns()}"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:singleLine="true"
+            android:text="@string/orders_and_returns"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.GONE : View.VISIBLE}"
+            tools:text="@string/orders_and_returns" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:background="@color/divider_color"
+            android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.GONE : View.VISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_background"
+            android:ellipsize="end"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:onClick="@{()->handler.onClickContactUs()}"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:singleLine="true"
+            android:text="@string/contact_us"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            tools:text="@string/contact_us" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/material_background"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                app:appTheme="@{0}"
+                android:onClick="@{()->handler.onClickLogout()}"
+                android:padding="@dimen/spacing_normal"
+                android:text="@string/log_out"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium"
+                app:cornerRadius="0dp"
+                android:textStyle="bold"
+                android:visibility="@{AppSharedPref.isLoggedIn(context) ? View.VISIBLE : View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@{@string/app_version(Utils.getVersionName(context))}"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</layout>

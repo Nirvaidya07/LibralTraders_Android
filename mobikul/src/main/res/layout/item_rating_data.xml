@@ -1,0 +1,46 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.ProductRatingData" />
+    </data>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background">
+
+        <TableRow android:gravity="center_vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.ratingCode}"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="@{data.ratingValue}"
+                android:stepSize="1"
+                android:theme="@style/RatingBar" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_generic"
+                android:text="@{@string/x_stars(data.ratingValue)}"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_small" />
+
+        </TableRow>
+    </TableLayout>
+</layout>

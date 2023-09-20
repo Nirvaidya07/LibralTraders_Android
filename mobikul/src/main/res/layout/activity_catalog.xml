@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="isSorted"
+            type="Boolean" />
+
+        <variable
+            name="isFiltered"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.catalog.CatalogProductsResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.CatalogActivityHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:fitsSystemWindows="true">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/catalog_product_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?android:attr/actionBarSize"
+                android:background="@color/material_background"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <!--      <androidx.appcompat.widget.AppCompatImageView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:minHeight="0dp"
+                          android:scaleType="fitXY"
+                          android:visibility="@{data.bannerImage != null &amp;&amp; !data.bannerImage.isEmpty() &amp;&amp; data.totalCount != 0 ? View.VISIBLE : View.GONE}"
+                          app:imageUrl="@{data.bannerImage}"
+                          app:layout_collapseMode="parallax"
+                          app:layout_height="@{(2 * Utils.getScreenWidth()) / 3}"
+                          app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                          app:placeholder="@{data.dominantColor}" />-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:minHeight="0dp"
+                    android:visibility="@{data.bannerImage.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:layout_collapseMode="parallax"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/category_banner_view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_height="@{(2 * Utils.screenWidth) / 3}"
+                        tools:ignore="UnusedAttribute" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/category_slider_dots_tab_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/transparent"
+                        android:visibility="@{data.bannerImage.size() > 1 ? View.VISIBLE : View.GONE}"
+                        app:tabBackground="@drawable/selector_dots_tab_layout"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/products_options_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:onClick="@{()->handler.onClickSortBtn()}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sort_tv"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:drawableStart="@drawable/ic_sort_wrapper"
+                            android:drawablePadding="@dimen/spacing_tiny"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_generic"
+                            android:paddingBottom="@dimen/spacing_normal"
+                            android:text="@string/sort"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_primary" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/sort_tv"
+                            android:visibility="@{safeUnbox(isSorted) ? View.VISIBLE : View.GONE}"
+                            app:srcCompat="@drawable/ic_red_dot" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/material_background"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:onClick="@{()->handler.onClickFilterBtn()}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/filter_tv"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_filter_wrapper"
+                            android:drawablePadding="@dimen/spacing_tiny"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_generic"
+                            android:paddingBottom="@dimen/spacing_normal"
+                            android:text="@string/filter"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_primary" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/filter_tv"
+                            android:visibility="@{safeUnbox(isFiltered) ? View.VISIBLE : View.GONE}"
+                            app:srcCompat="@drawable/ic_red_dot" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/switcher_tv"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:drawableStart="@{AppSharedPref.getViewType(context) == 1 ? @drawable/ic_list_view_wrapper : @drawable/ic_grid_view_wrapper}"
+                            android:drawablePadding="@dimen/spacing_tiny"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:onClick="@{(v)->handler.onClickViewSwitcher(v)}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@{AppSharedPref.getViewType(context) == 1 ? @string/list : @string/grid}"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_primary" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/criteria_data_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:visibility="@{data.criteriaData.size() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <RelativeLayout
+                android:id="@+id/product_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="?android:attr/actionBarSize"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/products_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_catalog_product_list" />
+            </RelativeLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="@dimen/spacing_infinity"
+                android:background="@drawable/progress_bar_bg"
+                android:indeterminate="true"
+                android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="4dp"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:appTheme="@{1}"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+    </RelativeLayout>
+</layout>

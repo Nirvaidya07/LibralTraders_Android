@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2019 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.Category" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SearchViewCategoryRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        fontPath="fonts/Montserrat-SemiBold.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rect_extra_round_cnr_accent_bg_accent_border_1dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> handler.onClickCategory(data.name, data.id, data.hasChildren)}"
+        android:paddingStart="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_generic"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:paddingBottom="@dimen/spacing_generic"
+        android:text="@{data.name}"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_small"
+        android:textStyle="bold"
+        tools:text="Men" />
+</layout>

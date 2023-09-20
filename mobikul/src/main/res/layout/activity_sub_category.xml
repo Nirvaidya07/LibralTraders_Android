@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.catalog.SubCategoryResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SubCategoryActivityHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/main_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_background"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:visibility="@{data.bannerImage.size() > 0 ? View.VISIBLE : View.GONE}">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/category_banner_view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_height="@{(2 * Utils.screenWidth) / 3}"
+                        tools:ignore="UnusedAttribute" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/category_slider_dots_tab_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="@{data.bannerImage.size() > 1 ? View.VISIBLE : View.GONE}"
+                        app:tabBackground="@drawable/selector_dots_tab_layout"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:visibility="@{data.hotSeller.size() > 0 ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:id="@+id/carousel_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/hot_sellers"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_small"
+                          />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/hot_sellers_carousel_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/carousel_heading"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:layout_height="100dp"
+                        tools:targetApi="lollipop" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:visibility="@{data.productList.size() > 0 ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:id="@+id/products_carousel_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/products"
+                            android:textAllCaps="true"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_small"
+                          />
+<!--                        fontPath="font/montserrat_bold.ttf"-->
+                        <com.google.android.material.button.MaterialButton
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minHeight="30dp"
+                            android:background="@drawable/shape_rect_round_cnr_gray_bg_gray_border_1dp"
+                            android:onClick="@{()->handler.onClickViewAllBtn(data.name, data.id)}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:text="@string/view_all"
+                            android:textAllCaps="true"
+                            android:paddingTop="@dimen/spacing_tiny"
+                            android:paddingBottom="@dimen/spacing_tiny"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_color_primary"
+                            android:textSize="@dimen/text_size_tiny" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/products_carousel_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/products_carousel_heading"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:layout_height="100dp"
+                        tools:targetApi="lollipop" />
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_huge"
+                    android:background="@color/material_background"
+                    android:orientation="vertical"
+                    android:visibility="@{data.subCategoriesList.size() > 0 ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:gravity="center"
+                        android:text="@{@string/explore_x(data.name)}"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small"
+                        tools:text="Most Visited" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/sub_categories_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/spacing_normal"
+                        android:paddingEnd="@dimen/spacing_normal"
+                        android:paddingBottom="@dimen/spacing_normal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:layout_height="100dp"
+                        tools:targetApi="lollipop" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+</layout>

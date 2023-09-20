@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bannerSize"
+            type="Integer" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_large">
+<!--Recommanded size8:3 (W:H = >960:320)-->
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/category_banner_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_height="@{(3*7 * Utils.screenWidth) / (10*8)+14}"
+            tools:ignore="UnusedAttribute" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/category_slider_dots_tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:paddingBottom="0dp"
+            android:visibility="@{bannerSize==1 ?View.INVISIBLE :View.VISIBLE}"
+            app:tabBackground="@drawable/selector_small_dots_tab_layout"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
+    </RelativeLayout>
+
+</layout>

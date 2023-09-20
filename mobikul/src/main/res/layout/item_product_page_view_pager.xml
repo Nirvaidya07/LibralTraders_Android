@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.product.ImageGalleryData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.ProductSliderHandler" />
+
+        <variable
+            name="productName"
+            type="String" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background">
+
+        <ImageView
+            android:id="@+id/banner_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/product_slider_view_pager_height"
+            android:adjustViewBounds="true"
+            android:onClick="@{(v) -> handler.onClickProductImage(v, productName, position,data.isVideo,data.videoUrl)}"
+            app:imageUrl="@{data.isVideo ? data.getYoutubeThumbnailUrlFromVideoUrl(): data.largeImage}"
+            app:placeholder="@{data.dominantColor}"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@android:drawable/ic_media_play"
+            android:visibility="@{data.isVideo ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

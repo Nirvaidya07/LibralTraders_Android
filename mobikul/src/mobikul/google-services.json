@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1086575968957",
+    "firebase_url": "https://libral-159506.firebaseio.com",
+    "project_id": "libral-159506",
+    "storage_bucket": "libral-159506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086575968957:android:0a8dbc30dc8ad095",
+        "android_client_info": {
+          "package_name": "com.libraltraders.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086575968957-2rgnpg1d939kso7on1hemg2867s4pfq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.libraltraders.android",
+            "certificate_hash": "fbeef78bebbf842b508aebf61b567c84d994bf9a"
+          }
+        },
+        {
+          "client_id": "1086575968957-cr6bkn1fobg4epumv1il3a84bbn4gbo9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.libraltraders.android",
+            "certificate_hash": "9c4032d8ed1843d3098e4820b594b5c6cdc48bb2"
+          }
+        },
+        {
+          "client_id": "1086575968957-4mbl273q1k7cvvbakhorn2k32iepuqk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlrj2rRJWWfta_4ziT59hvM4yqhe0r0Q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086575968957-4mbl273q1k7cvvbakhorn2k32iepuqk0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086575968957-hgmv1ttrav7cku463npsu69vvc9oarc6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.test.webkul"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

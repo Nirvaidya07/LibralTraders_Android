@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.ApplicationConstants" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_whiteBlack"
+        tools:context=".activity.SplashScreenActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Splash Screen"
+            android:padding="@dimen/spacing_huge"
+            android:scaleType="centerInside"
+            android:visibility="@{ApplicationConstants.ENABLE_SPLASH_ANIMATION ? View.GONE : View.VISIBLE}"
+            app:srcCompat="@drawable/splash_screen"
+            tools:ignore="HardcodedText" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/splash_screen_animation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{ApplicationConstants.ENABLE_SPLASH_ANIMATION ? View.VISIBLE : View.GONE}"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="splash_screen.json"
+            app:lottie_loop="false" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="-8dp"
+            android:indeterminate="true"
+            android:scaleY="3"
+            android:theme="@style/AppTheme.WhiteAccent"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

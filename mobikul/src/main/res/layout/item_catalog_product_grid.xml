@@ -1,0 +1,294 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <import type="com.webkul.mobikul.helpers.ApplicationConstants" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.product.ProductTileData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.ProductTileHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rectangular_white_bg_gray_border_half_dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:onClick="@{()->handler.onClickItem(data.id, data.name, data.thumbNail, data.dominantColor)}"
+        android:padding="@dimen/spacing_generic">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.webkul.mobikul.customviews.ZoomImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:onClick="@{()->handler.onClickItem(data.id, data.name, data.thumbNail, data.dominantColor)}"
+            android:scaleType="fitXY"
+            app:imageUrl="@{data.thumbNail}"
+            app:placeholder="@{data.dominantColor}"
+            tools:src="@drawable/placeholder" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/product_tile_ar_icon_size"
+            android:layout_height="@dimen/product_tile_ar_icon_size"
+            android:layout_above="@id/new_tag_iv"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{() -> handler.onClickArBtn(data.productPosition)}"
+            android:visibility="@{data.isArEnabled(context) ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/color_whiteBlack"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="@dimen/card_elevation_low">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/product_tile_ar_icon_size"
+                android:layout_height="@dimen/product_tile_ar_icon_size"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_ar"
+                tools:src="@drawable/ic_ar" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/product_discount_percentage"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/product_image"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:background="@android:color/white"
+            android:padding="@dimen/spacing_tiny"
+            android:text="@{@string/x_off(data.getDiscountPercentage())}"
+            android:textAllCaps="true"
+            android:textColor="@color/product_discount_color"
+            android:textSize="@dimen/text_size_tiny"
+            android:visibility="@{data.isAvailable &amp;&amp; data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+            tools:text="$310.00" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/availability"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/product_image"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:background="@color/out_of_stock_color"
+            android:padding="@dimen/spacing_tiny"
+            android:text="@{data.availability}"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_tiny"
+            android:visibility="@{data.isAvailable ? View.GONE : View.VISIBLE}"
+            tools:text="$310.00" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/new_tag_iv"
+            android:layout_alignEnd="@id/product_image"
+            android:layout_alignBottom="@id/product_image"
+            android:layout_marginBottom="@dimen/spacing_generic"
+            android:visibility="@{data.new ? View.VISIBLE : View.GONE}"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/single_star_color"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_tiny"
+            android:paddingEnd="@dimen/spacing_tiny"
+            android:text="@string/new_text"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+            tools:text="New" />
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/price_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:orientation="horizontal">
+
+            <com.webkul.mobikul.customviews.FlowLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:maxLines="1"
+                    android:text="@{data.formattedFinalPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$210.00" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_special_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_strikethrough"
+                    android:maxLines="1"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@{data.formattedPrice}"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$310.00" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_min_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{data.formattedMinPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMinPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_min_max_price_dash_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - "
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMaxPrice() &amp;&amp; data.hasMinMaxRange() ? View.VISIBLE : View.GONE}"
+                    tools:text="-" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_max_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@{data.formattedMaxPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMaxPrice() &amp;&amp; data.hasMinMaxRange() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_grp_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{data.groupedPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasGroupedPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+            </com.webkul.mobikul.customviews.FlowLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/wishlist_animation_view"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:onClick="@{(v)->handler.onClickWishListButton(v, position, data.id, data.isInWishList, data.wishListItemId)}"
+                android:visibility="@{ApplicationConstants.ENABLE_WISHLIST &amp;&amp; AppSharedPref.isWishlistEnabled(context) ? View.VISIBLE : View.GONE}"
+                app:isInWishList="@{data.isInWishList}"
+                app:lottie_fileName="wishlist_heart.json"
+                app:lottie_loop="false" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/product_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_ll"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:lines="2"
+            android:text="@{data.name}"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_small"
+            tools:text="Fitness Equipment" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/product_rating"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_label"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:drawableEnd="@drawable/ic_star_wrapper"
+            android:drawablePadding="@dimen/spacing_tiny"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_generic"
+            android:paddingTop="@dimen/spacing_tiny"
+            android:paddingEnd="@dimen/spacing_generic"
+            android:paddingBottom="@dimen/spacing_tiny"
+            android:text="@{data.rating}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="@{data.rating.equals(&quot;0&quot;) ? View.GONE : View.VISIBLE}"
+            app:ratingColor="@{data.rating}"
+            tools:background="@color/colorAccent"
+            tools:text="2.07" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/no_product_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_label"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:maxLines="1"
+                android:text="@string/no_reviews_yet"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_tiny"
+                android:visibility="@{data.rating.equals(&quot;0&quot;) ? View.VISIBLE : View.GONE}"
+                tools:text="Fitness Equipment" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

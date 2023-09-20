@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/attribute_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:nestedScrollingEnabled="false"
+            android:background="@color/grey_100"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_huge"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:layout_height="100dp"
+            tools:targetApi="lollipop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/attribute_name"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_huge"
+            android:background="@drawable/shape_rect_gray_bg_dark_gray_border_1dp"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_small"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            tools:text="DESCRIPTION" />
+    </RelativeLayout>
+</layout>

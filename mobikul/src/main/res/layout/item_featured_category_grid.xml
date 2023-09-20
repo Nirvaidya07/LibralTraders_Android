@@ -1,0 +1,79 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.FeaturedCategory" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.FeaturedCategoriesRvHandler" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:onClick="@{()->handler.onClickCategory(data.categoryName, data.categoryId)}"
+        app:cardBackgroundColor="@color/material_background"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/featured_category_grid_image_size"
+                android:layout_height="@dimen/featured_category_grid_image_size"
+                android:layout_gravity="center_vertical"
+                android:background="@color/material_background"
+                app:strokeWidth="1dp"
+                app:strokeColor="#00000000"
+                android:onClick="@{()->handler.onClickCategory(data.categoryName, data.categoryId)}"
+                app:imageUrl="@{data.url}"
+                app:placeholder="@{data.dominantColor}"
+                tools:ignore="TooDeepLayout"
+                tools:src="@drawable/placeholder"
+                app:shapeAppearanceOverlay="@style/ImageCircularCornerSize50Percent"
+                />
+
+           <!--    <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/ImageCircularCornerSize50Percent"
+
+                    android:layout_width="@dimen/featured_category_grid_image_size"
+                    android:layout_height="@dimen/featured_category_grid_image_size"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/material_background"
+                    android:onClick="@{()->handler.onClickCategory(data.categoryName, data.categoryId)}"
+                    app:strokeColor="#00000000"
+                    app:strokeWidth="1dp"
+                    app:imageUrl="@{data.url}"
+                    app:placeholder="@{data.dominantColor}"
+                    tools:ignore="TooDeepLayout"
+                    tools:src="@drawable/placeholder" />-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/category_label"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingTop="@dimen/spacing_generic"
+                android:paddingBottom="@dimen/spacing_generic"
+                android:text="@{data.categoryName}"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                tools:text="Fitness Equipment" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

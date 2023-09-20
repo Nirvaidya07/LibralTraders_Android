@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.extra.TermList" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SearchTermsActivityHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rect_white_bg_gray_border_half_dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v)->handler.onClickSearchItem(v, data.term)}"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:paddingBottom="@dimen/spacing_small">
+
+        <TextView
+            android:id="@+id/nav_drawer_parent_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical|start"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="@{data.term}"
+            android:textDirection="anyRtl"
+            android:textSize="@{data.getTextSize()}"
+            tools:ignore="RtlSymmetry"
+            tools:targetApi="jelly_bean_mr1"
+            tools:text="Some drawer text" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

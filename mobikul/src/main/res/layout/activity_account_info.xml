@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.AccountInfoResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.AccountInfoActivityHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/material_background"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_normal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/prefix_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@string/name_prefix"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; data.prefixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/prefix_sp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/text_color_primary"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; data.prefixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/prefix_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/prefix"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{data.isPrefixVisible &amp;&amp; !data.prefixHasOptions ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_prefix"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.prefixValue}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/first_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="true"
+                        android:focusable="true"
+                        android:hint="@string/first_name"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.firstName}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/middle_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.middlenameVisible ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/middle_name"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.middleName}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/last_name"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.lastName}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/suffix_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@string/name_suffix"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.suffixVisible &amp;&amp; data.suffixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/suffix_sp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/text_color_primary"
+                    android:visibility="@{data.suffixVisible &amp;&amp; data.suffixHasOptions ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/suffix_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/suffix"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.suffixVisible &amp;&amp; !data.suffixHasOptions ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_suffix"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.suffixValue}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date_of_birth"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:focusable="true"
+                    android:visibility="@{data.DOBVisible ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/date_of_birth"
+                        android:inputType="date"
+                        android:maxLines="1"
+                        android:onClick="@{(v)->handler.onClickDatePicker(v, data.dobValue, data.dateFormat)}"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.dobValue}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tax_vat_number"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.taxVisible ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/tax_vat_number"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.taxValue}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mobile"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:visibility="@{data.mobileVisible ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/mobile"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.mobile}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@string/gender"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="@{data.genderVisible ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/gender_sp"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/text_color_primary"
+                    android:selectedItemPosition="@={data.genderValue}"
+                    android:visibility="@{data.genderVisible ? View.VISIBLE : View.GONE}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/gender_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic">
+
+                    <Switch
+                        android:id="@+id/change_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={data.changesEmailChecked}"
+                        android:theme="@style/SCBSwitch" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/change_email"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:visibility="@{data.changesEmailChecked ? View.VISIBLE : View.GONE}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.email}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic">
+
+                    <Switch
+                        android:id="@+id/change_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={data.changesPasswordChecked}"
+                        android:theme="@style/SCBSwitch" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/change_password"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/current_password"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:passwordToggleTint="@color/text_color_secondary"
+                    android:visibility="@{data.changesPasswordChecked || data.changesEmailChecked ? View.VISIBLE : View.GONE}"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/current_password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.currentPassword}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/new_password"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:passwordToggleTint="@color/text_color_secondary"
+                    android:visibility="@{data.changesPasswordChecked ? View.VISIBLE : View.GONE}"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/new_password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.newPassword}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirm_new_password"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:passwordToggleTint="@color/text_color_secondary"
+                    android:visibility="@{data.changesPasswordChecked ? View.VISIBLE : View.GONE}"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/confirm_new_password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:text="@={data.confirmNewPassword}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/save_account_info_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:appTheme="@{0}"
+                    android:onClick="@{()->handler.onClickSave(data)}"
+                    android:padding="@dimen/spacing_small"
+                    android:text="@string/save"
+                    android:textAllCaps="true" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/delete_account_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:appTheme="@{0}"
+                    android:onClick="@{()->handler.onClickDeleteAccount()}"
+                    android:padding="@dimen/spacing_small"
+                    android:text="@string/delete_account"
+                    android:textAllCaps="true" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_infinity"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

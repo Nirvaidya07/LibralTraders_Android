@@ -1,0 +1,29 @@
+{
+  "country_code": [
+    {
+      "country_code": "IN",
+      "dial_code": "+91",
+      "image": "https:\/\/ipdata.co\/flags\/in.png"
+    },
+    {
+      "country_code": "RS",
+      "dial_code": "+381",
+      "image": "https:\/\/ipdata.co\/flags\/rs.png"
+    },
+    {
+      "country_code": "US",
+      "dial_code": "+1",
+      "image": "https:\/\/ipdata.co\/flags\/us.png"
+    },
+    {
+      "country_code": "RU",
+      "dial_code": "+7",
+      "image": "https:\/\/ipdata.co\/flags\/ru.png"
+    },
+    {
+      "country_code": "SA",
+      "dial_code": "+966",
+      "image": "https:\/\/ipdata.co\/flags\/sa.png"
+    }
+  ]
+}

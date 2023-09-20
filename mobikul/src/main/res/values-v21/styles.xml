@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/text_color_primary</item>
+        <item name="colorPrimaryDark">@color/text_color_primary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/text_color_primary</item>
+        <item name="android:textColorSecondary">@color/text_color_secondary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/Alert.Button</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/Alert.Button</item>
+        <item name="fontFamily">@font/font_montserrat</item>
+        <item name="android:fontFamily">@font/font_montserrat</item>
+    </style>
+</resources>

@@ -1,0 +1,58 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.checkout.BillingShippingAddress" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.CheckoutPaymentAddressRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{data.isSelected ? @drawable/shape_rect_white_bg_black_border_1_dp : @drawable/shape_rectangular_white_bg_gray_border_1dp}"
+        android:gravity="center_vertical"
+        android:onClick="@{() -> handler.onClickAddress(position, data.id)}"
+        android:padding="@dimen/spacing_normal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium"
+            app:loadHtmlText="@{data.value}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="@dimen/spacing_generic"
+            android:visibility="@{data.isSelected ? View.VISIBLE : View.INVISIBLE}"
+            app:srcCompat="@drawable/ic_tick_accent" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

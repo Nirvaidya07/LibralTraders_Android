@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/material_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fileSelectedTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/shape_rect_white_bg_black_border_1_dp"
+        android:padding="@dimen/spacing_generic"
+        android:text="@string/no_file_selected"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_size_medium" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/browseButton"
+        android:layout_width="@dimen/contextual_icon_dimens"
+        android:layout_height="@dimen/contextual_icon_dimens"
+        android:background="@drawable/ic_browse_button_background"
+        android:gravity="end"
+        android:minWidth="20dp"
+        android:minHeight="10dp"
+        android:padding="5dp"
+        android:textColor="@color/color_whiteBlack" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

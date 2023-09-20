@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="loadingProfile"
+            type="Boolean" />
+
+        <variable
+            name="loadingBanner"
+            type="Boolean" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.DashboardActivityHandler" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/activity_customer_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_height="@{(2 * Utils.getScreenWidth()) / 3}">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:appTheme="@{3}"
+                app:contentScrim="@color/colorPrimary"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/banner_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:foreground="#55000000"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/customer_banner_placeholder"
+                        tools:src="@drawable/customer_banner_placeholder" />
+
+                    <ProgressBar
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/progress_bar_bg"
+                        android:indeterminate="true"
+                        android:visibility="@{safeUnbox(loadingBanner) ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/profile_image"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_centerInParent="true"
+                                android:onClick="@{() -> handler.onClickProfileImage()}"
+                                android:scaleType="fitXY"
+                                app:srcCompat="@drawable/customer_profile_placeholder"
+                                tools:src="@drawable/customer_profile_placeholder" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/edit_profile_image"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_alignEnd="@id/profile_image"
+                                android:onClick="@{() -> handler.onClickProfileImageEdit()}"
+                                app:srcCompat="@drawable/ic_edit_round"
+                                tools:src="@drawable/ic_edit_round" />
+
+                            <ProgressBar
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/progress_bar_bg"
+                                android:indeterminate="true"
+                                android:visibility="@{safeUnbox(loadingProfile) ? View.VISIBLE : View.GONE}" />
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/customer_name_tv"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_generic"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{AppSharedPref.getCustomerName(context)}"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_medium"
+                            android:textStyle="bold"
+                            tools:text="to your account" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/customer_email_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{AppSharedPref.getCustomerEmail(context)}"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_small"
+                            tools:text="to your account" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:background="@drawable/shape_rect_round_cnr_transparent"
+                            android:onClick="@{() -> handler.onClickEditInfo()}"
+                            android:paddingStart="@dimen/spacing_normal"
+                            android:paddingTop="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_normal"
+                            android:paddingBottom="@dimen/spacing_small"
+                            android:text="@string/edit_info"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_small"
+                            android:textStyle="bold"
+                            tools:text="to your account" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/edit_banner_image"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:onClick="@{() -> handler.onClickBannerImage()}"
+                        app:srcCompat="@drawable/ic_edit_round"
+                        tools:src="@drawable/ic_edit_round" />
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/AppTheme.AppBarOverlay"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:title=" " />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_surface"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                app:elevation="@dimen/card_elevation_low"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabIndicatorColor="@color/text_color_primary"
+                app:tabTextAppearance="@style/DashboardViewPagerTabsAppearance"
+                app:tabTextColor="@color/text_color_secondary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               />
+
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

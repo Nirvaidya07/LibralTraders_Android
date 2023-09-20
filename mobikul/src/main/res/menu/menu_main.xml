@@ -1,0 +1,39 @@
+<!-- -Menu used in Mobikul-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.HomeActivity">
+
+    <item
+        android:id="@+id/menu_item_search"
+        android:icon="@drawable/ic_search_black"
+        android:title="@string/search"
+        app:showAsAction="always|collapseActionView" />
+
+    <item
+        android:id="@+id/menu_item_notification"
+        android:icon="@drawable/layer_list_menu_notification"
+        android:title="@string/notifications"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_item_wishlist"
+        android:icon="@drawable/ic_wish_list"
+        android:title="@string/wishlist"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_item_share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_item_cart"
+        android:icon="@drawable/layer_list_menu_cart"
+        android:title="@string/cart"
+        app:showAsAction="ifRoom" />
+
+</menu>

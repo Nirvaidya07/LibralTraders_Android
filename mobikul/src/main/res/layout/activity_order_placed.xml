@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.checkout.SaveOrderResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.OrderPlaceActivityHandler" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/material_surface"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_generic"
+            app:cardBackgroundColor="@color/material_background"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/spacing_generic">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_generic">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:gravity="center"
+                    android:text="@string/your_order_has_been_received"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:gravity="center"
+                    android:text="@string/thank_you_for_your_purchase"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/order_id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:gravity="center"
+                    android:onClick="@{(v) -> handler.onClickViewOrder(v, data.incrementId)}"
+                    android:text="@{@string/your_order_id_is_x(data.incrementId)}"
+                    android:textColor="@color/text_color_link"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    tools:text="@string/your_order_id_is_x" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:gravity="center"
+                    android:text="@string/you_will_receive_an_order_confirmation_email_with_details_of_your_order_and_a_link_to_track_its_progress"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    app:appTheme="@{0}"
+                    android:background="@color/colorAccent"
+                    android:onClick="@{(v) -> handler.onClickStartShopping(v)}"
+                    android:padding="@dimen/spacing_generic"
+                    android:text="@string/continue_shopping"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_large" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_generic"
+            android:visibility="@{data.showCreateAccountLink ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/material_background"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/spacing_generic">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:gravity="center"
+                    android:text="@string/you_can_track_your_order_status_by_creating_an_account"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    android:text="@{@string/email_address_x(data.email)}"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    tools:text="Email Address: %s." />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/create_account_btn"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_generic"
+                    app:appTheme="@{0}"
+                    android:background="@color/colorAccent"
+                    android:onClick="@{(v) -> handler.onClickCreateAnAccount(v, data)}"
+                    android:padding="@dimen/spacing_generic"
+                    android:text="@string/create_an_account"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_large" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

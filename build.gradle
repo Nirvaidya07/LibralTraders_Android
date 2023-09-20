@@ -1,0 +1,63 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext {
+        is_marketplace_app = false
+        version_code = 504
+        version_name = "5.04"
+
+        compile_sdk_version = 31
+        min_sdk_version = 19
+        target_sdk_version = 31
+
+        kotlin_version = '1.6.21'
+        lifecycle = '1.1.1'
+        retrofit2 = '2.9.0'
+        okhttp3 = '4.9.1'
+        rx_java = '2.2.6'
+        crashlytics = '2.9.8'
+        ar_core = '1.27.0'
+        //don't change version because models at demo instance upload for this version
+        sceneform = '1.17.1'
+        //don't change version because models at demo instance upload for this version
+        glide = '4.12.0'
+        zoomy = '1.1.0'
+        jsoup = '1.11.3'
+        circular_imageview = '2.2.0'
+        lottie = '3.3.1'
+        image_cropper = '2.8.0'
+        calligraphy = '2.3.0'
+        mp_android_chart = 'v3.1.0'
+        text_drawable = '1.0.1'
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.ar.sceneform:plugin:1.17.1'
+        //don't change version because models at demo instance upload for this version
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://maven.google.com/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

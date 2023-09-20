@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.LoginFormModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.DeleteAccountDialogHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_normal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_generic"
+                android:text="@string/delete_your_account"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_xlarge" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_generic"
+                android:text="@{@string/please_enter_password_for_your_account_x(AppSharedPref.getCustomerEmail(context))}"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_medium"
+                tools:text="@string/please_enter_password_for_your_account_x"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_til"
+                style="@style/CustomTilStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_generic"
+                app:passwordToggleTint="@color/text_color_secondary"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/spacing_generic"
+                    android:paddingEnd="@dimen/spacing_generic"
+                    android:text="@={data.password}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:background="@color/material_background"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->handler.onClickDeleteAccountPositiveBtn(data)}"
+                    android:padding="@dimen/spacing_small"
+                    android:text="@string/ok"
+                    app:appTheme="@{8}"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->handler.onClickDeleteAccountNegativeBtn()}"
+                    android:padding="@dimen/spacing_small"
+                    android:text="@string/cancel"
+                    app:appTheme="@{8}"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="@dimen/text_size_medium" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progress_bar_bg"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

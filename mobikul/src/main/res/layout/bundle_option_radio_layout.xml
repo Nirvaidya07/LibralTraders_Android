@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_white_bg_black_border_1_dp"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/bundle_option_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:text="@string/label_quantity"
+            android:textSize="@dimen/text_size_small" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/decrement_qty_iv"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="@dimen/contextual_icon_dimens"
+                android:layout_height="@dimen/contextual_icon_dimens"
+                app:appTheme="@{0}"
+                android:background="@color/colorAccent"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_large" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/qty_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="4"
+                android:gravity="center"
+                android:padding="@dimen/spacing_generic"
+                android:text="1"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/increment_qty_iv"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="@dimen/contextual_icon_dimens"
+                android:layout_height="@dimen/contextual_icon_dimens"
+                app:appTheme="@{0}"
+                android:background="@color/colorAccent"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_large" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

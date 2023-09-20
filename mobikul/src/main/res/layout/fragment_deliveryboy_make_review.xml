@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import
+            alias="View"
+            type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.DeliveryboyMakeReviewData" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="productId"
+            type="Integer" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.DeliveryboyMakeReviewHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/cart_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_background"
+        android:orientation="vertical"
+        android:theme="@style/AppTheme"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_height="@{Utils.getScreenHeight()}">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/color_whiteBlack"
+            app:cardElevation="@dimen/card_elevation_low">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_normal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickCancelBtn()}"
+                    app:srcCompat="@drawable/ic_close_accent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_huge"
+                    android:layout_weight="1"
+                    android:text="@string/write_your_review"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_generic">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_generic"
+                        android:text="@string/how_do_you_rate_deliveryboy"
+                        android:textAllCaps="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold" />
+
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/activity_horizontal_margin"
+                                android:paddingLeft="@dimen/activity_horizontal_margin"
+                                android:paddingEnd="@dimen/activity_horizontal_margin"
+                                android:paddingRight="@dimen/activity_horizontal_margin"
+                                android:text=":"
+                                tools:ignore="HardcodedText" />
+
+                            <androidx.appcompat.widget.AppCompatRatingBar
+                                android:id="@+id/rating_bar"
+                                style="?android:attr/ratingBarStyleIndicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:isIndicator="false"
+                                android:numStars="5"
+                                android:rating="@={data.rating}"
+                                android:stepSize="1"
+                                android:theme="@style/RatingBar"
+                                tools:rating="2" />
+
+                        </TableRow>
+
+
+                    </TableLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="@dimen/spacing_generic"
+                        android:background="@android:color/darker_gray" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nickname_til"
+                        style="@style/CustomTilStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:hint="@string/nickname"
+                            android:inputType="text"
+                            android:text="@={data.nickName}"
+                            android:textAlignment="viewStart"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/summary_til"
+                        style="@style/CustomTilStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:hint="@string/summary_of_your_review"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:text="@={data.summary}"
+                            android:textAlignment="viewStart"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/comment_til"
+                        style="@style/CustomTilStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_generic">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/comment_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:hint="@string/your_comment"
+                            android:inputType="textMultiLine|textCapWords"
+                            android:maxLines="10"
+                            android:minLines="4"
+                            android:overScrollMode="always"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:text="@={data.comment}"
+                            android:textAlignment="viewStart"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layout_save_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_huge"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:background="@color/color_whiteBlack"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/submit_btn"
+                            fontPath="fonts/Montserrat-SemiBold.ttf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:appTheme="@{0}"
+                            android:enabled="@{!safeUnbox(loading)}"
+                            android:onClick="@{(v)->handler.onClickSaveReview(v,data)}"
+                            android:padding="@dimen/spacing_normal"
+                            android:text="@string/submit_review"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_medium"
+                            android:textStyle="bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_infinity"
+                android:background="@drawable/progress_bar_bg"
+                android:indeterminate="true"
+                android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rect_white_bg_black_border_1_dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ar_field_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/spacing_generic"
+            android:textSize="@dimen/text_size_medium" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ar_button"
+            android:layout_width="@dimen/contextual_icon_dimens"
+            android:layout_height="@dimen/contextual_icon_dimens"
+            android:background="@drawable/ic_ar"
+            android:gravity="end"
+            android:minWidth="20dp"
+            android:minHeight="10dp"
+            android:padding="5dp"
+            android:textColor="@android:color/white"
+/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

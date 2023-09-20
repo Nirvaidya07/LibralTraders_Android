@@ -1,0 +1,91 @@
+{
+  "success": true,
+  "message": "",
+  "cartCount": 1,
+  "billingAddress": "{{depend prefix}}{{var prefix}} {{\/depend}} {{depend middlename}}{{var middlename}} {{\/depend}}{{depend suffix}} {{var suffix}}{{\/depend}}<br\/>\r\n{{depend company}}{{var company}}<br \/>{{\/depend}}\r\n{{if street1}}{{var street1}}<br \/>{{\/if}}\r\n{{depend street2}}{{var street2}}<br \/>{{\/depend}}\r\n{{depend street3}}{{var street3}}<br \/>{{\/depend}}\r\n{{depend street4}}{{var street4}}<br \/>{{\/depend}}\r\n{{if city}}{{var city}},  {{\/if}}{{if region}}{{var region}}, {{\/if}}{{if postcode}}{{var postcode}}{{\/if}}<br\/>\r\n<br\/>\r\n{{depend telephone}}T: {{var telephone}}{{\/depend}}<br\/>\r\n{{depend mobileno}}Mobile: {{var mobileno}}{{\/depend}}\r\n{{depend fax}}<br\/>Mob.: {{var fax}}{{\/depend}}",
+  "shippingAddress": "Mr. Test Test<br\/>\r\nTets<br \/>\r\nnoida<br \/>\r\nnoida<br \/>\r\nnoida<br \/>\r\n\r\nnoida,  Uttar Pradesh, 201222<br\/>\r\nIndia<br\/>\r\nT: 9999999999<br\/>\r\n\r\n",
+  "shippingMethod": "Super Fast Shipping 1-2 Working Days - Super Fast",
+  "cartTotal": "$7.17",
+  "razorpay_data": [
+    {
+      "razorpay_order_id": "order_LZzNSKITyhekFG",
+      "razorpay_title": "Credit & Debit Card \/ Net Banking, UPI Wallets",
+      "razorpay_merchantName": "Libral Traders",
+      "razorpay_enable": "1",
+      "razorpay_action": "authorize_capture",
+      "razorpay_keyId": "rzp_live_nNNSc37QFxzINf",
+      "razorpay_KeySecret": "AxGSbtXLmi9Yk0PbUzXbN6XN",
+      "razorpay_webhook": "0",
+      "razorpay_webhookSecret": null,
+      "customer_phone_number": null,
+      "amount": "$7.17",
+      "unformattedAmount": 7.1686175,
+      "customer_name": "Test",
+      "customer_lastname": "Test",
+      "customer_email": "test@webkul.com"
+    }
+  ],
+  "paymentMethods": [
+    {
+      "code": "razorpay",
+      "title": "Credit & Debit Card \/ Net Banking, UPI Wallets",
+      "extraInformation": ""
+    },
+    {
+      "code": "msp_cashondelivery",
+      "title": "Cash On Delivery",
+      "extraInformation": "You will be charged by an extra fee of $0.00"
+    }
+  ],
+  "couponCode": "",
+  "currencyCode": "USD",
+  "orderReviewData": {
+    "items": [
+      {
+        "productName": "Set of 5 Pair - LD-VISET-testshu",
+        "qty": 1,
+        "unformattedOriginalPrice": 3.55,
+        "originalPrice": "$3.55",
+        "price": "$3.55",
+        "subTotal": "$3.55",
+        "thumbNail": "https:\/\/dev.libraltraders.com\/media\/catalog\/product\/cache\/27a679760dd79f5fd52d5acb67f4fdd3\/2\/_\/2_3_6.jpg",
+        "dominantColor": "#dfdfdf",
+        "unformattedPrice": 3.55
+      }
+    ],
+    "cartTotal": 0,
+    "totals": [
+      {
+        "title": "Subtotal",
+        "value": "$3.55",
+        "formattedValue": "$3.55",
+        "unformattedValue": 3.55
+      },
+      {
+        "title": "Tax",
+        "value": "$0.00",
+        "formattedValue": "$0.00",
+        "unformattedValue": 0
+      },
+      {
+        "title": "Shipping & Handling (Super Fast Shipping 1-2 Working Days - Super Fast)",
+        "value": "$2.98",
+        "formattedValue": "$2.98",
+        "unformattedValue": 2.98
+      },
+      {
+        "title": "Order Total",
+        "value": "$7.17",
+        "formattedValue": "$7.17",
+        "unformattedValue": 7.1686175
+      },
+      {
+        "title": "Cash on Delivery fees",
+        "value": "$0.00",
+        "formattedValue": "$0.00",
+        "unformattedValue": 0
+      }
+    ]
+  },
+  "selectedPayment": "msp_cashondelivery"
+}

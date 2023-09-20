@@ -1,0 +1,267 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.ApplicationConstants" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.product.ProductTileData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.ProductTileHandler" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/product_card_view"
+        android:layout_width="@dimen/compare_product_carousel_item_width"
+        android:layout_height="wrap_content"
+        android:background="@color/material_background"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{()->handler.onClickItem(data.id, data.name, data.thumbNail, data.dominantColor)}"
+        android:padding="@dimen/spacing_small">
+
+        <com.webkul.mobikul.customviews.ZoomImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:onClick="@{()->handler.onClickItem(data.id, data.name, data.thumbNail, data.dominantColor)}"
+            android:scaleType="fitXY"
+            app:imageUrl="@{data.thumbNail}"
+            app:placeholder="@{data.dominantColor}"
+            tools:src="@drawable/placeholder" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/product_layout_icon_size"
+            android:layout_height="@dimen/product_layout_icon_size"
+            android:layout_alignTop="@id/product_image"
+            android:layout_alignEnd="@id/product_image"
+            android:layout_margin="2dp"
+            app:cardBackgroundColor="@color/color_whiteBlack"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="@dimen/card_elevation_low">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()->handler.onClickDeleteItem(data.id)}"
+                android:padding="2dp"
+                app:srcCompat="@drawable/ic_vector_close"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_vector_close" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/price_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_image"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@color/material_background"
+            android:orientation="horizontal">
+
+            <com.webkul.mobikul.customviews.FlowLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/product_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{data.formattedFinalPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="@dimen/spacing_tiny"
+                    android:visibility="@{data.hasPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$210.00" />
+
+                <TextView
+                    android:id="@+id/product_special_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_strikethrough"
+                    android:maxLines="1"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:text="@{data.formattedPrice}"
+                    android:textColor="@color/grey_400"
+                    android:textSize="@dimen/text_size_tiny"
+                    android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$310.00" />
+
+                <TextView
+                    android:id="@+id/product_min_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{data.formattedMinPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMinPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+                <TextView
+                    android:id="@+id/product_min_max_price_dash_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - "
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMaxPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="-" />
+
+                <TextView
+                    android:id="@+id/product_max_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@{data.formattedMaxPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasMaxPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+                <TextView
+                    android:id="@+id/product_grp_price_tv"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{data.groupedPrice}"
+                    android:textColor="@color/product_price_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="@{data.hasGroupedPrice() ? View.VISIBLE : View.GONE}"
+                    tools:text="$410.00" />
+
+            </com.webkul.mobikul.customviews.FlowLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/wishlist_animation_view"
+                android:layout_width="@dimen/product_layout_icon_size"
+                android:layout_height="@dimen/product_layout_icon_size"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{(v)->handler.onClickWishListButton(v, position, data.id, data.isInWishList, data.wishListItemId)}"
+                android:visibility="@{ApplicationConstants.ENABLE_WISHLIST &amp;&amp; AppSharedPref.isWishlistEnabled(context) ? View.VISIBLE : View.GONE}"
+                app:isInWishList="@{data.isInWishList}"
+                app:lottie_fileName="wishlist_heart.json"
+                app:lottie_loop="false" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/product_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_ll"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="@{data.name}"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_small"
+            tools:text="Fitness Equipment" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/reviews_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_label"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@color/material_background"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_rating"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_label"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:drawableEnd="@drawable/ic_star_wrapper"
+                android:drawablePadding="@dimen/spacing_tiny"
+                android:gravity="center"
+                android:paddingStart="@dimen/spacing_generic"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingEnd="@dimen/spacing_generic"
+                android:paddingBottom="@dimen/spacing_tiny"
+                android:text="@{data.rating}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_small"
+                app:ratingColor="@{data.rating}"
+                android:visibility="@{data.rating.equals(&quot;0&quot;) ? View.INVISIBLE : View.VISIBLE}"
+                tools:background="@color/colorAccent"
+                tools:text="2.07" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reviews_layout"
+            android:layout_marginTop="@dimen/spacing_generic"
+            android:background="@color/colorAccent"
+            android:onClick="@{()->handler.onClickAddToCart(data.getRequiredOptions(), data.id, data.name, data.thumbNail, data.dominantColor)}"
+            android:text="@{data.getRequiredOptions() ? @string/view_product : @string/add_to_cart}"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:appTheme="@{8}"
+            android:visibility="@{data.isAvailable ? View.VISIBLE : View.GONE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reviews_layout"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:maxLines="2"
+            android:text="@string/out_of_stock"
+            android:textAllCaps="true"
+            android:textColor="@color/out_of_stock_color"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="@{data.isAvailable ? View.GONE : View.VISIBLE}"
+            tools:text="OUT OF STOCK" />
+    </RelativeLayout>
+</layout>

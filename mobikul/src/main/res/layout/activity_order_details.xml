@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2019 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.AppSharedPref" />
+
+           <variable
+               name="loading"
+               type="Boolean" />
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.OrderDetailsModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.OrderDetailsActivityHandler" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_surface">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/back_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handler.onClickItemOrdered()}"
+                android:paddingStart="@dimen/spacing_huge"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_huge"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@string/item_ordered"
+                android:textColor="@color/actionBarItemsColor" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handler.onClickInvoices()}"
+                android:paddingStart="@dimen/spacing_huge"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_huge"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@string/invoices"
+                android:textColor="@color/actionBarItemsColor"
+                android:visibility="@{data.invoiceList.isEmpty() ? View.GONE : View.VISIBLE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handler.onClickShipments()}"
+                android:paddingStart="@dimen/spacing_huge"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_huge"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@string/order_shipment"
+                android:textColor="@color/actionBarItemsColor"
+                android:visibility="@{data.shipmentList.isEmpty() ? View.GONE : View.VISIBLE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handler.onClickRefunds()}"
+                android:paddingStart="@dimen/spacing_huge"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_huge"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@string/refunds"
+                android:textColor="@color/text_color_primary"
+                android:visibility="@{data.creditMemoList.isEmpty() ? View.GONE : View.VISIBLE}" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.Order.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingEnd="12dp"
+                android:paddingRight="12dp"
+                app:appTheme="@{1}"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+                app:contentInsetStart="0dp"
+                app:title="@string/item_ordered" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--
+        working fine moto with AR
+                        app:navigationIcon="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_back_right : @drawable/ic_back_left}"
+
+        -->
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/main_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="-20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="@{data == null ? View.GONE : View.VISIBLE}"
+                app:cardBackgroundColor="@color/material_background"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="@dimen/card_elevation_medium"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/swipe_refresh_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    tools:ignore="PrivateResource">
+                <FrameLayout
+                    android:id="@+id/main_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/material_background"
+                    android:orientation="vertical" />
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/spacing_infinity"
+                    android:background="@drawable/progress_bar_bg"
+                    android:indeterminate="true"
+                    android:visibility="@{safeUnbox(loading) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

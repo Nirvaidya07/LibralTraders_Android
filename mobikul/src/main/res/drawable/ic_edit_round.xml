@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <group
+        android:scaleX="0.98"
+        android:scaleY="0.98"
+        android:translateX="0.2"
+        android:translateY="0.2">
+        <path
+            android:fillColor="#000000"
+            android:fillType="evenOdd"
+            android:pathData="M 12 0 C 18.627416998 0 24 5.37258300203 24 12 C 24 18.627416998 18.627416998 24 12 24 C 5.37258300203 24 0 18.627416998 0 12 C 0 5.37258300203 5.37258300203 0 12 0 Z"
+            android:strokeWidth="1" />
+        <path
+            android:fillAlpha="0.86"
+            android:fillColor="#FFFFFF"
+            android:fillType="evenOdd"
+            android:pathData="M 12 0 C 18.627416998 0 24 5.37258300203 24 12 C 24 18.627416998 18.627416998 24 12 24 C 5.37258300203 24 0 18.627416998 0 12 C 0 5.37258300203 5.37258300203 0 12 0 Z"
+            android:strokeWidth="1" />
+        <path
+            android:fillAlpha="0.86"
+            android:fillColor="#FFFFFF"
+            android:fillType="evenOdd"
+            android:pathData="M 12 0 C 18.627416998 0 24 5.37258300203 24 12 C 24 18.627416998 18.627416998 24 12 24 C 5.37258300203 24 0 18.627416998 0 12 C 0 5.37258300203 5.37258300203 0 12 0 Z"
+            android:strokeWidth="1" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M6,15.5556763 L6,18 L8.44432374,18 L15.6534492,10.7908745 L13.2091255,8.34655079 L6,15.5556763 Z M18,8.44432374 L15.5556763,6 L13.9065725,7.65562194 L16.3508963,10.0999457 L18,8.44432374 Z"
+            android:strokeWidth="1" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M6,15.5556763 L6,18 L8.44432374,18 L15.6534492,10.7908745 L13.2091255,8.34655079 L6,15.5556763 Z M18,8.44432374 L15.5556763,6 L13.9065725,7.65562194 L16.3508963,10.0999457 L18,8.44432374 Z"
+            android:strokeWidth="1" />
+    </group>
+</vector>

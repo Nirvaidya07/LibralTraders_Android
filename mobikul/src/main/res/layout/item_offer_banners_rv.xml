@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.homepage.BannerImage" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.HomePageBannerVpHandler" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:background="@color/material_background"
+        android:onClick="@{()->handler.onClickBanner(data.bannerType, data.name, data.id, data.dominantColor)}"
+        app:cardBackgroundColor="@color/color_whiteBlack"
+        app:cardElevation="@dimen/card_elevation_medium"
+        app:layout_height="@{(2 * (Utils.screenWidth - 120)) / 3}">
+
+
+            <com.webkul.mobikul.customviews.ZoomImageView
+                android:id="@+id/banner_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:onClick="@{()->handler.onClickBanner(data.bannerType, data.name, data.id, data.dominantColor)}"
+                android:scaleType="fitXY"
+                app:imageUrl="@{data.url}"
+                app:placeholder="@{data.dominantColor}"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/placeholder" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

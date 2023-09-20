@@ -1,0 +1,43 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.TotalItem" />
+    </data>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_generic"
+        android:paddingEnd="@dimen/spacing_normal"
+        android:paddingBottom="@dimen/spacing_generic">
+
+        <TableRow>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:text="@{data.label}"
+                android:textColor="@color/text_color_secondary"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/text_size_medium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:gravity="end"
+                android:text="@{data.formattedValue}"
+                android:textColor="@color/text_color_primary"
+                android:textAlignment="viewEnd"
+                android:textSize="@dimen/text_size_medium" />
+
+        </TableRow>
+    </TableLayout>
+</layout>

@@ -1,0 +1,78 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_tiny">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">22sp</dimen>
+
+    <!-- Typical spacing between two views -->
+    <dimen name="spacing_infinity">100dp</dimen>
+    <dimen name="spacing_max">64dp</dimen>
+    <dimen name="spacing_huge">26dp</dimen>
+    <dimen name="spacing_large">20dp</dimen>
+    <dimen name="spacing_normal">14dp</dimen>
+    <dimen name="spacing_small">10dp</dimen>
+    <dimen name="spacing_generic">8dp</dimen>
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_zero">0dp</dimen>
+
+    <!-- Button Defaults-->
+    <dimen name="button_corner_radius">3dp</dimen>
+
+    <!-- Bottom Sheet Defaults-->
+    <dimen name="bottom_sheet_bottom_margin">20dp</dimen>
+
+    <!-- Card Defaults-->
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_elevation_low">2dp</dimen>
+    <dimen name="card_elevation_medium">4dp</dimen>
+    <dimen name="card_elevation_high">6dp</dimen>
+
+    <!-- Featured Categories -->
+    <dimen name="featured_category_image_size">120dp</dimen>
+    <dimen name="featured_category_grid_image_size">60dp</dimen>
+
+    <!-- Product Layout -->
+    <dimen name="product_horizontal_carousel_item_width">140dp</dimen>
+    <dimen name="product_horizontal_carousel_item_height">160dp</dimen>
+    <dimen name="product_layout_icon_size">24dp</dimen>
+    <dimen name="compare_product_carousel_item_width">150dp</dimen>
+
+    <!-- Nav Drawer -->
+    <dimen name="nav_drawer_width">270dp</dimen>
+    <dimen name="user_layout_height">160dp</dimen>
+    <dimen name="user_profile_image_size">48dp</dimen>
+    <dimen name="nav_drawer_item_image_size">28dp</dimen>
+
+    <!-- User Menu -->
+    <dimen name="user_menu_item_image_size">38dp</dimen>
+
+    <dimen name="product_slider_view_pager_height">400dp</dimen>
+    <dimen name="contextual_icon_dimens">36dp</dimen>
+
+    <!-- Swatch Data -->
+    <dimen name="swatch_block_width">40dp</dimen>
+    <dimen name="swatch_block_height">40dp</dimen>
+
+    <!-- Cart Badge -->
+    <dimen name="badge_text_size">12sp</dimen>
+
+    <!-- Empty Fragment -->
+    <dimen name="empty_layout_dimen">200dp</dimen>
+
+    <!-- AR Icon-->
+    <dimen name="product_tile_ar_icon_size">32dp</dimen>
+
+    <dimen name="material_drawer_item_profile_icon_padding_right">8dp</dimen>
+
+    <dimen name="divider_2dp">2dp</dimen>
+    <dimen name="divider_1dp">1dp</dimen>
+
+    <dimen name="onboard_content_margin">150dp</dimen>
+
+</resources>

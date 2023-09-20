@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#8BC34A</color>
+    <color name="colorPrimaryDark">#8BC34A</color>
+    <color name="colorAccent">#455A64</color>
+
+    <color name="color_whiteBlack">#ffffff</color>
+    <color name="actionBarItemsColor">#000000</color>
+    <color name="divider_color">#E9E9E9</color>
+
+    <!-- Text Colors-->
+    <color name="text_color_primary">#000000</color>
+    <color name="text_color_secondary">#8A8A8A</color>
+    <color name="text_color_link">#FF3F60DA</color>
+    <color name="product_price_color">@color/text_color_primary</color>
+
+    <!--Gray Shades-->
+    <color name="grey_800">#424242</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_50">#F4F4F4</color>
+
+    <!-- Home Page Colors -->
+    <color name="homePageCarouselHeadingColor">#000000</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#212121</color>
+
+
+    <!-- Order Status Colors -->
+    <color name="orderStatusDownloadedColor">#d5d5d5</color>
+    <color name="orderStatusCompleteColor">#66BB6A</color>
+    <color name="orderStatusPendingColor">#fead4c</color>
+    <color name="orderStatusProcessingColor">#3F51B5</color>
+    <color name="orderStatusHoldColor">#F9A825</color>
+    <color name="orderStatusCancelColor">#E53935</color>
+    <color name="orderStatusNewColor">#448AFF</color>
+    <color name="orderStatusClosedColor">#e44c53</color>
+
+    <color name="tier_price_light_background">#E1F5FE</color>
+    <color name="tier_price_darker_background">#B3E5FC</color>
+
+    <color name="place_order_btn_color">#59A600</color>
+
+    <color name="product_discount_color">#6BC700</color>
+
+    <!-- Star Rating Color -->
+    <color name="single_star_color">#E51A1A</color>
+    <color name="two_star_color">#E91E63</color>
+    <color name="three_star_color">#FFA100</color>
+    <color name="four_star_color">#FFCC00</color>
+    <color name="five_star_color">#6BC700</color>
+
+    <!-- Settings Page-->
+    <color name="clear_database_button_color">#FE6C6C</color>
+
+    <!-- Catalog page -->
+    <color name="out_of_stock_color">#FF4848</color>
+
+    <color name="material_background">#FFFFFF</color>
+    <color name="material_surface">#f9f9f9</color>
+
+    <color name="text_color_walk_through">#2D2D2D</color>
+    <color name="on_boarding_dots">#1A000000</color>
+
+    <color name="delete_account_button_color">#FF4848</color>
+
+
+</resources>

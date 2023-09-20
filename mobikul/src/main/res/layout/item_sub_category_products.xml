@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.CategoriesData" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.SubCategoryActivityHandler" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_huge"
+        android:background="@color/material_background">
+
+        <LinearLayout
+            android:id="@+id/products_carousel_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_tiny"
+            android:orientation="horizontal">
+
+            <TextView
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{data.title}"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="@string/products"
+            />
+
+            <Button
+                android:id="@+id/view_all_category_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_round_cnr_gray_bg_gray_border_1dp"
+                android:onClick="@{()->handler.onClickViewAllBtn(data.category.name, data.category.id)}"
+                android:paddingStart="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_normal"
+                android:text="@string/view_all"
+                android:textAllCaps="true"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingBottom="@dimen/spacing_tiny"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_tiny" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/products_carousel_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/products_carousel_heading"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:layout_height="100dp"
+            tools:listitem="@layout/item_horizontal_scroller_product_view"
+            tools:targetApi="lollipop" />
+
+    </RelativeLayout>
+
+</layout>

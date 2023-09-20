@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="latitude_label">العرض</string>
+    <string name="longitude_label">الطول</string>
+    <string name="last_update_time_label">موقع آخر تحديث وقت</string>
+    <string name="start_updates">بدء التحديثات</string>
+    <string name="stop_updates">إيقاف التحديثات</string>
+    <string name="location_settings_inadequate_warning">موقع الإعدادات على الجهاز لا
+ كافية لتشغيل هذه العينة. الإصلاح في الإعدادات.</string>
+    <string name="permission_rationale">إذن الموقع هو مطلوب للحصول على الوظائف الأساسية</string>
+    <string name="permission_denied_explanation">إذن كان إنكارها ، ولكن هناك حاجة الأساسية
+ وظائف.</string>
+    <string name="settings">الإعدادات</string>
+    <string name="pick_address">اختيار العنوان</string>
+    <string name="please_enable_location_from_settings">يرجى تمكين الموقع من الإعدادات</string>
+    <string name="enable">تمكين</string>
+    <string name="search">البحث</string>
+    <string name="select_this_location">حدد هذا الموقع</string>
+    <string name="search_for_a_location">ابحث عن مكان</string>
+    <string name="address_not_found">لم يتم العثور على العنوان</string>
+
+</resources>

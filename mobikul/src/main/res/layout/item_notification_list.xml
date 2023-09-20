@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2018 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.webkul.mobikul.helpers.Utils" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.extra.NotificationList" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.NotificationActivityHandler" />
+
+        <variable
+            name="isNewNotification"
+            type="java.lang.Boolean" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_generic"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_generic"
+        app:cardBackgroundColor="@color/color_whiteBlack"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="@dimen/card_elevation_low">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangular_white_bg_gray_border_1dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{(v)->handler.onClickNotification(v, data)}">
+
+            <TextView
+                android:id="@+id/notification_title"
+                fontPath="fonts/Montserrat-SemiBold.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingStart="@dimen/spacing_normal"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_normal"
+                android:text="@{data.title}"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+                tools:text="Notification Title" />
+
+            <TextView
+                android:id="@+id/notification_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notification_title"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="@dimen/spacing_normal"
+                android:paddingEnd="@dimen/spacing_normal"
+                android:paddingBottom="@dimen/spacing_normal"
+                android:text="@{data.content}"
+                android:textColor="@color/text_color_secondary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Notification Content - Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:layout_below="@id/notification_content"
+                    app:imageUrl="@{data.banner}"
+                    app:layout_height="@{(2 * (Utils.getScreenWidth() - 120)) / 3}"
+                    app:placeholder="@{data.dominantColor}"
+                    tools:src="@drawable/placeholder" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

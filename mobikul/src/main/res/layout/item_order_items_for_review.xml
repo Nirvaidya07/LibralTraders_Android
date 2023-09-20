@@ -1,0 +1,64 @@
+<!--
+  ~ Webkul Software.
+  ~
+  ~ Kotlin
+  ~
+  ~ @author Webkul <support@webkul.com>
+  ~ @category Webkul
+  ~ @package com.webkul.mobikul
+  ~ @copyright 2010-2019 Webkul Software Private Limited (https://webkul.com)
+  ~ @license https://store.webkul.com/license.html ASL Licence
+  ~ @link https://store.webkul.com/license.html
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.webkul.mobikul.models.user.OrderItem" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.OrderItemsForReviewRvHandler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:background="@color/material_background"
+        android:onClick="@{()->handler.onClickItem(data.productId, data.name, data.imageUrl)}"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/spacing_generic"
+        android:padding="@dimen/spacing_normal">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:adjustViewBounds="true"
+                android:foreground="@drawable/curved_image_frame"
+                app:imageUrl="@{data.imageUrl}"
+                app:placeholder="@{data.dominantColor}"
+                tools:src="@drawable/placeholder" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_weight=".7"
+            android:text="@{data.name}"
+            android:textColor="@color/text_color_primary"
+            android:textSize="@dimen/text_size_medium" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
