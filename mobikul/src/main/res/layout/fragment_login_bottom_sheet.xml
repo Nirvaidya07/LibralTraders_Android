@@ -80,12 +80,23 @@
                     android:padding="@dimen/spacing_normal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:foreground="?attr/selectableItemBackground"
                         android:onClick="@{()->handler.onClickCancelBtn()}"
                         app:appTheme="@{4}"
                         app:srcCompat="@drawable/ic_close_accent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:onClick="@{()->handler.onClickBackClick()}"
+                        app:appTheme="@{4}"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/ic_back_left" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/login_title_tv"
@@ -499,6 +510,22 @@
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_medium"
                         android:visibility="@{resend.isEmpty() ? View.VISIBLE : View.GONE}" />
+
+                    <Button
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:enabled="@{safeUnbox(loading) ? false : true}"
+                        android:onClick="@{() -> handler.onCLickSubmitOTP()}"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="@string/submit"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_whiteBlack"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold"
+                        app:appTheme="@{0}" />
+
                 </LinearLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>

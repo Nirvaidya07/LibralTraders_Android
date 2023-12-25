@@ -294,7 +294,7 @@ class Utils {
             if (ENABLE_DYNAMIC_THEME_COLOR && toolbar !=null) {
 
                 if (AppSharedPref.getAppThemeColor(toolbar.context).isNotEmpty()) {
-                    toolbar.background = ColorDrawable(Color.parseColor(AppSharedPref.getAppThemeColor(toolbar.context)))
+                    toolbar.background = ColorDrawable(ContextCompat.getColor(toolbar.context, R.color.colorPrimary))
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(toolbar.context, R.color.colorPrimary))
                 }

@@ -230,7 +230,8 @@ open class ProductDetailsPageModel : BaseModel() {
     @JsonProperty("reviewCount")
 
     var reviewCount: Int = 0
-@JsonProperty("isThresholdVisible")
+
+    @JsonProperty("isThresholdVisible")
 
     var isThresholdVisible: Boolean = false
 
@@ -283,7 +284,7 @@ open class ProductDetailsPageModel : BaseModel() {
     }
 
     fun hasAnyOptions(): Boolean {
-        return (configurableData.attributes!=null && configurableData.attributes!!.size != 0 || bundleOptions.size != 0 || links.linkData.size != 0 || samples.linkSampleData.size != 0 || groupedData.size != 0)
+        return (configurableData.attributes != null && configurableData.attributes!!.size != 0 || bundleOptions.size != 0 || links.linkData.size != 0 || samples.linkSampleData.size != 0 || groupedData.size != 0)
     }
 
     fun getDiscountPercentage(): String {

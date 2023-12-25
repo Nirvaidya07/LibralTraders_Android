@@ -14,6 +14,7 @@
 package com.webkul.mobikul.network
 
 import android.content.Context
+import android.util.Log
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.ApplicationConstants.DEFAULT_OS
@@ -30,6 +31,8 @@ import com.webkul.mobikul.models.homepage.HomePageDataModel
 import com.webkul.mobikul.models.homepage.OnBoardResponseModel
 import com.webkul.mobikul.models.product.ProductDetailsPageModel
 import com.webkul.mobikul.models.product.ProductRatingFormDataModel
+import com.webkul.mobikul.models.product.ProductRequestBody
+import com.webkul.mobikul.models.product.ProductResponse
 import com.webkul.mobikul.models.product.ReviewListData
 import com.webkul.mobikul.models.user.*
 import io.reactivex.Observable
@@ -366,6 +369,7 @@ class ApiConnection {
         }
 
         fun addAllToCart(context: Context, qty: JSONObject): Observable<BaseModel> {
+            Log.d("TAG", "addAllToCart: "+ AppSharedPref.getStoreId(context))
             return ApiClient.getClient()!!.create(ApiDetails::class.java).addAllToCart(
                     AppSharedPref.getStoreId(context)
                     , AppSharedPref.getCustomerToken(context)
@@ -533,6 +537,14 @@ class ApiConnection {
         /* Checkout */
 
         fun addToCart(context: Context, productId: String, qty: String, params: JSONObject, files: ArrayList<MultipartBody.Part>?, relatedProducts: JSONArray): Observable<AddToCartResponseModel> {
+            Log.d("TAG", "addToCart----: "+ AppSharedPref.getStoreId(context)
+                +","+  AppSharedPref.getCustomerToken(context)
+                    +","+  AppSharedPref.getQuoteId(context)
+                    +","+   productId
+                    +","+  qty
+                    +","+ params
+                    +","+  files
+                        +","+  relatedProducts.toString());
             return ApiClient.getClient()!!.create(ApiDetails::class.java).addToCart(
                      AppSharedPref.getStoreId(context).toRequestBody("text/plain".toMediaTypeOrNull())
                     ,  AppSharedPref.getCustomerToken(context).toRequestBody("text/plain".toMediaTypeOrNull())
@@ -755,5 +767,25 @@ class ApiConnection {
                     , AppSharedPref.getFcmToken(context)
                     , "android")
         }
+
+        fun orderAgain(context: Context) : Observable<String> {
+            val productRequestBody = ProductRequestBody();
+            productRequestBody.pageSize  = 20
+            productRequestBody.currentPage  = 1
+            productRequestBody.customerId  = AppSharedPref.getCustomerId(context).toInt()
+            return ApiClient.getClient()!!.create(ApiDetails::class.java).orderAgain(productRequestBody)
+        }
+
+        fun getQuoteId(context: Context) : Observable<String> {
+            return ApiClient.getClient1()!!.create(ApiDetails::class.java).quoteId()
+        }
+
+        fun getOrderTrackingData(context: Context, shipmentId: String ) : Observable<String> {
+            return ApiClient.getClient()!!.create(ApiDetails::class.java).getOrderTrackingData(shipmentId,AppSharedPref.getCustomerId(context))
+        }
+//        fun getCartMine(quoteId:String,sku:String,qty:String ) : Observable<String> {
+//            return ApiClient.getClient()!!.create(ApiDetails::class.java).getCartMine(shipmentId,AppSharedPref.getCustomerId(context))
+//        }
+
     }
 }

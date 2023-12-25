@@ -74,5 +74,6 @@
     <dimen name="divider_1dp">1dp</dimen>
 
     <dimen name="onboard_content_margin">150dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

@@ -68,6 +68,9 @@ object ConstantsHelper {
     const val MOBIKUL_CUSTOMER_CHECK_CUSTOMER_BY_EMAIL = "mobikulhttp/customer/checkCustomerByEmail"
     const val MOBIKUL_CUSTOMER_WEB_LOGIN = "mobikul/qrcodelogin/savecustomertoken"
     const val MOBIKUL_CUSTOMER_DELETE_ACCOUNT= "rest/V1/deletecustomer"
+    const val MOBIKUL_CUSTOMER_ORDER_AGAIN= "rest/all/V1/reorder/listproductreorder"
+    const val MOBIKUL_CUSTOMER_ORDER_TRACKING= "rest/all/V1/ordertracking/gettrackdata"
+    const val MOBIKUL_CUSTOMER_QUOTE_ID= "rest/V1/carts/mine"
 
     /* Extra */
     const val MOBIKUL_EXTRAS_LOGOUT = "mobikulhttp/extra/logOut"

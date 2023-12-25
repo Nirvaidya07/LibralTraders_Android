@@ -315,6 +315,27 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gstNumber"
+                    style="@style/CustomTilStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_generic"
+                    app:hintWithAsterisk="@{@string/gst_number}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/spacing_generic"
+                        android:paddingEnd="@dimen/spacing_generic"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fax"
                     style="@style/CustomTilStyle"
                     android:layout_width="match_parent"

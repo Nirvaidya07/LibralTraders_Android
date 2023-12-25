@@ -44,31 +44,71 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:appTheme="@{1}"
-                android:elevation="4dp"
-                app:contentInsetStart="0dp"
                 android:background="?attr/colorPrimary"
-                app:contentInsetLeft="0dp"
                 android:paddingLeft="0dp"
-                app:contentInsetStartWithNavigation="0dp"
                 android:theme="@style/AppTheme.AppBarOverlay"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >
+                app:appTheme="@{1}"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
                 <ImageView
-                    android:layout_marginTop="@dimen/spacing_generic"
-                    android:layout_marginBottom="@dimen/spacing_generic"
                     android:id="@+id/app_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_gravity="start|center_vertical"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginTop="@dimen/spacing_generic"
                     android:layout_marginRight="@dimen/spacing_small"
-                    android:scaleType="fitXY"
+                    android:layout_marginBottom="@dimen/spacing_generic"
                     android:adjustViewBounds="true"
-                    android:visibility="gone"
+                    android:scaleType="fitXY"
                     android:src="@drawable/customer_profile_placeholder"
-                    tools:visibility="visible"
-                     />
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
             </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorPrimary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/border_bg">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/ic_search_black"
+                        android:drawablePadding="4dp"
+                        android:drawableTint="@color/grey_700"
+                        android:focusable="false"
+                        android:hint="@string/search_hint"
+                        android:imeOptions="actionSearch|flagNoExtractUi"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:onClick="@{() -> handler.onSearchClick()}"
+                        android:paddingLeft="@dimen/spacing_generic"
+                        android:paddingRight="@dimen/spacing_generic"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/grey_700"
+                        android:textCursorDrawable="@null" />
+                </LinearLayout>
+            </LinearLayout>
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh_layout"
@@ -165,11 +205,12 @@
                                     tools:targetApi="lollipop" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
+
                             <LinearLayout
-                                android:orientation="vertical"
-                                android:background="@color/material_background"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@color/material_background"
+                                android:orientation="vertical"
                                 android:visibility="@{data==null || data.carousel.size()==0 ? View.GONE : View.VISIBLE}">
 
                                 <androidx.appcompat.widget.AppCompatTextView

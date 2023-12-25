@@ -55,5 +55,8 @@ class AddToCartResponseModel : BaseModel() {
     @JsonProperty("canGuestCheckoutDownloadable")
 
     var canGuestCheckoutDownloadable: Boolean = false
+    override fun toString(): String {
+        return "AddToCartResponseModel(quoteId=$quoteId, isVirtual=$isVirtual, minimumAmount=$minimumAmount, minimumFormattedAmount='$minimumFormattedAmount', isCheckoutAllowed=$isCheckoutAllowed, descriptionMessage=$descriptionMessage, isAllowedGuestCheckout=$isAllowedGuestCheckout, canGuestCheckoutDownloadable=$canGuestCheckoutDownloadable)"
+    }
 
 }

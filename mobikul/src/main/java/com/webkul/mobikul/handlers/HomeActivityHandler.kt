@@ -20,4 +20,8 @@ class HomeActivityHandler(val mContext: HomeActivity) {
     fun onClickBackToTop() {
         mContext.mContentViewBinding.mainScroller.smoothScrollTo(0, 0);
     }
+
+    fun onSearchClick() {
+        mContext.openMaterialSearchView()
+    }
 }

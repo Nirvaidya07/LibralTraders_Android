@@ -27,20 +27,25 @@ import com.webkul.mobikul.R
 import com.webkul.mobikul.databinding.ItemOrderShipmentItemsBinding
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.Utils
+import com.webkul.mobikul.models.product.Transit
 import com.webkul.mobikul.models.user.OrderShipmentItem
 import io.github.inflationx.calligraphy3.TypefaceUtils
 
-class OrderShipmentItemsRvAdapter(private val mContext: Context, private val mListData: ArrayList<OrderShipmentItem>) : RecyclerView.Adapter<OrderShipmentItemsRvAdapter.ViewHolder>() {
+class OrderShipmentItemsRvAdapter(private val mContext: Context, private val mListData: ArrayList<Transit>) : RecyclerView.Adapter<OrderShipmentItemsRvAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_order_shipment_items, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val eachListData = mListData[position]
-        holder.mBinding?.data = eachListData
+       val eachListData = mListData[position]
 
-        if (eachListData.itemOption?.size ?:0> 0) {
+        //holder.mBinding?.data = eachListData
+        holder.mBinding?.tvTitle?.text = eachListData.Job
+        holder.mBinding?.tvSubTitle?.text = eachListData.Route
+        holder.mBinding?.tvTime?.text = eachListData.TransitDate + ", " + eachListData.TransitTime
+
+        /*if (eachListData.itemOption?.size ?:0> 0) {
             holder.mBinding?.optionTableLayout?.removeAllViews()
             for (optionIterator in 0 until (eachListData.itemOption?.size?:0)) {
 
@@ -73,9 +78,9 @@ class OrderShipmentItemsRvAdapter(private val mContext: Context, private val mLi
                 tableRow.addView(valueTv)
                 holder.mBinding?.optionTableLayout?.addView(tableRow)
             }
-        }
+        }*/
 
-        holder.mBinding?.executePendingBindings()
+        //holder.mBinding?.executePendingBindings()
     }
 
     override fun getItemCount(): Int {

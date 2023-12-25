@@ -117,6 +117,7 @@ open class CatalogActivity : BaseActivity() {
     open fun callApi() {
         mContentViewBinding.loading = true
         mHashIdentifier = Utils.getMd5String("getCatalogProductData" + AppSharedPref.getStoreId(this) + AppSharedPref.getQuoteId(this) + AppSharedPref.getCustomerToken(this) + mCatalogType + mCatalogId + mPageNumber + mSortingInputJson + mFilterInputJson)
+        print(mSortingInputJson)
         ApiConnection.getCatalogProductData(this, mDataBaseHandler.getETagFromDatabase(mHashIdentifier), mCatalogType, mCatalogId, mPageNumber++, mSortingInputJson, mFilterInputJson)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

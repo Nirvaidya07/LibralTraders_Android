@@ -87,4 +87,8 @@ class LoginFormModel : BaseObservable() {
         }
         return false
     }
+
+    override fun toString(): String {
+        return "LoginFormModel(username='$username', email='$email', mobile='$mobile', password='$password', dialCode='$dialCode')"
+    }
 }

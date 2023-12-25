@@ -4,12 +4,12 @@ buildscript {
 
     ext {
         is_marketplace_app = false
-        version_code = 504
-        version_name = "5.04"
+        version_code = 601
+        version_name = "6.0"
 
         compile_sdk_version = 31
         min_sdk_version = 19
-        target_sdk_version = 31
+        target_sdk_version = 33
 
         kotlin_version = '1.6.21'
         lifecycle = '1.1.1'

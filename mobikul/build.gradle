@@ -18,7 +18,14 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compile_sdk_version
-
+    signingConfigs {
+        release {
+            storeFile file('/Users/dudhat/Documents/libral_trade_android-develop/Keystore/Libral_traders_key_store.jks')
+            storePassword 'kc!a~RMX+&3F'
+            keyAlias 'libral_key'
+            keyPassword 'kc!a~RMX+&3F'
+        }
+    }
     defaultConfig {
         buildConfigField "boolean", "IS_MARKET_PLACE", "$is_marketplace_app"
         vectorDrawables.useSupportLibrary = true
@@ -54,6 +61,7 @@ android {
             }
         }
         release {
+            signingConfig signingConfigs.release
             if (!is_marketplace_app) {
                 debuggable false
                 minifyEnabled true
@@ -124,6 +132,8 @@ configurations {
 }
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.4.0'
 

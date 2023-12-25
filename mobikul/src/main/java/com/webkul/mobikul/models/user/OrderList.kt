@@ -35,6 +35,10 @@ class OrderList {
 
     val shipTo: String = ""
 
+    @JsonProperty("shipmentId")
+
+    val shipmentId: String = ""
+
     @JsonProperty("item_count")
 
     val itemCount: String = ""

@@ -42,6 +42,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="@dimen/card_elevation_medium"
                 android:gravity="start"
+                android:background="@color/colorPrimary"
                 android:orientation="horizontal"
                 tools:targetApi="lollipop">
 
@@ -56,24 +57,16 @@
                     app:appTheme="@{4}"
                     app:srcCompat="@{AppSharedPref.getStoreCode(context).equals(&quot;ar&quot;) ? @drawable/ic_back_right : @drawable/ic_back_left}" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/et_search"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="start"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:textSize="18sp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="@string/search_hint"
-                    android:imeOptions="actionSearch|flagNoExtractUi"
-                    android:inputType="text"
-                    android:maxLines="1"
                     app:appTheme="@{5}"
-                    android:paddingLeft="@dimen/spacing_generic"
-                    android:paddingRight="@dimen/spacing_generic"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/actionBarItemsColor"
-                    android:textColorHint="@color/actionBarItemsColor"
-                    android:textCursorDrawable="@null" />
+                    android:textColor="@color/quantum_white_100"
+                    android:text="@string/search_products"/>
 
                 <ProgressBar
                     android:id="@+id/loader"
@@ -118,6 +111,61 @@
                     app:appTheme="@{4}"
                     app:srcCompat="@drawable/ic_close_action_bar" />
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorPrimary"
+                android:elevation="4dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_bg">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/search_hint"
+                        android:imeOptions="actionSearch|flagNoExtractUi"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:drawableStart="@drawable/ic_search_white_wrapper"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:drawableTint="@color/grey_400"
+                        android:paddingLeft="@dimen/spacing_generic"
+                        android:paddingRight="@dimen/spacing_generic"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/actionBarItemsColor"
+                        android:textColorHint="@color/grey_400"
+                        android:textCursorDrawable="@null" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/cancel"
+                    android:layout_marginBottom="4dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="@{()->handler.clearSearch()}"
+                    fontPath="fonts/Montserrat-SemiBold.ttf" />
+            </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -134,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
+               <!-- <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
@@ -151,10 +199,10 @@
                         android:padding="@dimen/spacing_normal"
                         android:text="@string/make_an_advanced_search"
                         android:textAllCaps="true"
-                        app:appTheme="@{0}"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/text_size_medium" />
-                </RelativeLayout>
+                        android:textSize="@dimen/text_size_medium"
+                        app:appTheme="@{0}" />
+                </RelativeLayout>-->
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"

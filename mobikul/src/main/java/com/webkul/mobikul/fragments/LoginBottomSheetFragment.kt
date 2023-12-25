@@ -215,7 +215,7 @@ class LoginBottomSheetFragment : FullScreenBottomSheetDialogFragment(), MessageL
 
 
         mContentViewBinding.otpEt.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(AppSharedPref.getTwilioOtpLength(context!!)!!.toInt()))
-        mContentViewBinding.otpEt.addTextChangedListener(GenericTextWatcher(mContentViewBinding.otpEt))
+       // mContentViewBinding.otpEt.addTextChangedListener(GenericTextWatcher(mContentViewBinding.otpEt))
     }
 
     override fun messageReceived(message: String?) {
@@ -337,7 +337,7 @@ class LoginBottomSheetFragment : FullScreenBottomSheetDialogFragment(), MessageL
         }
     }
 
-    private fun verifyOtp(otp: String) {
+    fun verifyOtp(otp: String) {
         if (otp.length == AppSharedPref.getTwilioOtpLength(context!!)!!.toInt()) {
             mContentViewBinding.loading = true
             Utils.hideKeyboard(mContentViewBinding.otpEt)

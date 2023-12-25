@@ -19,6 +19,7 @@ class AccountRvModel(var type: Int, var name: String = "", var drawableId: Int =
         const val DASHBOARD = 101
         const val WISH_LIST = 102
         const val ORDERS = 103
+        const val ORDER_AGAIN = 110
         const val DOWNLOADABLE_PRODUCTS = 104
         const val PRODUCT_REVIEWS = 105
         const val ADDRESS_BOOK = 106

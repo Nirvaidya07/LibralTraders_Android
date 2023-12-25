@@ -36,11 +36,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
             android:orientation="vertical"
             tools:context="com.webkul.mobikul.fragments.ItemOrderedFragment">
 
@@ -70,8 +72,9 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="18dp"
-                android:background="@color/material_surface">
+                android:layout_weight="1"
+                android:background="@color/material_surface"
+                android:fillViewport="true">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -156,6 +159,7 @@
                             android:id="@+id/order_items_rv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fitsSystemWindows="true"
                             android:nestedScrollingEnabled="false"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:itemCount="2"
@@ -344,34 +348,77 @@
                             app:loadHtmlText="@{data.paymentMethod}" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        android:background="@color/material_background"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:onClick="@{()->handler.onClickReorder()}"
-                        android:padding="@dimen/spacing_normal"
-                        android:visibility="@{data.canReorder ? View.VISIBLE : View.GONE}">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/order_details_reorder_btn"
-                            fontPath="fonts/Montserrat-SemiBold.ttf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:drawableStart="@drawable/ic_reorder_wrapper"
-                            android:drawablePadding="@dimen/spacing_generic"
-                            android:gravity="center_vertical"
-                            android:text="@string/reorder"
-                            android:textAllCaps="true"
-                            android:textColor="@color/text_color_primary"
-                            android:textSize="@dimen/text_size_small"
-                            android:textStyle="bold"
-                            app:appTheme="@{12}" />
-                    </RelativeLayout>
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:fitsSystemWindows="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/track_back"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickTrack()}"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="@{data.canReorder ? View.VISIBLE : View.GONE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/order_details_track_order"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableStart="@drawable/track_order"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:gravity="center_vertical"
+                        android:text="@string/track"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="6dp"
+                    android:layout_height="match_parent" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/track_back"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->handler.onClickReorder()}"
+                    android:padding="@dimen/spacing_normal"
+                    android:visibility="@{data.canReorder ? View.VISIBLE : View.GONE}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/order_details_reorder_btn"
+                        fontPath="fonts/Montserrat-SemiBold.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableStart="@drawable/ic_reorder_wrapper"
+                        android:drawablePadding="@dimen/spacing_generic"
+                        android:gravity="center_vertical"
+                        android:text="@string/reorder"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold"
+                        app:drawableTint="@android:color/white" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ProgressBar

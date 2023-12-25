@@ -40,7 +40,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:behavior_hideable="true"
         app:layout_behavior="@string/bottom_sheet_behavior"
         app:layout_height="@{Utils.getScreenHeight()}">
@@ -93,13 +93,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+                android:fillViewport="true"
                 android:visibility="@{data==null ? View.GONE : View.VISIBLE}">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/spacing_normal"
-
                     android:background="@color/color_whiteBlack"
                     android:orientation="vertical">
 
@@ -108,26 +108,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/spacing_normal"
-                        android:text="@{@string/x_items(data.items.size())}"
-                        android:textAllCaps="true"
+                        android:text="@string/order_track_details"
                         android:textColor="@color/text_color_secondary"
                         android:textSize="@dimen/text_size_small"
                         android:textStyle="bold" />
 
-                    <View
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/order_receiver_detail"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginEnd="@dimen/spacing_normal"
-                        android:background="@color/divider_color" />
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/order_items_rv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
                         android:nestedScrollingEnabled="false"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:itemCount="5"
                         tools:listitem="@layout/item_order_shipment_items" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
@@ -137,15 +136,15 @@
             android:id="@+id/track_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_huge"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/spacing_huge"
             android:foreground="?attr/selectableItemBackground"
             android:onClick="@{() -> handler.onClickTrackShipment(data.trackingData)}"
             android:visibility="@{data==null || data.trackingData.isEmpty() ? View.GONE : View.VISIBLE}"
             app:cardBackgroundColor="@color/color_whiteBlack"
             app:cardElevation="@dimen/card_elevation_low">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <!--<androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -158,7 +157,7 @@
                 android:textColor="@color/text_color_primary"
                 android:textSize="@dimen/text_size_medium"
                 android:textStyle="bold"
-                app:appTheme="@{12}" />
+                app:appTheme="@{12}" />-->
 
         </com.google.android.material.card.MaterialCardView>
 

@@ -4,6 +4,7 @@ import android.accounts.AccountManager.KEY_ACCOUNT_TYPE
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import com.webkul.mobikul.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.DeliveryChatActivity
@@ -153,5 +154,12 @@ class ItemOrderedFragmentHandler(val mFragmentContext: ItemOrderedFragment, val 
     fun deliveryBoyMakeReview(deliveryBoyId: String, customerId: String) {
         val deliveryBoyMakeReviewFragment = DeliveryboyMakeReviewFragment.newInstance(deliveryBoyId, customerId)
         mFragmentContext.activity?.supportFragmentManager?.let { deliveryBoyMakeReviewFragment.show(it, DeliveryboyMakeReviewFragment::class.java.simpleName) }
+    }
+
+    fun onClickTrack() {
+        /*val bottomSheet = OrderShipmentDetailsBottomSheetFragment()
+        bottomSheet.show(mFragmentContext.childFragmentManager, "ModalBottomSheet")*/
+        Log.d("TAG", "onClickTrack: "+mFragmentContext.mContentViewBinding.data?.incrementId!!+"----"+mFragmentContext.mContentViewBinding.data?.shipmentId!!)
+        OrderShipmentDetailsBottomSheetFragment.newInstance(mFragmentContext.mContentViewBinding.data?.incrementId!!,mFragmentContext.mContentViewBinding.data?.shipmentId!!).show(mFragmentContext.parentFragmentManager, OrderShipmentDetailsBottomSheetFragment::class.java.simpleName)
     }
 }

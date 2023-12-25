@@ -135,7 +135,7 @@ open class BaseActivity : AppCompatActivity(), NetworkStateReceiver.NetworkState
     }
 
 
-    private fun openMaterialSearchView() {
+    fun openMaterialSearchView() {
         val contentLayout = findViewById<FrameLayout>(android.R.id.content)
         if (this::mMaterialSearchView.isInitialized && mMaterialSearchView.parent != null)
             (mMaterialSearchView.parent as ViewGroup).removeView(mMaterialSearchView)

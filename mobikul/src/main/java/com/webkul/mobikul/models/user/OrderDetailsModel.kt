@@ -28,6 +28,9 @@ class OrderDetailsModel() : BaseModel(), Parcelable {
     @JsonProperty("incrementId")
     var incrementId: String ?= ""
 
+    @JsonProperty("shipmentId")
+    var shipmentId: String ?= ""
+
     @JsonProperty("statusColorCode")
     var statusColorCode:String? = ""
 
@@ -84,6 +87,7 @@ class OrderDetailsModel() : BaseModel(), Parcelable {
 
     constructor(parcel: Parcel) : this() {
         incrementId = parcel.readString()
+        shipmentId = parcel.readString()
         statusLabel = parcel.readString()
         orderDate = parcel.readString()
         shippingAddress = parcel.readString()
@@ -101,6 +105,7 @@ class OrderDetailsModel() : BaseModel(), Parcelable {
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(incrementId)
+        parcel.writeString(shipmentId)
         parcel.writeString(statusLabel)
         parcel.writeString(orderDate)
         parcel.writeString(shippingAddress)
@@ -118,6 +123,10 @@ class OrderDetailsModel() : BaseModel(), Parcelable {
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun toString(): String {
+        return "OrderDetailsModel(incrementId=$incrementId, shipmentId=$shipmentId, statusColorCode=$statusColorCode, statusLabel=$statusLabel, orderDate=$orderDate, shippingAddress=$shippingAddress, shippingMethod=$shippingMethod, billingAddress=$billingAddress, paymentMethod=$paymentMethod, orderData=$orderData, canReorder=$canReorder, customerName=$customerName, customerEmail=$customerEmail, invoiceList=$invoiceList, shipmentList=$shipmentList, creditMemoList=$creditMemoList, deliveryBoys=$deliveryBoys, adminAddress=$adminAddress)"
     }
 
     companion object CREATOR : Parcelable.Creator<OrderDetailsModel> {

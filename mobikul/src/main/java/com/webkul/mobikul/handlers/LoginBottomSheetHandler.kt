@@ -55,6 +55,15 @@ open class LoginBottomSheetHandler(val mFragmentContext: LoginBottomSheetFragmen
         mFragmentContext.dismiss()
     }
 
+    fun onClickBackClick() {
+        mFragmentContext.mContentViewBinding.loading = false
+        mFragmentContext.mContentViewBinding.editMobileNumber.isEnabled = true
+        mFragmentContext.mContentViewBinding.mobileLayout.visibility = View.VISIBLE
+        mFragmentContext.mContentViewBinding.otpLayout.visibility = View.GONE
+        mFragmentContext.mContentViewBinding.ivCancel.visibility = View.VISIBLE
+        mFragmentContext.mContentViewBinding.ivBack.visibility = View.GONE
+    }
+
     fun onClickLogin(loginFormModel: LoginFormModel) {
         if (loginFormModel.isFormValidated(mFragmentContext)) {
             Utils.hideKeyboard(mFragmentContext.mContentViewBinding.emailTil)
@@ -64,12 +73,14 @@ open class LoginBottomSheetHandler(val mFragmentContext: LoginBottomSheetFragmen
 
     fun login(loginFormModel: LoginFormModel) {
         mFragmentContext.mContentViewBinding.loading = true
+        Log.d("TAG", "login: "+loginFormModel)
         ApiConnection.login(mFragmentContext.context!!, loginFormModel)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(object : ApiCustomCallback<LoginResponseModel>(mFragmentContext.context!!, true) {
                     override fun onNext(loginResponseModel: LoginResponseModel) {
                         super.onNext(loginResponseModel)
+                        Log.d("TAG", "onNext:token "+loginResponseModel.customerToken)
                         mFragmentContext.mContentViewBinding.loading = false
                         if (loginResponseModel.success) {
                             checkFingerprintData(loginFormModel.isFingerPrintEnable(mFragmentContext), loginResponseModel, loginFormModel.username, loginFormModel.password)
@@ -254,6 +265,8 @@ open class LoginBottomSheetHandler(val mFragmentContext: LoginBottomSheetFragmen
         mFragmentContext.mContentViewBinding.editMobileNumber.isEnabled = false
         mFragmentContext.mContentViewBinding.mobileLayout.visibility = View.GONE
         mFragmentContext.mContentViewBinding.otpLayout.visibility = View.VISIBLE
+        mFragmentContext.mContentViewBinding.ivCancel.visibility = View.GONE
+        mFragmentContext.mContentViewBinding.ivBack.visibility = View.VISIBLE
         startTimer(ApplicationConstants.DEFAULT_OTP_RESEND_TIME_IN_MIN)
         setupSMSRetriever()
     }
@@ -311,10 +324,20 @@ open class LoginBottomSheetHandler(val mFragmentContext: LoginBottomSheetFragmen
         mFragmentContext.mContentViewBinding.editMobileNumber.isEnabled = true
         mFragmentContext.mContentViewBinding.otpLayout.visibility = View.GONE
         mFragmentContext.mContentViewBinding.mobileLayout.visibility = View.VISIBLE
+        mFragmentContext.mContentViewBinding.ivCancel.visibility = View.VISIBLE
+        mFragmentContext.mContentViewBinding.ivBack.visibility = View.GONE
     }
 
     fun onClickResend() {
         sendOtp(true)
+    }
+
+    fun onCLickSubmitOTP() {
+        if(mFragmentContext.mContentViewBinding.otpEt.text != null && mFragmentContext.mContentViewBinding.otpEt.text?.length != 4) {
+            ToastHelper.showToast(mFragmentContext.requireContext(), "Please enter valid OTP.")
+        } else {
+            mFragmentContext.verifyOtp(mFragmentContext.mContentViewBinding.otpEt.text.toString())
+        }
     }
 
     fun  onClickOtpScreen() {

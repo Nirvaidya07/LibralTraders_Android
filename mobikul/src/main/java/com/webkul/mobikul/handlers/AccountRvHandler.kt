@@ -5,6 +5,7 @@ import android.os.Looper
 import com.webkul.mobikul.activities.*
 import com.webkul.mobikul.fragments.NavDrawerStartFragment
 import com.webkul.mobikul.helpers.AppSharedPref
+import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_FROM_ORDER_AGAIN
 import com.webkul.mobikul.helpers.ConstantsHelper.RC_QR_LOGIN
 import com.webkul.mobikul.models.user.AccountRvModel
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.ACCOUNT_INFORMATION
@@ -12,6 +13,7 @@ import com.webkul.mobikul.models.user.AccountRvModel.Companion.ADDRESS_BOOK
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.DASHBOARD
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.DOWNLOADABLE_PRODUCTS
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.ORDERS
+import com.webkul.mobikul.models.user.AccountRvModel.Companion.ORDER_AGAIN
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.PRODUCT_REVIEWS
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.QR_CODE_LOGIN
 import com.webkul.mobikul.models.user.AccountRvModel.Companion.WISH_LIST
@@ -48,7 +50,14 @@ class AccountRvHandler(val mFragmentContext: NavDrawerStartFragment) {
                         context.startActivity(Intent(context, MyWishListActivity::class.java))
                     }
                     ORDERS -> {
-                        context.startActivity(Intent(context, MyOrdersActivity::class.java))
+                        val intent = Intent(context, MyOrdersActivity::class.java)
+                        intent.putExtra(BUNDLE_KEY_FROM_ORDER_AGAIN,false)
+                        context.startActivity(intent)
+                    }
+                    ORDER_AGAIN -> {
+                        val intent = Intent(context, MyOrdersActivity::class.java)
+                        intent.putExtra(BUNDLE_KEY_FROM_ORDER_AGAIN,true)
+                        context.startActivity(intent)
                     }
                     DOWNLOADABLE_PRODUCTS -> {
                         context.startActivity(Intent(context, MyDownloadableProductsActivity::class.java))

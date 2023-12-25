@@ -132,6 +132,7 @@ open class NavDrawerStartFragment : BaseFragment() {
             if (ApplicationConstants.ENABLE_WISHLIST && AppSharedPref.isWishlistEnabled(context))
                 accountRvData.add(AccountRvModel(AccountRvModel.WISH_LIST, getString(R.string.wishlist), R.drawable.ic_user_wish_list))
             accountRvData.add(AccountRvModel(AccountRvModel.ORDERS, getString(R.string.orders), R.drawable.ic_user_orders))
+            accountRvData.add(AccountRvModel(AccountRvModel.ORDER_AGAIN, getString(R.string.orders_again), R.drawable.ic_reorder_wrapper))
 //            accountRvData.add(AccountRvModel(AccountRvModel.DOWNLOADABLE_PRODUCTS, getString(R.string.downloadable_products), R.drawable.ic_user_downloadable_products))
             accountRvData.add(AccountRvModel(AccountRvModel.PRODUCT_REVIEWS, getString(R.string.product_reviews), R.drawable.ic_user_product_reviews))
             accountRvData.add(AccountRvModel(AccountRvModel.ADDRESS_BOOK, getString(R.string.address_book), R.drawable.ic_user_address_book))

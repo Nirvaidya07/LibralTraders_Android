@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorPrimary">#8BC34A</color>
-    <color name="colorPrimaryDark">#8BC34A</color>
+    <color name="colorPrimary">#bdf877</color>
+    <color name="colorPrimaryDark">#bdf877</color>
     <color name="colorAccent">#455A64</color>
 
     <color name="color_whiteBlack">#ffffff</color>
@@ -68,6 +68,6 @@
     <color name="on_boarding_dots">#1A000000</color>
 
     <color name="delete_account_button_color">#FF4848</color>
-
+    <color name="track_back">#8BC34A</color>
 
 </resources>

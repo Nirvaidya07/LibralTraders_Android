@@ -48,6 +48,18 @@ class ApiClient {
             }
             return sRetrofitClient
         }
+        fun getClient1(): Retrofit? {
+            if (sRetrofitClient == null) {
+                sRetrofitClient = Retrofit.Builder()
+                    .baseUrl("$BASE_URL/")
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .client(getOkHttpClientBuilder1().build())
+//                        .client(getUnsafeOkHttpClientBuilder().build())
+                    .build()
+            }
+            return sRetrofitClient
+        }
 
         private fun getOkHttpClientBuilder(): OkHttpClient.Builder {
             /*OkHttp client builder*/
@@ -89,7 +101,46 @@ class ApiClient {
             }
             return oktHttpClientBuilder
         }
+        private fun getOkHttpClientBuilder1(): OkHttpClient.Builder {
+            /*OkHttp client builder*/
+            val oktHttpClientBuilder = OkHttpClient.Builder()
+                .connectTimeout((CONNECT_TIMEOUT_MULTIPLIER * DEFAULT_CONNECT_TIMEOUT_IN_SEC).toLong(), TimeUnit.SECONDS)
+                .writeTimeout((CONNECT_TIMEOUT_MULTIPLIER * DEFAULT_WRITE_TIMEOUT_IN_SEC).toLong(), TimeUnit.SECONDS)
+                .readTimeout((CONNECT_TIMEOUT_MULTIPLIER * DEFAULT_READ_TIMEOUT_IN_SEC).toLong(), TimeUnit.SECONDS)
+                .cookieJar(JavaNetCookieJar(getCookieManager())) /* Using okhttp3 cookie instead of java net cookie*/
+            oktHttpClientBuilder.dispatcher(getDispatcher())
 
+            oktHttpClientBuilder.addInterceptor { chain ->
+                val builder = chain.request().newBuilder()
+                    .addHeader("Content-Type", "text/html")
+                    .addHeader("authKey", AuthKeyHelper.getInstance().authKey)
+                    .addHeader("apiAuthType", API_AUTH_TYPE.toLowerCase())
+                    .addHeader("token", AuthKeyHelper.getInstance().token.toString())
+                chain.proceed(builder.build())
+            }
+
+            oktHttpClientBuilder.addInterceptor(getHttpLoggingInterceptor())
+            oktHttpClientBuilder.addInterceptor { chain ->
+                var request = chain.request()
+
+                printPostmanFormattedLog(request)
+
+                var response = chain.proceed(request)
+                Log.d(TAG, "intercept: " + response.code)
+                val token = response.header("token")
+                if (response.code == 401 && token != null && token.isNotEmpty()) {
+                    val usernamePasswordMd5 = getMd5String(ApplicationConstants.API_USER_NAME + ":" + ApplicationConstants.API_PASSWORD)
+                    AuthKeyHelper.getInstance().authKey = getMd5String("$usernamePasswordMd5:$token")
+                    Log.d(TAG, "token: $token")
+                    Log.d(TAG, "authKey: " + AuthKeyHelper.getInstance().authKey)
+                    response.close()
+                    request = request.newBuilder().header("authKey", AuthKeyHelper.getInstance().authKey).build()
+                    response = chain.proceed(request)
+                }
+                response
+            }
+            return oktHttpClientBuilder
+        }
         private fun getUnsafeOkHttpClientBuilder(): OkHttpClient.Builder {
             // Create a trust manager that does not validate certificate chains
             val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
@@ -129,33 +180,31 @@ class ApiClient {
 
             oktHttpClientBuilder.addInterceptor { chain ->
                 val builder = chain.request().newBuilder()
-                        .addHeader("Content-Type", "text/html")
-                        .addHeader("authKey", AuthKeyHelper.getInstance().authKey)
-                        .addHeader("apiAuthType", API_AUTH_TYPE.toLowerCase())
-                        .addHeader("token", AuthKeyHelper.getInstance().token.toString())
+                        .addHeader("Content-Type", "text/json")
+                        .addHeader("Authorization","Bearer "+ AuthKeyHelper.getInstance().token.toString())
                 chain.proceed(builder.build())
             }
 
             oktHttpClientBuilder.addInterceptor(getHttpLoggingInterceptor())
-            oktHttpClientBuilder.addInterceptor { chain ->
-                var request = chain.request()
-
-                printPostmanFormattedLog(request)
-
-                var response = chain.proceed(request)
-                Log.d(TAG, "intercept: " + response.code)
-                val token = response.header("token")
-                if (response.code == 401 && token != null && token.isNotEmpty()) {
-                    val usernamePasswordMd5 = getMd5String(ApplicationConstants.API_USER_NAME + ":" + ApplicationConstants.API_PASSWORD)
-                    AuthKeyHelper.getInstance().authKey = getMd5String("$usernamePasswordMd5:$token")
-                    Log.d(TAG, "token: $token")
-                    Log.d(TAG, "authKey: " + AuthKeyHelper.getInstance().authKey)
-                    response.close()
-                    request = request.newBuilder().header("authKey", AuthKeyHelper.getInstance().authKey).build()
-                    response = chain.proceed(request)
-                }
-                response
-            }
+//            oktHttpClientBuilder.addInterceptor { chain ->
+//                var request = chain.request()
+//
+//                printPostmanFormattedLog(request)
+//
+//                var response = chain.proceed(request)
+//                Log.d(TAG, "intercept: " + response.code)
+//                val token = response.header("token")
+//                if (response.code == 401 && token != null && token.isNotEmpty()) {
+//                    val usernamePasswordMd5 = getMd5String(ApplicationConstants.API_USER_NAME + ":" + ApplicationConstants.API_PASSWORD)
+//                    AuthKeyHelper.getInstance().authKey = getMd5String("$usernamePasswordMd5:$token")
+//                    Log.d(TAG, "token: $token")
+//                    Log.d(TAG, "authKey: " + AuthKeyHelper.getInstance().authKey)
+//                    response.close()
+//                    request = request.newBuilder().header("authKey", AuthKeyHelper.getInstance().authKey).build()
+//                    response = chain.proceed(request)
+//                }
+//                response
+//            }
 
             return oktHttpClientBuilder
         }

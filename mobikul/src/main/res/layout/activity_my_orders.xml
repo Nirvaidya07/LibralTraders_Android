@@ -11,27 +11,56 @@
             name="data"
             type="com.webkul.mobikul.models.user.OrderListResponseModel" />
     </data>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:background="@color/material_surface"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:ignore="PrivateResource">
-<!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-      >-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/orders_rv"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/item_my_orders"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_weight="1"
+            android:background="@color/material_surface"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:ignore="PrivateResource">
+            <!--
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                  >-->
 
-   <!-- </RelativeLayout>-->
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orders_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_my_orders" />
+
+            <!-- </RelativeLayout>-->
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_add_to_cart"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingStart="@dimen/spacing_tiny"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_tiny"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:text="Add  All  To  Cart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_small"
+            android:background="@color/track_back"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
 </layout>

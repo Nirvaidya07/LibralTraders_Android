@@ -35,6 +35,7 @@ object BundleKeysHelper {
     const val BUNDLE_KEY_CATALOG_TYPE_ADV_SEARCH = "advSearch"
 
     const val BUNDLE_KEY_FROM_NOTIFICATION = "fromNotification"
+    const val BUNDLE_KEY_FROM_ORDER_AGAIN = "fromOrderAgain"
 
     const val BUNDLE_KEY_ITEM_ID = "itemId"
     const val BUNDLE_KEY_PRODUCT_ID = "productId"

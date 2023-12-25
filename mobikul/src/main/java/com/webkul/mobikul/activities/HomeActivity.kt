@@ -25,11 +25,14 @@ import android.os.Handler
 import android.os.Looper
 import android.text.SpannableString
 import android.text.Spanned
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
@@ -63,6 +66,7 @@ import com.webkul.mobikul.models.BaseModel
 import com.webkul.mobikul.models.SortOrder
 import com.webkul.mobikul.models.homepage.Carousel
 import com.webkul.mobikul.models.homepage.HomePageDataModel
+import com.webkul.mobikul.models.product.ProductTileData
 import com.webkul.mobikul.network.ApiConnection
 import com.webkul.mobikul.network.ApiCustomCallback
 import io.github.inflationx.calligraphy3.CalligraphyTypefaceSpan
@@ -106,7 +110,7 @@ class HomeActivity : BaseActivity() {
     override fun initSupportActionBar() {
         setSupportActionBar(mContentViewBinding.toolbar)
         setToolbarTitle()
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -407,6 +411,7 @@ class HomeActivity : BaseActivity() {
         mContentViewBinding.carouselsLayout.removeAllViews()
         val sortedOrder = getSortedCarouselsData(mHomePageDataModel.sort_order)
         if (sortedOrder.isNotEmpty()) {
+
             val bannerImage = Carousel()
             bannerImage.id = "bannerimage"
             bannerImage.type = "banner"
@@ -419,10 +424,18 @@ class HomeActivity : BaseActivity() {
             category.featuredCategories = mHomePageDataModel.featuredCategories
             mHomePageDataModel.carousel?.add(category)
 
+            val carousel: Carousel? = mHomePageDataModel.carousel?.singleOrNull { it.id == "bannerimage" }
+            if(carousel != null) {
+                setupOfferBannerRv(carousel)
+            }
+
             sortedOrder.forEachIndexed { index, sortorder ->
                 val carousel: Carousel? = mHomePageDataModel.carousel?.singleOrNull { it.id == sortorder.layout_id }
                 when (carousel?.type) {
                     "product" -> {
+                        val temp = carousel.productList?.sortedBy { !it.isAvailable }
+                        carousel.productList = ArrayList(temp?.toMutableList())
+                        Log.d("dd", carousel.productList?.size.toString())
                         addProductCarousel(carousel)
                     }
                     "image" -> {
@@ -431,9 +444,9 @@ class HomeActivity : BaseActivity() {
                     "category" -> {
                         setupFeaturesCategoriesRv(carousel)
                     }
-                    "banner" -> {
+                    /*"banner" -> {
                         setupOfferBannerRv(carousel)
-                    }
+                    }*/
                 }
             }
         } else {
@@ -488,6 +501,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun addProductCarousel(carousel: Carousel) {
+        carousel
         when (selectRandomCarouselLayout(carousel.productList!!.size)) {
             1 -> {
                 loadCarouselFirstLayout(carousel)
@@ -642,6 +656,13 @@ class HomeActivity : BaseActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         mDrawerToggle?.syncState()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        //menu.findItem(R.id.menu_item_notification)?.isVisible = false
+        menu.findItem(R.id.menu_item_search).isVisible = false
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

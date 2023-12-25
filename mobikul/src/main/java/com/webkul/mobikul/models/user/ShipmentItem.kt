@@ -52,6 +52,10 @@ class ShipmentItem() : Parcelable {
         return 0
     }
 
+    override fun toString(): String {
+        return "ShipmentItem(id=$id, incrementId=$incrementId, items=$items)"
+    }
+
     companion object CREATOR : Parcelable.Creator<ShipmentItem> {
         override fun createFromParcel(parcel: Parcel): ShipmentItem {
             return ShipmentItem(parcel)

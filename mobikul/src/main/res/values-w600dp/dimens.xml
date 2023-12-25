@@ -80,5 +80,6 @@
     <!-- AR Icon-->
     <dimen name="product_tile_ar_icon_size">36dp</dimen>
     <dimen name="material_drawer_item_profile_icon">50dp</dimen>
+    <dimen name="fab_margin">48dp</dimen>
 
 </resources>

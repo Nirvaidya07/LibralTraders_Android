@@ -25,97 +25,143 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_background"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/spacing_generic"
-        android:padding="@dimen/spacing_normal">
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            
+            <RelativeLayout
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/circle_track_bg"/>
+            
+            <LinearLayout
+                android:id="@+id/llBar"
+                android:layout_width="4dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"/>
+            
+        </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_tiny">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                fontPath="fonts/Montserrat-SemiBold.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_name"
-                android:textColor="@color/text_color_secondary"
-                android:textSize="@dimen/text_size_small" />
-            <androidx.appcompat.widget.AppCompatTextView
-                fontPath="fonts/Montserrat-SemiBold.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" -"
-                android:textColor="@color/text_color_secondary"
-                android:textSize="@dimen/text_size_small" />
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_generic"
-                android:text="@{data.name}"
-                android:textColor="@color/text_color_primary"
-                android:textSize="@dimen/text_size_small" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_tiny">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            fontPath="fonts/Montserrat-SemiBold.ttf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sku"
-            android:textColor="@color/text_color_secondary"
-            android:textSize="@dimen/text_size_small" />
-            <androidx.appcompat.widget.AppCompatTextView
-                fontPath="fonts/Montserrat-SemiBold.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" -"
-                android:textColor="@color/text_color_secondary"
-                android:textSize="@dimen/text_size_small" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_generic"
-            android:text="@{data.sku}"
-            android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_size_small" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_tiny">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                fontPath="fonts/Montserrat-SemiBold.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/qty_shipped"
-                android:textColor="@color/text_color_secondary"
-                android:textSize="@dimen/text_size_small" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_generic"
-                android:text="@{data.qty}"
-                android:textColor="@color/text_color_primary"
-                android:textSize="@dimen/text_size_small" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <TableLayout
-            android:id="@+id/option_table_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@color/material_background"
             android:orientation="vertical"
-            android:visibility="@{(data.itemOption == null || data.itemOption.size() == 0) ? View.GONE :View.VISIBLE}" />
+            android:layout_marginTop="@dimen/spacing_generic"
+            android:padding="@dimen/spacing_generic">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Confirmed Fri, 27th oct'23"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+                <!--<androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" -"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_generic"
+                    android:text="@{data.name}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_small" />
+-->
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSubTitle"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Order has been placed."
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+                <!--<androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" -"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_generic"
+                    android:text="@{data.sku}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_small" />-->
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTime"
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Order has been placed."
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <!--<androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    fontPath="fonts/Montserrat-SemiBold.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/qty_shipped"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_generic"
+                    android:text="@{data.qty}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+            <TableLayout
+                android:id="@+id/option_table_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:orientation="vertical"
+                android:visibility="@{(data.itemOption == null || data.itemOption.size() == 0) ? View.GONE :View.VISIBLE}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 </layout>
