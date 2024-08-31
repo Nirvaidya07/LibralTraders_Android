@@ -19,7 +19,7 @@ import android.widget.LinearLayout
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.BaseActivity.Companion.mDataBaseHandler
 import com.webkul.mobikul.activities.CatalogActivity
@@ -28,7 +28,7 @@ import com.webkul.mobikul.adapters.RecentSearchesAdapter
 import com.webkul.mobikul.adapters.SearchSuggestionProductAdapter
 import com.webkul.mobikul.adapters.SearchSuggestionTagAdapter
 import com.webkul.mobikul.adapters.SearchViewCategoryRvAdapter
-import com.webkul.mobikul.databinding.MaterialSearchViewBinding
+import com.libraltraders.android.databinding.MaterialSearchViewBinding
 import com.webkul.mobikul.handlers.MaterialSearchViewHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CATALOG_ID

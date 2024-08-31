@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemPriceDetailsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemPriceDetailsBinding
 import com.webkul.mobikul.models.catalog.PriceDetailsItem
 
 class PriceDetailsRvAdapter(private val mContext: Context, private val mListData: java.util.ArrayList<PriceDetailsItem>) : RecyclerView.Adapter<PriceDetailsRvAdapter.ViewHolder>() {

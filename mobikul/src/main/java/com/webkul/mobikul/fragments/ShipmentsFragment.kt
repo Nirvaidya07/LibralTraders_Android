@@ -18,9 +18,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.OrderShipmentsRvAdapter
-import com.webkul.mobikul.databinding.FragmentShipmentsBinding
+import com.libraltraders.android.databinding.FragmentShipmentsBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_INCREMENT_ID
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ORDER_DETAILS
 import com.webkul.mobikul.models.user.OrderDetailsModel

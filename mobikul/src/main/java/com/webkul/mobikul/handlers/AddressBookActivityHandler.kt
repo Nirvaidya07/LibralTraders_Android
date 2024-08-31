@@ -2,7 +2,7 @@ package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
 import android.content.Intent
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AddEditAddressActivity
 import com.webkul.mobikul.activities.AddressBookActivity
 import com.webkul.mobikul.activities.BaseActivity

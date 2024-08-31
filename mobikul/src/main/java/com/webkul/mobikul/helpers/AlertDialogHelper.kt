@@ -7,7 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatTextView
 import com.google.android.material.textfield.TextInputLayout
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.MyWishListActivity
 import com.webkul.mobikul.adapters.CartItemsRvAdapter

@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.MyWishListActivity
-import com.webkul.mobikul.databinding.ItemMyWishListBinding
+import com.libraltraders.android.databinding.ItemMyWishListBinding
 import com.webkul.mobikul.handlers.MyWishListRvHandler
 import com.webkul.mobikul.models.user.WishListItem
 

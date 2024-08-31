@@ -19,10 +19,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.customviews.TouchImageView
-import com.webkul.mobikul.databinding.ActivityFullScreenImageScrollBinding
-import com.webkul.mobikul.databinding.ItemProductSmallImageViewBinding
+import com.libraltraders.android.databinding.ActivityFullScreenImageScrollBinding
+import com.libraltraders.android.databinding.ItemProductSmallImageViewBinding
 import com.webkul.mobikul.helpers.ImageHelper
 import com.webkul.mobikul.models.product.ImageGalleryData
 import java.util.*

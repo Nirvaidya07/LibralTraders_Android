@@ -21,9 +21,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.FragmentDashboardAddressesBinding
+import com.libraltraders.android.databinding.FragmentDashboardAddressesBinding
 import com.webkul.mobikul.handlers.DashboardAddressesFragmentHandler
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants

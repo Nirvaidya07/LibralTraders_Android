@@ -43,9 +43,10 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.ar.core.ArCoreApk
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityHomeBinding
 import com.webkul.mobikul.adapters.*
-import com.webkul.mobikul.databinding.*
+import com.libraltraders.android.databinding.*
 import com.webkul.mobikul.fragments.CartBottomSheetFragment
 import com.webkul.mobikul.handlers.HomeActivityHandler
 import com.webkul.mobikul.handlers.HomePageProductCarouselHandler
@@ -120,7 +121,7 @@ class HomeActivity : BaseActivity() {
 
       if (!AppSharedPref.getAppLogo(this).isNullOrEmpty()) {
             supportActionBar?.title = ""
-            mContentViewBinding.appLogo.visibility = View.VISIBLE
+           // mContentViewBinding.appLogo.visibility = View.VISIBLE
           try {
               val placeholder=AppSharedPref.getAppLogoDominantColor(this)
               val imageUrl=AppSharedPref.getAppLogo(this)

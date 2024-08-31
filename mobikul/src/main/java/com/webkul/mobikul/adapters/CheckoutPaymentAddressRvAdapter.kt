@@ -18,8 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemCheckoutPaymentAddressBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemCheckoutPaymentAddressBinding
 import com.webkul.mobikul.fragments.PaymentInfoFragment
 import com.webkul.mobikul.handlers.CheckoutPaymentAddressRvHandler
 import com.webkul.mobikul.models.checkout.BillingShippingAddress

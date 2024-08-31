@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.tabs.TabLayout
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityOnBoardingBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityOnBoardingBinding
 import com.webkul.mobikul.fragments.OnBoardFragment
 import com.webkul.mobikul.handlers.OnBoardActivityHandler
 import com.webkul.mobikul.helpers.*

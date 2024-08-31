@@ -26,8 +26,8 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.google.android.gms.security.ProviderInstaller
-import com.webkul.mobikul.BuildConfig
-import com.webkul.mobikul.R
+import com.libraltraders.android.BuildConfig
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CatalogActivity
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.activities.LoginAndSignUpActivity
@@ -62,7 +62,7 @@ open class MobikulApplication : MultiDexApplication(), LifecycleObserver {
                 .addInterceptor(CalligraphyInterceptor(
                         CalligraphyConfig.Builder()
                                 .setDefaultFontPath(CALLIGRAPHY_FONT_PATH_REGULAR)
-                                .setFontAttrId(R.attr.fontPath)
+//                                .setFontAttrId(R.attr.fontPath)
                                 .build()))
                 .build())
 

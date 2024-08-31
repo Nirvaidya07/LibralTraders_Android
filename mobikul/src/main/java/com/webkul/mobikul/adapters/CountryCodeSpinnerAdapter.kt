@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.CustomSpinnerCountryCodeBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.CustomSpinnerCountryCodeBinding
 import com.webkul.mobikul.models.CountryCodeListItem
 
 /**

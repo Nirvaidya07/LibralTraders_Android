@@ -36,7 +36,7 @@ import androidx.core.content.ContextCompat
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.webkul.mlkit.activities.CameraSearchActivity
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.broadcast_receivers.NetworkStateReceiver
 import com.webkul.mobikul.customviews.MaterialSearchView
 import com.webkul.mobikul.fragments.CartBottomSheetFragment

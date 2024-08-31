@@ -18,8 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemNavDrawerWebsitesBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemNavDrawerWebsitesBinding
 import com.webkul.mobikul.fragments.WebsiteBottomSheetFragment
 import com.webkul.mobikul.handlers.WebsitesRvHandler
 import com.webkul.mobikul.models.homepage.WebsiteData

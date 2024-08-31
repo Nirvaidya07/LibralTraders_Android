@@ -15,11 +15,16 @@ package com.webkul.mobikul.models.product
 
 
 import android.content.Context
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.RelativeSizeSpan
+import android.util.Log
 import androidx.databinding.Bindable
 import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.libraltraders.android.BR
 import com.webkul.mobikul.BR
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_AR_CORE
@@ -279,6 +284,21 @@ open class ProductDetailsPageModel : BaseModel() {
         return minPrice < maxPrice
     }
 
+    fun getFormattedGroupedPrice(): String {
+        return "Starting at : $groupedPrice (Inclusive Of All Taxes) "
+    }
+
+    fun getFinalPriceForProduct(): String {
+        Log.d("TAG", "getFinalPriceForProduct: ${formattedFinalPrice}")
+        return "As low as : $formattedFinalPrice"
+    }
+
+
+
+    fun availability(): String {
+        return availability
+    }
+
     fun hasGroupedPrice(): Boolean {
         return groupedPrice.isNotBlank()
     }
@@ -307,5 +327,12 @@ open class ProductDetailsPageModel : BaseModel() {
         } else {
             return false
         }
+    }
+
+    fun setVisibilityBasedOnAvailability(): String? {
+        return if (isAvailable) {
+           null
+        }else
+            availability
     }
 }

@@ -17,8 +17,8 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityOtherNotificationBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityOtherNotificationBinding
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.BundleKeysHelper
 import com.webkul.mobikul.helpers.NetworkHelper

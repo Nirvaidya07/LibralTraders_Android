@@ -65,7 +65,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/customer_profile_placeholder"
                     android:visibility="gone"
-                    tools:visibility="visible" />
+                    tools:visibility="gone" />
 
             </androidx.appcompat.widget.Toolbar>
 

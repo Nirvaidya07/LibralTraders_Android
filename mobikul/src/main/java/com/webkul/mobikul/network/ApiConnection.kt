@@ -15,6 +15,7 @@ package com.webkul.mobikul.network
 
 import android.content.Context
 import android.util.Log
+import com.webkul.mobikul.helpers.AdminTokenRequest
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.ApplicationConstants.DEFAULT_OS
@@ -29,7 +30,6 @@ import com.webkul.mobikul.models.checkout.*
 import com.webkul.mobikul.models.extra.*
 import com.webkul.mobikul.models.homepage.HomePageDataModel
 import com.webkul.mobikul.models.homepage.OnBoardResponseModel
-import com.webkul.mobikul.models.product.ProductDetailsPageModel
 import com.webkul.mobikul.models.product.ProductRatingFormDataModel
 import com.webkul.mobikul.models.product.ProductRequestBody
 import com.webkul.mobikul.models.product.ProductResponse
@@ -728,6 +728,27 @@ class ApiConnection {
                     AppSharedPref.getWebsiteId(context),
                     AppSharedPref.getStoreId(context)
             )
+        }
+
+        fun getAdminToken(
+            username: String,
+            password: String
+        ): Observable<String> {
+            val request = AdminTokenRequest(username, password)
+            return ApiClient.getClient()!!.create(ApiDetails::class.java)
+                .getAdminToken(request)
+        }
+
+
+        fun getBrandCategoryData(
+            username: String,
+            password: String): Observable<List<BrandCategoryResponseModel>> {
+            return getAdminToken(username, password)
+                .flatMap { token ->
+                    val authToken = "Bearer $token"
+                    ApiClient.getClient()!!.create(ApiDetails::class.java)
+                        .getBrandCategoryData(authToken)
+                }
         }
 
         fun deleteAccount(context: Context): Observable<BaseModel> {

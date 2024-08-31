@@ -28,8 +28,8 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.webkul.mobikul.BuildConfig
-import com.webkul.mobikul.R
+import com.libraltraders.android.BuildConfig
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.*
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants.DEFAULT_FCM_TOPICS

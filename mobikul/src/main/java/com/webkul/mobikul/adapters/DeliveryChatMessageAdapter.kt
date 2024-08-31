@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.DeliveryChatMessageBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.DeliveryChatMessageBinding
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CHAT_IDENTIFIER_CUSTOMER
 import com.webkul.mobikul.models.chat.ChatMessage

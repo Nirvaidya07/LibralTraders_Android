@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 
 android {
-
-    compileSdkVersion compile_sdk_version
+    namespace 'com.theartofdev.edmodo.cropper'
+    compileSdk compile_sdk_version
 
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     lintOptions {
         checkReleaseBuilds false
@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    api "androidx.appcompat:appcompat:1.3.1"
-    implementation "androidx.exifinterface:exifinterface:1.3.3"
+    api "androidx.appcompat:appcompat:1.7.0"
+    implementation 'androidx.exifinterface:exifinterface:1.3.7'
 }
 

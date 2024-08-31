@@ -26,8 +26,8 @@ import android.view.Menu
 import android.view.View
 import android.webkit.*
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityCmsPageBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityCmsPageBinding
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CMS_PAGE_ID
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CMS_PAGE_TITLE

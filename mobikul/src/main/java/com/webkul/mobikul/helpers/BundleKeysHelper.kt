@@ -110,4 +110,6 @@ object BundleKeysHelper {
 
     const val BUNDLE_KEY_CHAT_IDENTIFIER_CUSTOMER = "customer-"
     const val BUNDLE_KEY_CHAT_IDENTIFIER_OWNER = "owner-"
+
+    const val BUNDLE_KEY_OPTION_ID = "optionId"
 }

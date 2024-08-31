@@ -20,10 +20,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.NotificationListRvAdapter
-import com.webkul.mobikul.databinding.FragmentNotificationBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentNotificationBottomSheetBinding
 import com.webkul.mobikul.handlers.NotificationBottomSheetHandler
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref

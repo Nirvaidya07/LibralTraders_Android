@@ -38,9 +38,9 @@ import com.webkul.mlkit.adapters.CameraSearchResultAdapter
 import com.webkul.mlkit.customviews.CameraSource
 import com.webkul.mlkit.labeldetector.LabelDetectorProcessor
 import com.webkul.mlkit.textdetector.TextRecognitionProcessor
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.ActivityCameraSearchBinding
+import com.libraltraders.android.databinding.ActivityCameraSearchBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.CAMERA_SELECTED_MODEL
 import com.webkul.mobikul.helpers.ToastHelper.Companion.showToast
 import java.io.IOException

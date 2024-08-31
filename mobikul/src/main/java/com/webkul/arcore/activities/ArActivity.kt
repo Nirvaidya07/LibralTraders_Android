@@ -41,9 +41,9 @@ import com.google.ar.sceneform.assets.RenderableSource
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.ActivityArBinding
+import com.libraltraders.android.databinding.ActivityArBinding
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_AR_MODEL_URL
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_PRODUCT_NAME

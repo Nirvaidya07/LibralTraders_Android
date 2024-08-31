@@ -6,7 +6,7 @@ import android.os.Parcelable
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.LoginAndSignUpActivity
 import com.webkul.mobikul.fragments.SignUpBottomSheetFragment
 import com.webkul.mobikul.helpers.Utils

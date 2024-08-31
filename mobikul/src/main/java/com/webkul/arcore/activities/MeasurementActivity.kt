@@ -33,7 +33,7 @@ import com.google.ar.sceneform.rendering.ShapeFactory
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import com.webkul.arcore.helper.CameraPermissionHelper
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.helpers.BundleKeysHelper
 import com.webkul.mobikul.helpers.ToastHelper

@@ -31,9 +31,9 @@ import com.google.maps.GeoApiContext
 import com.google.maps.android.PolyUtil
 import com.google.maps.errors.ApiException
 import com.google.maps.model.DirectionsResult
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.FragmentTrackDeliveryBoyBinding
+import com.libraltraders.android.databinding.FragmentTrackDeliveryBoyBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ADMIN_ADDRESS
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ADMIN_LATITUDE
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ADMIN_LONGITUDE

@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import com.google.android.material.textfield.TextInputEditText
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AdvancedSearchActivity
 import com.webkul.mobikul.activities.CatalogActivity
 import com.webkul.mobikul.helpers.AlertDialogHelper

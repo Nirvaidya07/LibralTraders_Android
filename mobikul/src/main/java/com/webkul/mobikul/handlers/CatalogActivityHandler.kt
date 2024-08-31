@@ -18,7 +18,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CatalogActivity
 import com.webkul.mobikul.fragments.FilterBottomSheetFragment
 import com.webkul.mobikul.fragments.SortBottomSheetFragment

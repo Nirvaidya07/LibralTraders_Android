@@ -19,9 +19,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.ShipmentTrackingDetailsRvAdapter
-import com.webkul.mobikul.databinding.FragmentTrackShipmentDialogBinding
+import com.libraltraders.android.databinding.FragmentTrackShipmentDialogBinding
 import com.webkul.mobikul.handlers.TrackShipmentDialogHandler
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_TRACKING_DATA
 import com.webkul.mobikul.models.user.TrackingData

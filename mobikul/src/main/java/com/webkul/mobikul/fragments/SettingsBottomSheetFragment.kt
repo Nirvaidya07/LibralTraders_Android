@@ -24,8 +24,8 @@ import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentSettingsBottomSheetBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentSettingsBottomSheetBinding
 import com.webkul.mobikul.firebase.NOTIFICATION_CHANNEL_ABANDONED_CART
 import com.webkul.mobikul.firebase.NOTIFICATION_CHANNEL_OFFERS
 import com.webkul.mobikul.firebase.NOTIFICATION_CHANNEL_ORDERS

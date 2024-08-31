@@ -20,8 +20,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentProductCommentBottomSheetBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentProductCommentBottomSheetBinding
 import com.webkul.mobikul.handlers.ProductCommentBottomSheetFragmentHandler
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_PRODUCT_COMMENT
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_SELECTED_ITEM_POSITION

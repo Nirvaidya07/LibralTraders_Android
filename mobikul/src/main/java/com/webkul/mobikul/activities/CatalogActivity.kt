@@ -29,11 +29,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.webkul.arcore.activities.ArActivity
 import com.webkul.arcore.activities.CameraWithImageActivity
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.CatalogProductsRvAdapter
 import com.webkul.mobikul.adapters.CategoryBannerVpAdapter
 import com.webkul.mobikul.adapters.CriteriaDataAdapter
-import com.webkul.mobikul.databinding.ActivityCatalogBinding
+import com.libraltraders.android.databinding.ActivityCatalogBinding
 import com.webkul.mobikul.fragments.EmptyFragment
 import com.webkul.mobikul.handlers.CatalogActivityHandler
 import com.webkul.mobikul.helpers.*
@@ -77,7 +77,7 @@ open class CatalogActivity : BaseActivity() {
         startInitialization(intent)
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         removeEmptyLayout()
         startInitialization(intent!!)

@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemSearchTermBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemSearchTermBinding
 import com.webkul.mobikul.handlers.SearchTermsActivityHandler
 import com.webkul.mobikul.models.extra.TermList
 

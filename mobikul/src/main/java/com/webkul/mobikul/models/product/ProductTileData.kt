@@ -4,13 +4,14 @@ package com.webkul.mobikul.models.product
 import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.webkul.mobikul.BR
+import com.libraltraders.android.BR
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants
 
@@ -56,7 +57,7 @@ class ProductTileData() : Parcelable, BaseObservable() {
     @JsonProperty(value = "entityId")
     @JsonAlias("entityId", "id")
     var id: String  ?= ""
-get() = field?:""
+        get() = field?:""
     @JsonProperty("shortDescription")
     var shortDescription: String ? = ""
 
@@ -260,6 +261,15 @@ get() = field?:""
     fun getDiscountPercentage(): String {
         return Math.round((100 - finalPrice / price * 100)).toString() + "%"
 
+    }
+    fun newGroupPrice():String{
+        Log.d("TAG", "newGroupPrice: ${name}>>$groupedPrice")
+        return "Starting at : $groupedPrice";
+    }
+
+    fun newFormattedPrice():String{
+        Log.d("TAG", "newGroupPrice2: ${formattedMinPrice}>>$formattedFinalPrice>>${formattedMaxPrice}>>${price}")
+        return "Starting at : $formattedFinalPrice";
     }
 
     fun isArEnabled(context: Context): Boolean {

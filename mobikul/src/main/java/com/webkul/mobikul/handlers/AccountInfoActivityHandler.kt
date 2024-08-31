@@ -6,7 +6,7 @@ import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AccountInfoActivity
 import com.webkul.mobikul.fragments.DeleteAccountDialogFragment
 import com.webkul.mobikul.helpers.*

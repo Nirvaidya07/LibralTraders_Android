@@ -19,7 +19,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.SplashScreenActivity
 import com.webkul.mobikul.helpers.AlertDialogHelper

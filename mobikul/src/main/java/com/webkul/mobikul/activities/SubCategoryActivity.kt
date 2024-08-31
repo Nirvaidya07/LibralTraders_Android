@@ -6,11 +6,11 @@ import android.text.SpannableString
 import android.text.Spanned
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.CategoryBannerVpAdapter
 import com.webkul.mobikul.adapters.ProductCarouselHorizontalRvAdapter
 import com.webkul.mobikul.adapters.SubCategoriesRvAdapter
-import com.webkul.mobikul.databinding.ActivitySubCategoryBinding
+import com.libraltraders.android.databinding.ActivitySubCategoryBinding
 import com.webkul.mobikul.handlers.SubCategoryActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.catalog.SubCategoryResponseModel

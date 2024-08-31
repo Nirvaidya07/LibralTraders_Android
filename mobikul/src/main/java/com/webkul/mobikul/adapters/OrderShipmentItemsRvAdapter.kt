@@ -23,8 +23,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemOrderShipmentItemsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemOrderShipmentItemsBinding
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.Utils
 import com.webkul.mobikul.models.product.Transit

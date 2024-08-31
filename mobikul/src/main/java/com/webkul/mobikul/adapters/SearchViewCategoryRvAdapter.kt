@@ -18,9 +18,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.customviews.MaterialSearchView
-import com.webkul.mobikul.databinding.ItemSearchViewCategoryBinding
+import com.libraltraders.android.databinding.ItemSearchViewCategoryBinding
 import com.webkul.mobikul.handlers.SearchViewCategoryRvHandler
 import com.webkul.mobikul.models.homepage.Category
 

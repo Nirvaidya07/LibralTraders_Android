@@ -115,7 +115,7 @@ class AddressPickerActivity : AppCompatActivity(), OnMapReadyCallback {
      * Stores the types of location services the client is interested in using. Used for checking
      * settings to determine if the device has optimal location settings.
      */
-    private var mLocationSettingsRequest: LocationSettingsRequest? = null
+    private lateinit var mLocationSettingsRequest: LocationSettingsRequest
 
     /**
      * Callback for Location events.
@@ -266,7 +266,7 @@ class AddressPickerActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onMapReady(googleMap: GoogleMap?) {
+    override fun onMapReady(googleMap: GoogleMap) {
         startLocationUpdates()
         mMap = googleMap
 
@@ -459,10 +459,14 @@ class AddressPickerActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.i(TAG, "All location settings are satisfied.")
 
 
-                mFusedLocationClient?.requestLocationUpdates(
-                    mLocationRequest,
-                    mLocationCallback, Looper.myLooper()
-                )
+                mLocationRequest?.let { it1 ->
+                    mLocationCallback?.let { it2 ->
+                        mFusedLocationClient?.requestLocationUpdates(
+                            it1,
+                            it2, Looper.myLooper()
+                        )
+                    }
+                }
                 mRequestingLocationUpdates = true
             }
             .addOnFailureListener(this) { e ->
@@ -517,8 +521,10 @@ class AddressPickerActivity : AppCompatActivity(), OnMapReadyCallback {
         // It is a good practice to remove location requests when the activity is in a paused or
         // stopped state. Doing so helps battery performance and is especially
         // recommended in applications that request frequent location updates.
-        mFusedLocationClient?.removeLocationUpdates(mLocationCallback)
-            ?.addOnCompleteListener(this) { mRequestingLocationUpdates = false }
+        mLocationCallback?.let {
+            mFusedLocationClient?.removeLocationUpdates(it)
+                ?.addOnCompleteListener(this) { mRequestingLocationUpdates = false }
+        }
     }
 
     private fun onClickSearchLocation() {

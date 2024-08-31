@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="item"
+            type="com.webkul.mobikul.models.catalog.BrandCategoryResponseModel" />
+
+        <variable
+            name="handler"
+            type="com.webkul.mobikul.handlers.BrandsRvHandler" />
+        <variable
+            name="data"
+            type="com.webkul.mobikul.handlers.BrandCategoryViewModel" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/brand_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.value}"
+            android:textSize="@dimen/text_size_medium"/>
+
+
+    </LinearLayout>
+</layout>

@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.webkul.mobikul.BuildConfig" />
+        <import type="com.libraltraders.android.BuildConfig" />
 
         <import type="android.view.View" />
 

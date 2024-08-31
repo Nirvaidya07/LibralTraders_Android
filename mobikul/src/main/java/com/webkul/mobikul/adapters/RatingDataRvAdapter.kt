@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.ReviewDetailsActivity
-import com.webkul.mobikul.databinding.ItemRatingDataBinding
+import com.libraltraders.android.databinding.ItemRatingDataBinding
 import com.webkul.mobikul.models.user.ProductRatingData
 
 /**

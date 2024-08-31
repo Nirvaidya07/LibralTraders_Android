@@ -22,8 +22,8 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentFullImageDialogBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentFullImageDialogBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_IMAGE_URL
 import com.webkul.mobikul.helpers.ImageHelper
 

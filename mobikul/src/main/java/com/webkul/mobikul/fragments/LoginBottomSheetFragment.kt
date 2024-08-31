@@ -40,10 +40,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.LoginAndSignUpActivity
-import com.webkul.mobikul.databinding.FragmentLoginBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentLoginBottomSheetBinding
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_KEYBOARD_OBSERVER
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_LOGIN_EMAIL_ID
 import com.webkul.mobikul.models.CountryCodeListingResponseModel

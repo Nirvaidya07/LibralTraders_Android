@@ -26,9 +26,9 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.webkul.arcore.helper.CameraPreview
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.ActivityCameraWithImageBinding
+import com.libraltraders.android.databinding.ActivityCameraWithImageBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_PRODUCT_IMAGE
 import com.webkul.mobikul.helpers.ImageHelper
 import com.webkul.mobikul.helpers.ToastHelper

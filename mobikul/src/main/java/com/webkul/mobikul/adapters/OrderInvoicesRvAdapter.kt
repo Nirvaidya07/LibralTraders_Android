@@ -18,8 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemOrderInvoicesBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemOrderInvoicesBinding
 import com.webkul.mobikul.fragments.InvoicesFragment
 import com.webkul.mobikul.handlers.OrderInvoicesRvHandler
 import com.webkul.mobikul.models.user.InvoiceItem

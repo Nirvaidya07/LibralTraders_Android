@@ -3,8 +3,8 @@ package com.webkul.mobikul.activities
 import android.os.Bundle
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityCategoryBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityCategoryBinding
 import com.webkul.mobikul.fragments.SubCategoryFragment
 import com.webkul.mobikul.helpers.BundleKeysHelper
 

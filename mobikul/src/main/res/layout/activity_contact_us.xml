@@ -39,8 +39,127 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_normal"
+                android:layout_margin="5dp"
                 android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Contact Information Section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:text="Head Office"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color_primary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="Libral Traders Pvt. Ltd.\nB-84/1, Okhla Industrial Area-2,\nNew Delhi - 110020\nIndia"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/text_color_secondary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="Working Days/Hours:\nMon - Sat / 10:00AM - 6:00PM"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/text_color_secondary" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="Contact Details:"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color_primary" />
+
+                <!-- Contact Number 1 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/spacing_small">
+
+                    <ImageView
+                        android:id="@+id/call_image"
+                        android:layout_width="35.dp"
+                        android:layout_height="35.dp"
+                        android:src="@drawable/ic_dial"
+                        app:tint="@color/text_color_primary" />
+
+                    <TextView
+                        android:id="@+id/phone1"
+                        android:layout_toEndOf="@+id/call_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:text="011 4072 6678"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/text_color_secondary" />
+                    <TextView
+                        android:layout_below="@+id/phone1"
+                        android:layout_toEndOf="@+id/call_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:text="011 4072 6679"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/text_color_secondary" />
+                </RelativeLayout>
+
+                <!-- Contact Number 2 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/spacing_small">
+
+                    <ImageView
+                        android:id="@+id/landlineimage"
+                        android:layout_width="35.dp"
+                        android:layout_height="35.dp"
+                        android:src="@drawable/ic_phone"
+                        app:tint="@color/text_color_primary" />
+
+                    <TextView
+                        android:id="@+id/phone2"
+                        android:layout_toEndOf="@+id/landlineimage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:text="+91 98712 31810"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/text_color_secondary" />
+                    <TextView
+                        android:layout_below="@+id/phone2"
+                        android:layout_toEndOf="@+id/landlineimage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:text="+91 70659 25788"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/text_color_secondary" />
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_til"

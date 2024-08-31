@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemTierPriceBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemTierPriceBinding
 import java.util.*
 
 class TierPriceRvAdapter(private val mContext: Context, private val mListData: ArrayList<String>) : RecyclerView.Adapter<TierPriceRvAdapter.ViewHolder>() {

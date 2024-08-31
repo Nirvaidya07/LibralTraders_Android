@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemSubCategoryBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemSubCategoryBinding
 import com.webkul.mobikul.handlers.SubCategoriesRvHandler
 import com.webkul.mobikul.models.homepage.Category
 

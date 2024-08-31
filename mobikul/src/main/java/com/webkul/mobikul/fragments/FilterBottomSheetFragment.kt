@@ -14,10 +14,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CatalogActivity
-import com.webkul.mobikul.databinding.FragmentFilterBottomSheetBinding
-import com.webkul.mobikul.databinding.ItemCatalogSelectedFilterBinding
+import com.libraltraders.android.databinding.FragmentFilterBottomSheetBinding
+import com.libraltraders.android.databinding.ItemCatalogSelectedFilterBinding
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.helpers.Utils
 import com.webkul.mobikul.models.catalog.LayeredData

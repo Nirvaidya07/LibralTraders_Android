@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemCompareProductsAddToCartBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemCompareProductsAddToCartBinding
 import com.webkul.mobikul.handlers.ProductTileHandler
 import com.webkul.mobikul.models.product.ProductTileData
 import java.util.*

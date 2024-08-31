@@ -30,8 +30,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityDashboardBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityDashboardBinding
 import com.webkul.mobikul.fragments.DashboardAddressesFragment
 import com.webkul.mobikul.fragments.DashboardRecentOrdersFragment
 import com.webkul.mobikul.fragments.DashboardReviewsFragment

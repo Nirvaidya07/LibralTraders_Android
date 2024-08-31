@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemProductCreateReviewRatingBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemProductCreateReviewRatingBinding
 import com.webkul.mobikul.helpers.ToastHelper
 import com.webkul.mobikul.models.product.RatingFormData
 import org.json.JSONException

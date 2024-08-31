@@ -21,8 +21,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentCameraSearchChoiceDialogBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentCameraSearchChoiceDialogBinding
 import com.webkul.mobikul.handlers.CameraSearchBottomSheetFragmentHandler
 
 class CameraSearchChoiceDialogFragment : DialogFragment() {

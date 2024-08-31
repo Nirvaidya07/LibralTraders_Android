@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.HomeActivity
-import com.webkul.mobikul.databinding.ItemFeaturedCategoryBinding
-import com.webkul.mobikul.databinding.ItemFeaturedCategoryGridBinding
+import com.libraltraders.android.databinding.ItemFeaturedCategoryBinding
+import com.libraltraders.android.databinding.ItemFeaturedCategoryGridBinding
 import com.webkul.mobikul.handlers.FeaturedCategoriesRvHandler
 import com.webkul.mobikul.helpers.ConstantsHelper
 import com.webkul.mobikul.models.homepage.FeaturedCategory

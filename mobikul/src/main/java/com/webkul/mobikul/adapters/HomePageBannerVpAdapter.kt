@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.ItemHomeBannerViewPagerBinding
+import com.libraltraders.android.databinding.ItemHomeBannerViewPagerBinding
 import com.webkul.mobikul.handlers.HomePageBannerVpHandler
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.models.homepage.BannerImage

@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemNavDrawerCurrenciesBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemNavDrawerCurrenciesBinding
 import com.webkul.mobikul.fragments.CurrencyBottomSheetFragment
 import com.webkul.mobikul.handlers.CurrenciesRvHandler
 import com.webkul.mobikul.models.homepage.Currency

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.webkul.mobikul.BR
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AddEditAddressActivity
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.Utils
@@ -278,17 +278,17 @@ class AddressFormResponseModel() : BaseModel() {
 
 
         /* Checking Fax */
-        if (isFaxVisible && isFaxRequired) {
-            if (addressData.fax?.trim().isNullOrBlank()) {
-                isFormValidated = false
-                addEditAddressActivity.mContentViewBinding.fax.error = addEditAddressActivity.getString(R.string.fax) + " " + addEditAddressActivity.getString(R.string.is_required)
-                Utils.showShakeError(addEditAddressActivity, addEditAddressActivity.mContentViewBinding.fax)
-                addEditAddressActivity.mContentViewBinding.fax.requestFocus()
-            } else {
-                addEditAddressActivity.mContentViewBinding.fax.isErrorEnabled = false
-                addEditAddressActivity.mContentViewBinding.fax.error = null
-            }
-        }
+//        if (isFaxVisible) {
+//            if (addressData.fax?.trim().isNullOrBlank()) {
+//                isFormValidated = false
+//                addEditAddressActivity.mContentViewBinding.fax.error = addEditAddressActivity.getString(R.string.fax) + " " + addEditAddressActivity.getString(R.string.is_required)
+//                Utils.showShakeError(addEditAddressActivity, addEditAddressActivity.mContentViewBinding.fax)
+//                addEditAddressActivity.mContentViewBinding.fax.requestFocus()
+//            } else {
+//                addEditAddressActivity.mContentViewBinding.fax.isErrorEnabled = false
+//                addEditAddressActivity.mContentViewBinding.fax.error = null
+//            }
+//        }
 
 
         /* Checking Email */

@@ -5,7 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 
 /**
  * Webkul Software.

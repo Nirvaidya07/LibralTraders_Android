@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemAssignedDeliveryBoysBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemAssignedDeliveryBoysBinding
 import com.webkul.mobikul.fragments.ItemOrderedFragment
 import com.webkul.mobikul.handlers.ItemOrderedFragmentHandler
 import com.webkul.mobikul.models.user.DeliveryBoys

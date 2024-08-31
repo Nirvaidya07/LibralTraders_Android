@@ -13,7 +13,7 @@
 
 package com.webkul.mobikul.handlers
 
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.OrderDetailsActivity
 import com.webkul.mobikul.fragments.InvoicesFragment
 import com.webkul.mobikul.fragments.ItemOrderedFragment

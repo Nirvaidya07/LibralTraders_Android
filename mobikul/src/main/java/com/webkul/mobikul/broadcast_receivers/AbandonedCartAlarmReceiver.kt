@@ -21,7 +21,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.RingtoneManager
 import androidx.core.app.NotificationCompat
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.firebase.NOTIFICATION_CHANNEL_ABANDONED_CART
 import com.webkul.mobikul.helpers.BundleKeysHelper

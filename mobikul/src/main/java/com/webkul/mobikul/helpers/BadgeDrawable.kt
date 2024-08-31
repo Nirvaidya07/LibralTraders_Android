@@ -19,7 +19,7 @@ import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.core.content.ContextCompat
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import io.github.inflationx.calligraphy3.TypefaceUtils
 
 

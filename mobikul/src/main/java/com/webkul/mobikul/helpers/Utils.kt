@@ -29,9 +29,9 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.webkul.mobikul.BuildConfig
-import com.webkul.mobikul.BuildConfig.IS_MARKET_PLACE
-import com.webkul.mobikul.R
+import com.libraltraders.android.BuildConfig.IS_MARKET_PLACE
+
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.helpers.ApplicationConstants.API_AUTH_TYPE

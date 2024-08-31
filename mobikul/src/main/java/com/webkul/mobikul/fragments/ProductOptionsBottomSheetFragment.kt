@@ -24,8 +24,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentProductOptionsBottomSheetBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentProductOptionsBottomSheetBinding
 import com.webkul.mobikul.helpers.ApplicationConstants.CALLIGRAPHY_FONT_PATH_SEMI_BOLD
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_PRODUCT_OPTIONS
 import com.webkul.mobikul.models.user.OptionsItem
