@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.libraltraders.android.BR
-import com.webkul.mobikul.BR
+
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_AR_CORE
 import com.webkul.mobikul.models.BaseModel
@@ -289,10 +289,9 @@ open class ProductDetailsPageModel : BaseModel() {
     }
 
     fun getFinalPriceForProduct(): String {
-        Log.d("TAG", "getFinalPriceForProduct: ${formattedFinalPrice}")
-        return "As low as : $formattedFinalPrice"
+        Log.d("TAG", "getFinalPriceForProduct: ${typeId}")
+        return if (typeId == "simple") "$formattedFinalPrice" else "As low as : $formattedFinalPrice"
     }
-
 
 
     fun availability(): String {
@@ -331,8 +330,8 @@ open class ProductDetailsPageModel : BaseModel() {
 
     fun setVisibilityBasedOnAvailability(): String? {
         return if (isAvailable) {
-           null
-        }else
+            null
+        } else
             availability
     }
 }

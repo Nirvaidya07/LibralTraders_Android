@@ -78,6 +78,7 @@ import com.webkul.mobikul.helpers.ToastHelper.Companion.showToast
 import com.webkul.mobikul.models.catalog.CartItem
 import com.webkul.mobikul.models.product.Attribute
 import com.webkul.mobikul.models.product.ImageGalleryData
+import com.webkul.mobikul.models.product.ProductDetailsPageModel
 import com.webkul.mobikul.models.product.SwatchData
 import com.webkul.mobikul.network.ApiConnection
 import com.webkul.mobikul.network.ApiCustomCallback
@@ -413,6 +414,7 @@ open class ProductDetailsActivity : BaseActivity() {
                     newCustomOptionLabel += "  (+$formattedDefaultPrice)"
                 }
             }
+            Log.d("TAG", "setCustomOptionName: ${mContentViewBinding.data!!.typeId}")
             val prefixText = "As low as "
             val prefixSpannable = SpannableString(prefixText)
             val customOptionNameSpannable = SpannableString(newCustomOptionLabel)
@@ -2350,7 +2352,6 @@ open class ProductDetailsActivity : BaseActivity() {
         val formattedPrice = String.format(Locale.US, precisionFormat, price)
         val newFormattedFinalPrice = pattern.replace("%s", formattedFinalPrice)
         val newFormattedPrice = pattern.replace("%s", formattedPrice)
-        val specialPriceText = "As low as $newFormattedPrice"
         if (mContentViewBinding.data!!.typeId != "configurable" || noOfSelectedOptions == mContentViewBinding.data!!.configurableData.attributes?.size) {
             mContentViewBinding.productPriceTv.text = newFormattedFinalPrice
             mContentViewBinding.productSpecialPriceTv.setText(newFormattedPrice)

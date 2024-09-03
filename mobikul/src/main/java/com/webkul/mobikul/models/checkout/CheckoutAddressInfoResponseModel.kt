@@ -20,7 +20,7 @@ import androidx.databinding.Bindable
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.webkul.mobikul.BR
+import com.libraltraders.android.BR
 import com.webkul.mobikul.models.BaseModel
 import com.webkul.mobikul.models.user.AddressDetailsData
 import org.json.JSONArray

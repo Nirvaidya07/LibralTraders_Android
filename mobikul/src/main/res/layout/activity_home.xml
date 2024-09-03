@@ -67,26 +67,15 @@
                     android:visibility="gone"
                     tools:visibility="gone" />
 
-            </androidx.appcompat.widget.Toolbar>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_gravity="center_vertical"
-                android:background="@color/colorPrimary">
-
                 <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/border_bg">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_search1"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start"
                         android:layout_weight="1"
@@ -108,7 +97,16 @@
                         android:textColorHint="@color/grey_700"
                         android:textCursorDrawable="@null" />
                 </LinearLayout>
-            </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="54dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:background="@color/colorPrimary">-->
+
+
+<!--            </LinearLayout>-->
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh_layout"

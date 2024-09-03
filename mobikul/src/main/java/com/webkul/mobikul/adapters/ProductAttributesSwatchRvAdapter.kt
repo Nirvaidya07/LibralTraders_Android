@@ -20,6 +20,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.libraltraders.android.R
 import com.libraltraders.android.databinding.ItemAttributeSwatchBinding
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.handlers.CatalogAttributesSwatchHandler
 import com.webkul.mobikul.models.product.SwatchData
 import java.util.*

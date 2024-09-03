@@ -35,7 +35,8 @@ class DashboardActivityHandler(private val mContext: DashboardActivity) {
             mContext.mIsUpdatingProfilePic = false
             selectImage()
         } else {
-            mContext.startActivityForResult((mContext.application as MobikulApplication).getLoginAndSignUpActivity(mContext), ConstantsHelper.RC_LOGIN)
+            (mContext.application as MobikulApplication).getLoginAndSignUpActivity(mContext)
+                ?.let { mContext.startActivityForResult(it, ConstantsHelper.RC_LOGIN) }
         }
     }
 

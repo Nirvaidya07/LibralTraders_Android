@@ -29,12 +29,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="40dp">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/material_background">
+            android:background="@color/material_background"
+            android:fillViewport="true"
+            >
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -45,7 +48,6 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:layout_marginTop="@dimen/spacing_small"
                     android:layout_marginBottom="@dimen/spacing_small"
                     android:layout_marginStart="@dimen/spacing_small"
                     android:layout_marginEnd="@dimen/spacing_small"

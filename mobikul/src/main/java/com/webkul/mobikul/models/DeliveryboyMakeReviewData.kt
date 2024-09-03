@@ -1,6 +1,7 @@
 package com.webkul.mobikul.models
 
 import androidx.databinding.BaseObservable
+import com.libraltraders.android.R
 import com.webkul.mobikul.fragments.DeliveryboyMakeReviewFragment
 import com.webkul.mobikul.helpers.Utils
 
@@ -33,7 +34,8 @@ class DeliveryboyMakeReviewData : BaseObservable() {
 
         if (comment.isBlank()) {
             isFormValidated = false
-            sellerMakeReviewFragment.mContentViewBinding.commentTil.error = sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.comment) + " " + sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.is_required)
+            sellerMakeReviewFragment.mContentViewBinding.commentTil.error = sellerMakeReviewFragment.getString(R.string.comment) + " " + sellerMakeReviewFragment.getString(
+                R.string.is_required)
             Utils.showShakeError(sellerMakeReviewFragment.requireContext(), sellerMakeReviewFragment.mContentViewBinding.commentTil)
             sellerMakeReviewFragment.mContentViewBinding.commentTil.requestFocus()
         } else {
@@ -43,7 +45,7 @@ class DeliveryboyMakeReviewData : BaseObservable() {
 
         if (summary.isBlank()) {
             isFormValidated = false
-            sellerMakeReviewFragment.mContentViewBinding.summaryTil.error = sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.summary) + " " + sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.is_required)
+            sellerMakeReviewFragment.mContentViewBinding.summaryTil.error = sellerMakeReviewFragment.getString(R.string.summary) + " " + sellerMakeReviewFragment.getString(R.string.is_required)
             Utils.showShakeError(sellerMakeReviewFragment.requireContext(), sellerMakeReviewFragment.mContentViewBinding.summaryTil)
             sellerMakeReviewFragment.mContentViewBinding.summaryTil.requestFocus()
         } else {
@@ -53,7 +55,7 @@ class DeliveryboyMakeReviewData : BaseObservable() {
 
         if (nickName.isBlank()) {
             isFormValidated = false
-            sellerMakeReviewFragment.mContentViewBinding.nicknameTil.error = sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.nickname) + " " + sellerMakeReviewFragment.getString(com.webkul.mobikul.R.string.is_required)
+            sellerMakeReviewFragment.mContentViewBinding.nicknameTil.error = sellerMakeReviewFragment.getString(R.string.nickname) + " " + sellerMakeReviewFragment.getString(R.string.is_required)
             Utils.showShakeError(sellerMakeReviewFragment.requireContext(), sellerMakeReviewFragment.mContentViewBinding.nicknameTil)
             sellerMakeReviewFragment.mContentViewBinding.nicknameTil.requestFocus()
         } else {

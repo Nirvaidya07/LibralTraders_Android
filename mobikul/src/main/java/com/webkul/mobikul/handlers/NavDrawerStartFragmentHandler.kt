@@ -51,11 +51,13 @@ class NavDrawerStartFragmentHandler(private val mFragmentContext: NavDrawerStart
                         )
 
                     } else {
-                        mFragmentContext.activity?.startActivityForResult(
-                            ((context as BaseActivity).application as MobikulApplication).getLoginAndSignUpActivity(
-                                mFragmentContext.requireContext()
-                            ), ConstantsHelper.RC_LOGIN
-                        )
+                        ((context as BaseActivity).application as MobikulApplication).getLoginAndSignUpActivity(
+                            mFragmentContext.requireContext()
+                        )?.let {
+                            mFragmentContext.activity?.startActivityForResult(
+                                it, ConstantsHelper.RC_LOGIN
+                            )
+                        }
                     }
                 }, 300)
                 (context as HomeActivity).mContentViewBinding.drawerLayout.closeDrawers()

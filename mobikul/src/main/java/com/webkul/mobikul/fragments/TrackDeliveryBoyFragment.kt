@@ -165,13 +165,13 @@ class TrackDeliveryBoyFragment : BaseFragment() {
                     .icon(getBitmapDescriptorForMaps("deliveryboy"))
             mDeliveryBoyMarker = mGoogleMap.addMarker(deliveryBoyMarker)
             mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.Builder()
-                    .target(mDeliveryBoyLatLng)
+                    .target(mDeliveryBoyLatLng!!)
                     .tilt(45f)
                     .zoom(13f)
                     .build()))
         } else {
-            mDeliveryBoyMarker?.position = mDeliveryBoyLatLng
-            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(mDeliveryBoyLatLng))
+            mDeliveryBoyMarker?.position = mDeliveryBoyLatLng!!
+            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(mDeliveryBoyLatLng!!))
         }
 
         try {
@@ -230,11 +230,11 @@ class TrackDeliveryBoyFragment : BaseFragment() {
         // Zoom between admin and customer
         if (mCustomerBoyLatLng != null) {
             try {
-                val adminCustomerBound = LatLngBounds(adminLatLng, mCustomerBoyLatLng)
+                val adminCustomerBound = LatLngBounds(adminLatLng, mCustomerBoyLatLng!!)
                 mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(adminCustomerBound, 200))
             } catch (e: Exception) {
                 e.printStackTrace()
-                val adminCustomerBound = LatLngBounds(mCustomerBoyLatLng, adminLatLng)
+                val adminCustomerBound = LatLngBounds(mCustomerBoyLatLng!!, adminLatLng)
                 mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(adminCustomerBound, 200))
             } finally {
 
@@ -243,11 +243,11 @@ class TrackDeliveryBoyFragment : BaseFragment() {
     }
 
     private fun getLocationFromAddress(strAddress: String): LatLng? {
-        val coder = Geocoder(context)
+        val coder = context?.let { Geocoder(it) }
         val address: List<Address>?
         var p1: LatLng? = null
         try {
-            address = coder.getFromLocationName(strAddress, 1)
+            address = coder?.getFromLocationName(strAddress, 1)
             if (address != null && address.isNotEmpty()) {
                 val location = address[0]
                 p1 = LatLng(location.latitude, location.longitude)
@@ -284,11 +284,12 @@ class TrackDeliveryBoyFragment : BaseFragment() {
     }
 
     private fun getGeoContext(): GeoApiContext {
-        return GeoApiContext().setQueryRateLimit(3)
-                .setApiKey(getString(R.string.maps_api_key))
-                .setConnectTimeout(30, TimeUnit.SECONDS)
-                .setReadTimeout(30, TimeUnit.SECONDS)
-                .setWriteTimeout(30, TimeUnit.SECONDS)
+        return GeoApiContext.Builder()
+            .apiKey(getString(R.string.maps_api_key))
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .build()
     }
 
     private fun addPolyline(results: DirectionsResult) {

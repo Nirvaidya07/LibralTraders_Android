@@ -20,6 +20,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
 import com.libraltraders.android.R
 import com.libraltraders.android.databinding.ItemProductPageViewPagerBinding
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.handlers.ProductSliderHandler
 import com.webkul.mobikul.models.product.ImageGalleryData
 

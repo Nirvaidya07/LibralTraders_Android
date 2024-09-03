@@ -6,7 +6,7 @@ import androidx.databinding.Bindable
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.webkul.mobikul.BR
+import com.libraltraders.android.BR
 import com.libraltraders.android.R
 import com.webkul.mobikul.fragments.SignUpBottomSheetFragment
 import com.webkul.mobikul.helpers.Utils

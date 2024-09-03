@@ -1051,19 +1051,19 @@ class BindingAdapterUtils {
         }
 
 
-        @JvmStatic
-        @BindingAdapter("circleTextDrawable")
-        fun setCircleTextDrawable(view: ImageView, text: String) {
-            val textDrawable = TextDrawable.builder()
-                    .beginConfig()
-                    .textColor(Color.WHITE)
-                    .toUpperCase()
-                    .endConfig()
-                    .buildRoundRect(text[0].toString().toUpperCase(Locale.getDefault()),
-                            ContextCompat.getColor(view.context, R.color.orderStatusNewColor),
-                            60)
-            view.setImageDrawable(textDrawable)
-        }
+//        @JvmStatic
+//        @BindingAdapter("circleTextDrawable")
+//        fun setCircleTextDrawable(view: ImageView, text: String) {
+//            val textDrawable = TextDrawable.builder()
+//                    .beginConfig()
+//                    .textColor(Color.WHITE)
+//                    .toUpperCase()
+//                    .endConfig()
+//                    .buildRoundRect(text[0].toString().toUpperCase(Locale.getDefault()),
+//                            ContextCompat.getColor(view.context, R.color.orderStatusNewColor),
+//                            60)
+//            view.setImageDrawable(textDrawable)
+//        }
 
 
         @JvmStatic

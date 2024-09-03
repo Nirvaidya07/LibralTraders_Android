@@ -210,7 +210,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
     implementation "androidx.security:security-crypto:1.1.0-alpha06"
 
-
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'

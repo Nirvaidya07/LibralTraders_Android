@@ -13,6 +13,7 @@
 
 package com.webkul.mobikul.handlers
 
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.models.product.SwatchData
 import java.util.*
 

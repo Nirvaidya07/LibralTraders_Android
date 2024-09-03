@@ -48,6 +48,7 @@ import com.webkul.mobikul.activities.BaseActivity.Companion.mDataBaseHandler
 import com.webkul.mobikul.activities.CheckoutActivity
 import com.webkul.mobikul.adapters.ProductAttributesSwatchRvAdapter
 import com.libraltraders.android.databinding.WishListPopupMenuBinding
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.fragments.ProceedCheckoutBottomSheetFragment
 import com.webkul.mobikul.fragments.ProductCreateReviewBottomSheetFragment
 import com.webkul.mobikul.fragments.ProductReviewListFragment

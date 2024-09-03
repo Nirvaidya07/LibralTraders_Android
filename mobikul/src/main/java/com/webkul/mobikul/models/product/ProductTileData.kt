@@ -269,7 +269,7 @@ class ProductTileData() : Parcelable, BaseObservable() {
 
     fun newFormattedPrice():String{
         Log.d("TAG", "newGroupPrice2: ${formattedMinPrice}>>$formattedFinalPrice>>${formattedMaxPrice}>>${price}")
-        return "Starting at : $formattedFinalPrice";
+        return if (typeId=="simple") "$formattedFinalPrice" else "Starting at : $formattedFinalPrice";
     }
 
     fun isArEnabled(context: Context): Boolean {

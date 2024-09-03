@@ -24,6 +24,7 @@ import com.webkul.mobikul.activities.MyOrdersActivity
 import com.webkul.mobikul.activities.OrderDetailsActivity
 import com.webkul.mobikul.adapters.ProductCreateReviewRatingDataRvAdapter
 import com.libraltraders.android.databinding.FragmentProductCreateReviewBottomSheetBinding
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.handlers.ProductCreateReviewBottomSheetFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_KEYBOARD_OBSERVER
