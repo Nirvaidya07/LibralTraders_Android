@@ -9,6 +9,7 @@ plugins {
 
 android {
     namespace 'com.libraltraders.android'
+    
     compileSdk 34
 
     signingConfigs {
