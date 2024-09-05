@@ -27,12 +27,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.LoginAndSignUpActivity
 import com.webkul.mobikul.activities.OrderPlacedActivity
 import com.webkul.mobikul.adapters.CountryCodeSpinnerAdapter
-import com.webkul.mobikul.databinding.FragmentSignupBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentSignupBottomSheetBinding
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_KEYBOARD_OBSERVER
 import com.webkul.mobikul.models.BaseModel

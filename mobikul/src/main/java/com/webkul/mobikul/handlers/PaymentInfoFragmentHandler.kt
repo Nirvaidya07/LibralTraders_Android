@@ -21,7 +21,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.razorpay.Checkout
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AddEditAddressActivity
 import com.webkul.mobikul.activities.CheckoutActivity
 import com.webkul.mobikul.activities.OrderPlacedActivity

@@ -25,14 +25,14 @@ import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.BaseActivity.Companion.mDataBaseHandler
 import com.webkul.mobikul.activities.CheckoutActivity
 import com.webkul.mobikul.adapters.CartItemsRvAdapter
 import com.webkul.mobikul.adapters.PriceDetailsRvAdapter
 import com.webkul.mobikul.adapters.ProductCarouselHorizontalRvAdapter
-import com.webkul.mobikul.databinding.FragmentCartBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentCartBottomSheetBinding
 import com.webkul.mobikul.handlers.CartBottomSheetHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.BaseModel

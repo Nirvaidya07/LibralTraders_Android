@@ -3,8 +3,8 @@ package com.webkul.mobikul.activities
 import android.os.Bundle
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityWishListSharingBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityWishListSharingBinding
 import com.webkul.mobikul.handlers.WishListSharingActivityHandler
 import com.webkul.mobikul.models.user.WishListShareFormModel
 

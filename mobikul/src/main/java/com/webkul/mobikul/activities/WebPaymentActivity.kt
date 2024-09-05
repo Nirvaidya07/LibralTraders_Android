@@ -23,8 +23,8 @@ import android.webkit.CookieManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityWebPaymentBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityWebPaymentBinding
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CANCEL_URL
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_FAILURE_URL

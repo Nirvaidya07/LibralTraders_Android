@@ -22,9 +22,9 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.QtyPopupMenuBinding
+import com.libraltraders.android.databinding.QtyPopupMenuBinding
 import com.webkul.mobikul.fragments.CartBottomSheetFragment
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref

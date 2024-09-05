@@ -46,7 +46,6 @@
                     android:clickable="false"
                     android:elevation="1dp"
                     android:visibility="gone"
-                    app:circleTextDrawable="@{data.sender}"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/placeholder"
                     tools:targetApi="lollipop"

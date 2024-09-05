@@ -14,7 +14,7 @@
 package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.ContactUsActivity
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.NetworkHelper

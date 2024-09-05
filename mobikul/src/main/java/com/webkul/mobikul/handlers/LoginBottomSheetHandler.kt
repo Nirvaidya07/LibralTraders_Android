@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.auth.api.phone.SmsRetriever
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.LoginAndSignUpActivity
 import com.webkul.mobikul.fragments.ForgotPasswordDialogFragment

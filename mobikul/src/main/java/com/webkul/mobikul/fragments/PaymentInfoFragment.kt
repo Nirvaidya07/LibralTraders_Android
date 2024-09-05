@@ -33,11 +33,11 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.bumptech.glide.Glide
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CheckoutActivity
 import com.webkul.mobikul.adapters.PriceDetailsRvAdapter
 import com.webkul.mobikul.adapters.ProductsReviewRvAdapter
-import com.webkul.mobikul.databinding.FragmentPaymentInfoBinding
+import com.libraltraders.android.databinding.FragmentPaymentInfoBinding
 import com.webkul.mobikul.handlers.PaymentInfoFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CHECKOUT_ADDRESS_DATA

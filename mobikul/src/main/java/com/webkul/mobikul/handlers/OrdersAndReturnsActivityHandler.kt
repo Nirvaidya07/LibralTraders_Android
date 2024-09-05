@@ -15,7 +15,7 @@ package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
 import android.content.Intent
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.OrderDetailsActivity
 import com.webkul.mobikul.activities.OrdersAndReturnsActivity
 import com.webkul.mobikul.helpers.AlertDialogHelper

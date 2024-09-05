@@ -3,7 +3,7 @@ package com.webkul.mobikul.handlers
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.MyOrdersActivity
 import com.webkul.mobikul.activities.OrderDetailsActivity

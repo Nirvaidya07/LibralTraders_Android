@@ -17,8 +17,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityOrderPlacedBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityOrderPlacedBinding
 import com.webkul.mobikul.handlers.OrderPlaceActivityHandler
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.BundleKeysHelper

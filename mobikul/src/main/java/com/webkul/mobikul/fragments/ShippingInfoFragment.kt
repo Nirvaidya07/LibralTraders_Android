@@ -28,10 +28,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CheckoutActivity
-import com.webkul.mobikul.databinding.FragmentShippingInfoBinding
-import com.webkul.mobikul.databinding.ItemCheckoutShippingMethodBinding
+import com.libraltraders.android.databinding.FragmentShippingInfoBinding
+import com.libraltraders.android.databinding.ItemCheckoutShippingMethodBinding
 import com.webkul.mobikul.handlers.ShippingInfoFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ADDRESS_DATA

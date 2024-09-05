@@ -20,10 +20,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.adapters.StoresRvAdapter
-import com.webkul.mobikul.databinding.FragmentLanguageBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentLanguageBottomSheetBinding
 import com.webkul.mobikul.handlers.LanguagesBottomSheetHandler
 
 

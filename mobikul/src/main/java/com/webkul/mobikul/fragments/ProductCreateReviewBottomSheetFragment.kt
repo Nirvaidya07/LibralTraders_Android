@@ -18,13 +18,13 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.MyOrdersActivity
 import com.webkul.mobikul.activities.OrderDetailsActivity
-import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.adapters.ProductCreateReviewRatingDataRvAdapter
-import com.webkul.mobikul.databinding.FragmentProductCreateReviewBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentProductCreateReviewBottomSheetBinding
+import com.webkul.mobikul.activities.ProductDetailsActivity
 import com.webkul.mobikul.handlers.ProductCreateReviewBottomSheetFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_KEYBOARD_OBSERVER

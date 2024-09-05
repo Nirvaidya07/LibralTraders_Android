@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
-import com.webkul.mobikul.databinding.ItemSubCategoryBannerBinding
+import com.libraltraders.android.databinding.ItemSubCategoryBannerBinding
 import com.webkul.mobikul.helpers.ApplicationConstants
 import com.webkul.mobikul.models.homepage.BannerImage
 import java.util.*

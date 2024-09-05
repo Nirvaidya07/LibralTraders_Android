@@ -16,10 +16,10 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.webkul.mobikul.BuildConfig
+import com.libraltraders.android.BuildConfig
 
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivitySplashScreenBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivitySplashScreenBinding
 import com.webkul.mobikul.handlers.OnBoardActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.AppSharedPref.Companion.KEY_PRICE_PATTERN

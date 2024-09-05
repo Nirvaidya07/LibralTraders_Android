@@ -35,7 +35,7 @@ import android.widget.Scroller
 import com.webkul.mobikul.helpers.ToastHelper
 
 
-class TouchImageView : ImageView {
+class TouchImageView : androidx.appcompat.widget.AppCompatImageView {
 
     private val DEBUG = "DEBUG"
 
@@ -857,7 +857,8 @@ class TouchImageView : ImageView {
             performLongClick()
         }
 
-        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+
+         override fun onFling(   e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             if (fling != null) {
                 //
                 // If a previous fling is still active, it should be cancelled so that two flings

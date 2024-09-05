@@ -15,7 +15,7 @@ package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
 import android.view.View
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.ProductCreateReviewRatingDataRvAdapter
 import com.webkul.mobikul.fragments.ProductCreateReviewBottomSheetFragment

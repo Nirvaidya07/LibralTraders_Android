@@ -22,11 +22,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.BookingDataAdapter
 import com.webkul.mobikul.adapters.OrderShipmentItemsRvAdapter
-import com.webkul.mobikul.databinding.FragmentOrderShipmentDetailsBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentOrderShipmentDetailsBottomSheetBinding
 import com.webkul.mobikul.handlers.OrderShipmentDetailsBottomSheetFragmentHandler
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref

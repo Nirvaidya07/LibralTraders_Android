@@ -15,7 +15,7 @@ package com.webkul.mobikul.models.product
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import com.webkul.mobikul.BR
+import com.libraltraders.android.BR
 
 
 class SwatchData : BaseObservable() {

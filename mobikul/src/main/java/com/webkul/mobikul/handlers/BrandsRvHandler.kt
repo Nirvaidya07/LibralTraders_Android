@@ -18,13 +18,13 @@ import com.webkul.mobikul.helpers.BundleKeysHelper
  * @link https://store.webkul.com/license.html
  */
 
-class BrandsRvHandler(val mContext: Context, val mCategoryId: String?) {
+class BrandsRvHandler(val mContext: Context) {
 
-    fun onClickSeller(brandId: String, brandCode: String, label: String) {
+    fun onClickSeller(brandId: String, brandCode: String, label: String,optionId: String) {
         val intent = Intent(mContext, CatalogActivity::class.java)
         intent.putExtra(BundleKeysHelper.BUNDLE_KEY_CATALOG_TYPE, BundleKeysHelper.BUNDLE_KEY_CATALOG_TYPE_CATEGORY)
         intent.putExtra(BundleKeysHelper.BUNDLE_KEY_CATALOG_TITLE, label)
-        intent.putExtra(BundleKeysHelper.BUNDLE_KEY_CATALOG_ID, mCategoryId)
+        intent.putExtra(BundleKeysHelper.BUNDLE_KEY_OPTION_ID, optionId)
         intent.putExtra(BundleKeysHelper.BUNDLE_KEY_CATALOG_BRAND_CODE, brandCode)
         intent.putExtra(BundleKeysHelper.BUNDLE_KEY_CATALOG_BRAND_ID, brandId)
         mContext.startActivity(intent)

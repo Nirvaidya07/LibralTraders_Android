@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityAccountInfoBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityAccountInfoBinding
 import com.webkul.mobikul.handlers.AccountInfoActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.BaseModel

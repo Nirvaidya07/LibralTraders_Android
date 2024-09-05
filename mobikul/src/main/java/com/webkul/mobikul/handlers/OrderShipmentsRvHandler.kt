@@ -14,7 +14,7 @@
 package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.fragments.OrderShipmentDetailsBottomSheetFragment
 import com.webkul.mobikul.fragments.ShipmentsFragment

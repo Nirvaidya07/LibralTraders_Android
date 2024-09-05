@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.razorpay.Checkout
 import com.theartofdev.edmodo.cropper.CropImage
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.*
 import com.webkul.mobikul.fragments.NavDrawerStartFragment
 import com.webkul.mobikul.helpers.*
@@ -51,11 +51,13 @@ class NavDrawerStartFragmentHandler(private val mFragmentContext: NavDrawerStart
                         )
 
                     } else {
-                        mFragmentContext.activity?.startActivityForResult(
-                            ((context as BaseActivity).application as MobikulApplication).getLoginAndSignUpActivity(
-                                mFragmentContext.requireContext()
-                            ), ConstantsHelper.RC_LOGIN
-                        )
+                        ((context as BaseActivity).application as MobikulApplication).getLoginAndSignUpActivity(
+                            mFragmentContext.requireContext()
+                        )?.let {
+                            mFragmentContext.activity?.startActivityForResult(
+                                it, ConstantsHelper.RC_LOGIN
+                            )
+                        }
                     }
                 }, 300)
                 (context as HomeActivity).mContentViewBinding.drawerLayout.closeDrawers()

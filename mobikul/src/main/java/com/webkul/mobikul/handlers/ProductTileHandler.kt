@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.CatalogActivity
 import com.webkul.mobikul.activities.CompareProductsActivity

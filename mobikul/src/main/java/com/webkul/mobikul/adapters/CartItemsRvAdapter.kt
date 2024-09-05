@@ -22,8 +22,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemCartItemListBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemCartItemListBinding
 import com.webkul.mobikul.fragments.CartBottomSheetFragment
 import com.webkul.mobikul.handlers.CartItemsRvHandler
 import com.webkul.mobikul.helpers.ApplicationConstants

@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemShipmentTrackingDetailsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemShipmentTrackingDetailsBinding
 import com.webkul.mobikul.models.user.TrackingData
 
 class ShipmentTrackingDetailsRvAdapter(private val mContext: Context, private val mListData: ArrayList<TrackingData>) : RecyclerView.Adapter<ShipmentTrackingDetailsRvAdapter.ViewHolder>() {

@@ -3,6 +3,8 @@ package com.webkul.mobikul.handlers
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import com.webkul.mobikul.activities.BrandCatActivity
 import com.webkul.mobikul.activities.CatalogActivity
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.activities.SubCategoryActivity
@@ -28,20 +30,33 @@ import com.webkul.mobikul.models.homepage.Category
 
 class NavDrawerCategoriesRvHandler(private val mFragmentContext: NavDrawerStartFragment) {
 
+
     fun onClickItem(categoryData: Category) {
         mFragmentContext.context?.let { context ->
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent: Intent = if (categoryData.hasChildren) {
-                    Intent(context, SubCategoryActivity::class.java)
-                } else {
-                    Intent(context, CatalogActivity::class.java)
-                }
-                intent.putExtra(BUNDLE_KEY_CATALOG_TYPE, BUNDLE_KEY_CATALOG_TYPE_CATEGORY)
-                intent.putExtra(BUNDLE_KEY_CATALOG_TITLE, categoryData.name)
-                intent.putExtra(BUNDLE_KEY_CATALOG_ID, categoryData.id)
-                context.startActivity(intent)
+                Log.d("TAG", "onClickItem: ${categoryData.hasChildren}")
+//                if (categoryData.name.equals("Brands")) {
+//                    val intent = Intent(context, BrandCatActivity::class.java)
+//                    intent.putExtra(BUNDLE_KEY_CATALOG_TYPE, BUNDLE_KEY_CATALOG_TYPE_CATEGORY)
+//                    intent.putExtra(BUNDLE_KEY_CATALOG_TITLE, categoryData.name)
+//                    intent.putExtra(BUNDLE_KEY_CATALOG_ID, categoryData.id)
+//                    context.startActivity(intent)
+//                }
+//                else {
+                    val intent: Intent = if (categoryData.hasChildren) {
+                        Intent(context, SubCategoryActivity::class.java)
+                    } else {
+                        Intent(context, CatalogActivity::class.java)
+                    }
+                    intent.putExtra(BUNDLE_KEY_CATALOG_TYPE, BUNDLE_KEY_CATALOG_TYPE_CATEGORY)
+                    intent.putExtra(BUNDLE_KEY_CATALOG_TITLE, categoryData.name)
+                    intent.putExtra(BUNDLE_KEY_CATALOG_ID, categoryData.id)
+                    context.startActivity(intent)
+               // }
+
             }, 300)
             (context as HomeActivity).mContentViewBinding.drawerLayout.closeDrawers()
+
         }
     }
 }

@@ -2,7 +2,7 @@ package com.webkul.mobikul.handlers
 
 import android.content.DialogInterface
 import android.view.View
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.fragments.DeliveryboyMakeReviewFragment
 import com.webkul.mobikul.helpers.AlertDialogHelper
@@ -97,7 +97,7 @@ class DeliveryboyMakeReviewHandler(private val mFragmentContext: DeliveryboyMake
                     dialogInterface.dismiss()
                     callApi(mFragmentContext.mContentViewBinding.data!!)
                 }
-                , mFragmentContext.getString(com.webkul.mobikul.R.string.close)
+                , mFragmentContext.getString(R.string.close)
                 , DialogInterface.OnClickListener { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss()
         })

@@ -21,12 +21,12 @@ import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.CompareProductsAddToCartRvAdapter
 import com.webkul.mobikul.adapters.CompareProductsAttributesListRvAdapter
 import com.webkul.mobikul.adapters.CompareProductsRvAdapter
-import com.webkul.mobikul.databinding.ActivityCompareProductsBinding
-import com.webkul.mobikul.databinding.ItemCompareProductsAttributeBinding
+import com.libraltraders.android.databinding.ActivityCompareProductsBinding
+import com.libraltraders.android.databinding.ItemCompareProductsAttributeBinding
 import com.webkul.mobikul.fragments.EmptyFragment
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.BaseModel

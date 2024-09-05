@@ -13,7 +13,11 @@
 
 package com.webkul.mobikul.network
 
+import com.webkul.mobikul.cartPopup.ProductItem
+import com.webkul.mobikul.helpers.AdminTokenRequest
 import com.webkul.mobikul.helpers.ConstantsHelper
+import com.webkul.mobikul.helpers.ConstantsHelper.MAGENTO_ADMIN_TOKEN
+import com.webkul.mobikul.helpers.ConstantsHelper.MOBIKUL_BRANDS_LIST
 import com.webkul.mobikul.helpers.ConstantsHelper.MOBIKUL_CATALOG_ADD_TO_COMPARE
 import com.webkul.mobikul.helpers.ConstantsHelper.MOBIKUL_CATALOG_ADD_TO_WISH_LIST
 import com.webkul.mobikul.helpers.ConstantsHelper.MOBIKUL_CATALOG_ADVANCED_SEARCH_FORM_DATA
@@ -104,7 +108,6 @@ import com.webkul.mobikul.models.homepage.OnBoardResponseModel
 import com.webkul.mobikul.models.product.ProductDetailsPageModel
 import com.webkul.mobikul.models.product.ProductRatingFormDataModel
 import com.webkul.mobikul.models.product.ProductRequestBody
-import com.webkul.mobikul.models.product.ProductResponse
 import com.webkul.mobikul.models.product.ReviewListData
 import com.webkul.mobikul.models.user.*
 import io.reactivex.Observable
@@ -202,8 +205,7 @@ interface ApiDetails {
         @Query("width") width: Int,
         @Query("currency") currency: String,
         @Query("productId") productId: String
-    ):
-            Observable<ProductDetailsPageModel>
+    ): Observable<ProductDetailsPageModel>
 
     @GET(MOBIKUL_CATALOG_PRODUCT_REVIEW_LIST)
     fun getProductReviewList(
@@ -214,8 +216,7 @@ interface ApiDetails {
         @Query("width") width: Int,
         @Query("productId") productId: String,
         @Query("pageNumber") pageNumber: Int
-    ):
-            Observable<ReviewListData>
+    ): Observable<ReviewListData>
 
     @GET(MOBIKUL_CATALOG_RATING_FORM_DATA)
     fun getRatingForData(
@@ -906,8 +907,17 @@ interface ApiDetails {
         @Query("websiteId") websiteId: String,
         @Query("storeId") storeId: String,
         @Query("customerToken") customerToken: String
-    ):
-            Observable<BaseModel>
+    ): Observable<BaseModel>
+
+    @POST(MAGENTO_ADMIN_TOKEN)
+    fun getAdminToken(
+        @Body request: AdminTokenRequest
+    ): Observable<String>
+
+    @GET(MOBIKUL_BRANDS_LIST)
+    fun getBrandCategoryData(
+        @Header("Authorization") token: String
+    ): Observable<List<BrandCategoryResponseModel>>
 
 
     @GET(MOBIKUL_CUSTOMER_COUNTRY_CODE)
@@ -959,4 +969,8 @@ interface ApiDetails {
         @Query("shipmentId") shipmentId: String,
         @Query("customerId") customerId: String,
     ): Observable<String>
+
+
+    @GET("categories/1046/products")
+    fun getProducts(): Observable<List<ProductItem>>
 }

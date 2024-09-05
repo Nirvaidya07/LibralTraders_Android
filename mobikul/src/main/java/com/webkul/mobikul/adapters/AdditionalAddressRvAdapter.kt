@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.AddressBookActivity
-import com.webkul.mobikul.databinding.ItemAdditionalAddressBinding
+import com.libraltraders.android.databinding.ItemAdditionalAddressBinding
 import com.webkul.mobikul.handlers.AddressBookActivityHandler
 import com.webkul.mobikul.helpers.BindingAdapterUtils
 import com.webkul.mobikul.models.user.AddressData

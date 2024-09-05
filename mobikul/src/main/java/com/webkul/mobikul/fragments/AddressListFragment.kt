@@ -21,9 +21,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.CheckoutShippingAddressRvAdapter
-import com.webkul.mobikul.databinding.FragmentAddressListBinding
+import com.libraltraders.android.databinding.FragmentAddressListBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CHECKOUT_ADDRESS_LIST
 import com.webkul.mobikul.models.checkout.CheckoutAddressInfoResponseModel
 

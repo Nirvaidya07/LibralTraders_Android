@@ -4,9 +4,9 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.RatingDataRvAdapter
-import com.webkul.mobikul.databinding.ActivityReviewDetailsBinding
+import com.libraltraders.android.databinding.ActivityReviewDetailsBinding
 import com.webkul.mobikul.handlers.ReviewDetailsActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.BaseModel

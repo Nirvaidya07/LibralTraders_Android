@@ -13,7 +13,7 @@
 
 package com.webkul.mobikul.handlers
 
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity.Companion.mDataBaseHandler
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.fragments.SettingsBottomSheetFragment

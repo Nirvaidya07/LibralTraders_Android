@@ -31,8 +31,8 @@ import com.google.android.gms.location.*
 import com.google.android.material.textfield.TextInputEditText
 import com.mobikul.locationpicker.AddressPickerActivity
 import com.mobikul.locationpicker.AddressPickerActivity.Companion.RESULT_ADDRESS
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityAddEditAddressBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityAddEditAddressBinding
 import com.webkul.mobikul.handlers.AddEditAddressActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_ADDRESS_COUNT
@@ -366,7 +366,9 @@ class AddEditAddressActivity : BaseActivity(), LocationListener {
                         ConstantsHelper.OPEN_LOGIN_PAGE
                     )
                     intent?.putExtra(BUNDLE_KEY_LOGIN_EMAIL_ID,toString)
-                    startActivityForResult(intent, RC_LOGIN)
+                    if (intent != null) {
+                        startActivityForResult(intent, RC_LOGIN)
+                    }
             //        startActivityForResult((application as MobikulApplication).getLoginAndSignUpActivity(this), RC_LOGIN)
                 }, getString(R.string.continue_text), { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss()

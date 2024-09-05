@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.common.api.Api
 import com.google.gson.Gson
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.MyOrdersRvAdapter
 import com.webkul.mobikul.adapters.OrderAgainAdapter
-import com.webkul.mobikul.databinding.ActivityMyOrdersBinding
+import com.libraltraders.android.databinding.ActivityMyOrdersBinding
 import com.webkul.mobikul.fragments.CartBottomSheetFragment
 import com.webkul.mobikul.fragments.EmptyFragment
 import com.webkul.mobikul.helpers.*

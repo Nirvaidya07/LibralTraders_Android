@@ -6,9 +6,9 @@ import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.MyDownloadableProductsRvAdapter
-import com.webkul.mobikul.databinding.ActivityMyDownloadableProductsBinding
+import com.libraltraders.android.databinding.ActivityMyDownloadableProductsBinding
 import com.webkul.mobikul.fragments.EmptyFragment
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.BaseModel

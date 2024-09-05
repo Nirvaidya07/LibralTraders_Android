@@ -24,10 +24,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.ReviewsRvAdapter
-import com.webkul.mobikul.databinding.FragmentProductReviewListBinding
+import com.libraltraders.android.databinding.FragmentProductReviewListBinding
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_PRODUCT_ID

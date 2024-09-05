@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity.Companion.mDataBaseHandler
 import com.webkul.mobikul.activities.BaseActivity.Companion.mObjectMapper
 import com.webkul.mobikul.activities.MyDownloadableProductsActivity

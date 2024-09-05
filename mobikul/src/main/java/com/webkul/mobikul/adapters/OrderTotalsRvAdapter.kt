@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemOrderTotalsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemOrderTotalsBinding
 import com.webkul.mobikul.models.user.TotalItem
 
 /**

@@ -11,8 +11,8 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityMediaPlayerWebviewBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityMediaPlayerWebviewBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_MEDIA_URL
 import java.util.regex.Pattern
 
@@ -29,7 +29,7 @@ class MediaPlayerWebviewActivity : AppCompatActivity() {
 
         mBinding.webview.settings.pluginState = WebSettings.PluginState.ON
         mBinding.webview.settings.javaScriptEnabled = true
-        mBinding.webview.settings.setAppCacheEnabled(true)
+        mBinding.webview.settings.safeBrowsingEnabled=true
         // mBinding.webview.setInitialScale(1);
         mBinding.webview.settings.loadWithOverviewMode = true
         mBinding.webview.settings.useWideViewPort = true

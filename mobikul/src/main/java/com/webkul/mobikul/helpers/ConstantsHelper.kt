@@ -25,7 +25,8 @@ object ConstantsHelper {
     const val MOBIKUL_CATALOG_HOME_PAGE_DATA = "mobikulhttp/catalog/homepagedata"
     const val MOBIKUL_CATALOG_SUB_CATEGORY = "mobikulhttp/catalog/categoryPageData"
     const val MOBIKUL_CATALOG_CATEGORY_PRODUCT_LIST = "mobikulhttp/catalog/productCollection"
-    const val MOBIKUL_CATALOG_ADVANCED_SEARCH_FORM_DATA = "mobikulhttp/catalog/advancedSearchFormData"
+    const val MOBIKUL_CATALOG_ADVANCED_SEARCH_FORM_DATA =
+        "mobikulhttp/catalog/advancedSearchFormData"
     const val MOBIKUL_CATALOG_ADD_TO_WISH_LIST = "mobikulhttp/catalog/addtoWishlist"
     const val MOBIKUL_CATALOG_PRODUCT_PAGE_DATA = "mobikulhttp/catalog/productPageData"
     const val MOBIKUL_CATALOG_PRODUCT_REVIEW_LIST = "mobikulhttp/catalog/reviewsandratings"
@@ -37,7 +38,8 @@ object ConstantsHelper {
     /* Customer */
     const val MOBIKUL_CUSTOMER_LOGIN = "mobikulhttp/customer/logIn"
     const val MOBIKUL_CUSTOMER_FORGOT_PASSWORD = "mobikulhttp/customer/forgotpassword"
-    const val MOBIKUL_CUSTOMER_CREATE_ACCOUNT_FORM_DATA = "mobikulhttp/customer/createAccountFormData"
+    const val MOBIKUL_CUSTOMER_CREATE_ACCOUNT_FORM_DATA =
+        "mobikulhttp/customer/createAccountFormData"
     const val MOBIKUL_CUSTOMER_CREATE_ACCOUNT = "mobikulhttp/customer/createAccount"
     const val MOBIKUL_CUSTOMER_ORDER_LIST = "mobikulhttp/customer/orderList"
     const val MOBIKUL_CUSTOMER_MY_DOWNLOADS_LIST = "mobikulhttp/customer/myDownloadsList"
@@ -67,10 +69,10 @@ object ConstantsHelper {
     const val MOBIKUL_CUSTOMER_VIEW_SHIPMENT = "mobikulhttp/customer/shipmentview"
     const val MOBIKUL_CUSTOMER_CHECK_CUSTOMER_BY_EMAIL = "mobikulhttp/customer/checkCustomerByEmail"
     const val MOBIKUL_CUSTOMER_WEB_LOGIN = "mobikul/qrcodelogin/savecustomertoken"
-    const val MOBIKUL_CUSTOMER_DELETE_ACCOUNT= "rest/V1/deletecustomer"
-    const val MOBIKUL_CUSTOMER_ORDER_AGAIN= "rest/all/V1/reorder/listproductreorder"
-    const val MOBIKUL_CUSTOMER_ORDER_TRACKING= "rest/all/V1/ordertracking/gettrackdata"
-    const val MOBIKUL_CUSTOMER_QUOTE_ID= "rest/V1/carts/mine"
+    const val MOBIKUL_CUSTOMER_DELETE_ACCOUNT = "rest/V1/deletecustomer"
+    const val MOBIKUL_CUSTOMER_ORDER_AGAIN = "rest/all/V1/reorder/listproductreorder"
+    const val MOBIKUL_CUSTOMER_ORDER_TRACKING = "rest/all/V1/ordertracking/gettrackdata"
+    const val MOBIKUL_CUSTOMER_QUOTE_ID = "rest/V1/carts/mine"
 
     /* Extra */
     const val MOBIKUL_EXTRAS_LOGOUT = "mobikulhttp/extra/logOut"
@@ -104,8 +106,10 @@ object ConstantsHelper {
 
     /* Delivery Boy */
     const val MOBIKUL_DELIVERY_BOY_GET_LOCATION = "expressdelivery/api/GetLocation"
-    const val MOBIKUL_DELIVERY_BOY_UPDATE_TOKEN_ON_CLOUD = "https://us-central1-mobikul-magento2-app.cloudfunctions.net/updateTokenToDataBase"
-    const val MOBIKUL_DELIVERY_BOY_DELETE_TOKEN_FROM_CLOUD = "https://us-central1-mobikul-magento2-app.cloudfunctions.net/deleteTokenFromDataBase"
+    const val MOBIKUL_DELIVERY_BOY_UPDATE_TOKEN_ON_CLOUD =
+        "https://us-central1-mobikul-magento2-app.cloudfunctions.net/updateTokenToDataBase"
+    const val MOBIKUL_DELIVERY_BOY_DELETE_TOKEN_FROM_CLOUD =
+        "https://us-central1-mobikul-magento2-app.cloudfunctions.net/deleteTokenFromDataBase"
     const val MOBIKUL_DELIVERY_BOY_ADD_REVIEW = "expressdelivery/api_customer/addreview"
 
     /*ON BOARDING API*/
@@ -115,6 +119,11 @@ object ConstantsHelper {
     const val MOBIKUL_CUSTOMER_COUNTRY_CODE = "otpsystem/customer/countrycode"
     const val MOBIKUL_SEND_OTP = "otpsystem/customer/sendotp"
     const val MOBIKUL_VERIFY_OTP = "otpsystem/customer/verifyotp"
+
+
+    /*new*/
+    const val MOBIKUL_BRANDS_LIST = "rest/V1/mpbrand"
+    const val MAGENTO_ADMIN_TOKEN = "rest/all/V1/integration/admin/token"
 
 
     /************************************************************

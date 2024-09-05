@@ -18,8 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemOrderShipmentsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemOrderShipmentsBinding
 import com.webkul.mobikul.fragments.ShipmentsFragment
 import com.webkul.mobikul.handlers.OrderShipmentsRvHandler
 import com.webkul.mobikul.models.user.ShipmentItem

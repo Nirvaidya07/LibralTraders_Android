@@ -101,7 +101,7 @@ class FirebaseAnalyticsHelper {
                 val params = Bundle()
                 params.putString("product_id", incrementId)
                 params.putString("product_name", orderId)
-                sFirebaseAnalytics?.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, params)
+               // sFirebaseAnalytics?.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, params)
             }
         }
     }

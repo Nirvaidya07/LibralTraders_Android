@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.webkul.mlkit.activities.CameraSearchActivity
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.CameraSimpleSpinnerItemBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.CameraSimpleSpinnerItemBinding
 
 
 /**

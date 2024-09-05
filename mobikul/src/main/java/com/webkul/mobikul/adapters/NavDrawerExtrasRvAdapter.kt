@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemNavDrawerExtrasBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemNavDrawerExtrasBinding
 import com.webkul.mobikul.fragments.NavDrawerStartFragment
 import com.webkul.mobikul.handlers.NavDrawerExtrasRvHandler
 import com.webkul.mobikul.models.homepage.NavDrawerExtrasRvModel

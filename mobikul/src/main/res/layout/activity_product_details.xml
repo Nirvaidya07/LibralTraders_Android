@@ -172,20 +172,34 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:gravity="center_vertical|start"
                         android:visibility="@{data == null ? View.GONE : View.VISIBLE}">
-
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/product_price_tv"
                             fontPath="fonts/Montserrat-SemiBold.ttf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
-                            android:text="@{data.formattedFinalPrice}"
+                            android:text="@{data.getFinalPriceForProduct}"
                             android:textColor="@color/product_price_color"
-                            android:textSize="@dimen/text_size_large"
+                            android:textSize="@dimen/text_size_medium"
                             android:textStyle="bold"
                             android:visibility="@{data.hasPrice() ? View.VISIBLE : View.GONE}"
                             tools:text="$210.00" />
-
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/product_tax_info_tv"
+                            fontPath="fonts/Montserrat-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="(Inclusive Of All Taxes)"
+                            android:textColor="@color/product_price_color"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="@{data.hasPrice() ? View.VISIBLE : View.GONE}"
+                            tools:text="(Inclusive Of All Taxes)" />
+                        </LinearLayout>
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/product_special_price_tv"
                             fontPath="fonts/Montserrat-SemiBold.ttf"
@@ -267,9 +281,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
-                            android:text="@{data.groupedPrice}"
+                            android:text="@{data.formattedGroupedPrice}"
                             android:textColor="@color/product_price_color"
-                            android:textSize="@dimen/text_size_large"
+                            android:textSize="@dimen/text_size_medium"
                             android:textStyle="bold"
                             android:visibility="@{data.hasGroupedPrice() ? View.VISIBLE : View.GONE}"
                             tools:text="$410.00" />
@@ -368,7 +382,7 @@
                             android:textAllCaps="true"
                             android:textColor="@{data.isAvailable ? @color/text_color_primary : @color/out_of_stock_color}"
                             android:textSize="@dimen/text_size_medium"
-                            android:visibility="@{data == null ? View.GONE : View.VISIBLE}" />
+                            android:visibility="@{data.setVisibilityBasedOnAvailability == null ? View.GONE : View.VISIBLE}" />
 
 
                         <androidx.appcompat.widget.AppCompatTextView

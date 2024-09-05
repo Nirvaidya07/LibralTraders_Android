@@ -19,8 +19,8 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import com.webkul.mobikul.BR
-import com.webkul.mobikul.R
+import com.libraltraders.android.BR
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.firebase.NOTIFICATION_CHANNEL_ABANDONED_CART

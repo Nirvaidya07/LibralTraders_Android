@@ -32,7 +32,9 @@ class ProceedCheckoutBottomSheetFragmentHandler(val mFragmentContext: ProceedChe
                   activity
                 )
             intent?.putExtra(BUNDLE_KEY_LOGIN_OR_REGISTER_PAGE, OPEN_LOGIN_PAGE)
-          activity.startActivityForResult(intent, RC_LOGIN)
+            if (intent != null) {
+                activity.startActivityForResult(intent, RC_LOGIN)
+            }
             mFragmentContext.dismiss()
         }
     }
@@ -53,7 +55,9 @@ class ProceedCheckoutBottomSheetFragmentHandler(val mFragmentContext: ProceedChe
                     activity
                 )
             intent?.putExtra(BUNDLE_KEY_LOGIN_OR_REGISTER_PAGE, OPEN_SIGN_UP_PAGE)
-            activity.startActivityForResult(intent, RC_LOGIN)
+            if (intent != null) {
+                activity.startActivityForResult(intent, RC_LOGIN)
+            }
             mFragmentContext.dismiss()
         }
     }

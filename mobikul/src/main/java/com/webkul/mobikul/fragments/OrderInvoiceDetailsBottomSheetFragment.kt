@@ -20,11 +20,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.OrderInvoiceItemsRvAdapter
 import com.webkul.mobikul.adapters.OrderTotalsRvAdapter
-import com.webkul.mobikul.databinding.FragmentOrderInvoiceDetailsBottomSheetBinding
+import com.libraltraders.android.databinding.FragmentOrderInvoiceDetailsBottomSheetBinding
 import com.webkul.mobikul.handlers.OrderInvoiceDetailsBottomSheetFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_INCREMENT_ID

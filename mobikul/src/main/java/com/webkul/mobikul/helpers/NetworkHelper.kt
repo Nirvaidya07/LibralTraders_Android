@@ -3,7 +3,7 @@ package com.webkul.mobikul.helpers
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import retrofit2.HttpException
 import java.net.SocketException
 import java.net.SocketTimeoutException

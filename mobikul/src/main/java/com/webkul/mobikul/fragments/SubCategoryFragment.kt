@@ -11,7 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter
 import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter.Companion.VIEW_TYPE_BANNER
@@ -20,7 +20,7 @@ import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter.Companion.VIEW_TYP
 import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter.Companion.VIEW_TYPE_HOT_SELLER
 import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter.Companion.VIEW_TYPE_PARENT_CATEGORY
 import com.webkul.mobikul.adapters.SubCategoryFragmentAdapter.Companion.VIEW_TYPE_PRODUCTS
-import com.webkul.mobikul.databinding.FragmentSubCategoryBinding
+import com.libraltraders.android.databinding.FragmentSubCategoryBinding
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.CategoriesData
 import com.webkul.mobikul.models.catalog.SubCategoryResponseModel

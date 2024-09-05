@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityLoginAndSignUpBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityLoginAndSignUpBinding
 import com.webkul.mobikul.handlers.LoginAndSignUpActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_LOGIN_OR_REGISTER_PAGE

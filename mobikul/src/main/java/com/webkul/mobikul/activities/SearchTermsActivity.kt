@@ -16,9 +16,9 @@ package com.webkul.mobikul.activities
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.SearchTermsRvAdapter
-import com.webkul.mobikul.databinding.ActivitySearchTermsBinding
+import com.libraltraders.android.databinding.ActivitySearchTermsBinding
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.NetworkHelper

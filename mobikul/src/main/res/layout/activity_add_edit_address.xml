@@ -320,7 +320,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_generic"
-                    app:hintWithAsterisk="@{@string/gst_number}">
+                    app:hint="@{@string/gst_number}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"

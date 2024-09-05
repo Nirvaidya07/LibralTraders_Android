@@ -18,9 +18,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemAttributeSwatchBinding
 import com.webkul.mobikul.activities.ProductDetailsActivity
-import com.webkul.mobikul.databinding.ItemAttributeSwatchBinding
 import com.webkul.mobikul.handlers.CatalogAttributesSwatchHandler
 import com.webkul.mobikul.models.product.SwatchData
 import java.util.*

@@ -13,7 +13,7 @@
 
 package com.webkul.mobikul.handlers
 
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.fragments.ForgotPasswordDialogFragment
 import com.webkul.mobikul.helpers.ToastHelper.Companion.showToast
 import com.webkul.mobikul.models.BaseModel

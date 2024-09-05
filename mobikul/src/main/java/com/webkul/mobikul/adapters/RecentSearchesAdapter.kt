@@ -18,9 +18,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.customviews.MaterialSearchView
-import com.webkul.mobikul.databinding.ItemRecentSearchesBinding
+import com.libraltraders.android.databinding.ItemRecentSearchesBinding
 import com.webkul.mobikul.handlers.RecentSearchesHandler
 
 class RecentSearchesAdapter(private val mMaterialSearchView: MaterialSearchView, private var mListData: ArrayList<String>) : RecyclerView.Adapter<RecentSearchesAdapter.ViewHolder>() {

@@ -18,8 +18,8 @@ import android.util.Log
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import com.razorpay.PaymentResultListener
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityCheckoutBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityCheckoutBinding
 import com.webkul.mobikul.fragments.PaymentInfoFragment
 import com.webkul.mobikul.fragments.ShippingInfoFragment
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_IS_VIRTUAL_CART

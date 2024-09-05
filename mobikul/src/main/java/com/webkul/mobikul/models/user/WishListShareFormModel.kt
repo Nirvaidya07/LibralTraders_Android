@@ -1,7 +1,7 @@
 package com.webkul.mobikul.models.user
 
 import androidx.databinding.BaseObservable
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.WishListSharingActivity
 import com.webkul.mobikul.helpers.Utils.Companion.showShakeError
 

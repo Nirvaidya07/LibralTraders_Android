@@ -33,6 +33,7 @@ import android.os.Looper
 import android.provider.MediaStore
 import android.text.*
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
@@ -55,9 +56,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import com.webkul.arcore.activities.MeasurementActivity
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.*
-import com.webkul.mobikul.databinding.ActivityProductDetailsBinding
+import com.libraltraders.android.databinding.ActivityProductDetailsBinding
 import com.webkul.mobikul.handlers.ProductDetailsActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.ApplicationConstants.ENABLE_WISHLIST
@@ -281,6 +282,7 @@ open class ProductDetailsActivity : BaseActivity() {
     }
 
     fun onSuccessfulResponse(productDetailsPageModel: ProductDetailsPageModel) {
+        Log.d("TAG", "getProductPageData: ${productDetailsPageModel.groupedPrice}>Price${productDetailsPageModel.groupedData}>>${productDetailsPageModel.finalPrice}")
         mContentViewBinding.loading=false
         mContentViewBinding.data = productDetailsPageModel
         mContentViewBinding.handler = ProductDetailsActivityHandler(this)
@@ -412,6 +414,9 @@ open class ProductDetailsActivity : BaseActivity() {
                     newCustomOptionLabel += "  (+$formattedDefaultPrice)"
                 }
             }
+            Log.d("TAG", "setCustomOptionName: ${mContentViewBinding.data!!.typeId}")
+            val prefixText = "As low as "
+            val prefixSpannable = SpannableString(prefixText)
             val customOptionNameSpannable = SpannableString(newCustomOptionLabel)
             customOptionNameSpannable.setSpan(
                 ForegroundColorSpan(
@@ -431,8 +436,12 @@ open class ProductDetailsActivity : BaseActivity() {
                     requiredSign.length,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE
                 )
-
-                customOptionsName.append(requiredSign)
+                val combinedSpannable = SpannableStringBuilder().apply {
+                    append(prefixSpannable)
+                    append(customOptionNameSpannable)
+                }
+                customOptionsName.text = combinedSpannable
+               // customOptionsName.append(requiredSign)
             }
 
             mContentViewBinding.productCustomOptionsContainer.addView(customOptionsName)
@@ -2346,6 +2355,7 @@ open class ProductDetailsActivity : BaseActivity() {
         if (mContentViewBinding.data!!.typeId != "configurable" || noOfSelectedOptions == mContentViewBinding.data!!.configurableData.attributes?.size) {
             mContentViewBinding.productPriceTv.text = newFormattedFinalPrice
             mContentViewBinding.productSpecialPriceTv.setText(newFormattedPrice)
+
         } else {
 
         }
@@ -2677,6 +2687,12 @@ open class ProductDetailsActivity : BaseActivity() {
         super.applyOverrideConfiguration(overrideConfiguration)
     }
 
-
+    fun setVisibilityBasedOnAvailability(view: View, availability: String?) {
+        view.visibility = if (availability != null && availability == "In Stock") {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
 
 }

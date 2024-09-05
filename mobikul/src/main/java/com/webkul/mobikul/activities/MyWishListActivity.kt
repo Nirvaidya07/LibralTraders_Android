@@ -11,9 +11,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.MyWishListRvAdapter
-import com.webkul.mobikul.databinding.ActivityMyWishlistBinding
+import com.libraltraders.android.databinding.ActivityMyWishlistBinding
 import com.webkul.mobikul.fragments.EmptyFragment
 import com.webkul.mobikul.handlers.MyWishListActivityHandler
 import com.webkul.mobikul.helpers.*

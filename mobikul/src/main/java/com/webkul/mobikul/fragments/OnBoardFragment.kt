@@ -14,8 +14,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentOnBoardBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentOnBoardBinding
 import com.webkul.mobikul.helpers.BundleKeysHelper
 import com.webkul.mobikul.helpers.Utils
 import com.webkul.mobikul.helpers.darken

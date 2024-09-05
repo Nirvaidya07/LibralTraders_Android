@@ -28,13 +28,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.HomeActivity
 import com.webkul.mobikul.adapters.NavDrawerAccountRvAdapter
 import com.webkul.mobikul.adapters.NavDrawerCategoriesRvAdapter
 import com.webkul.mobikul.adapters.NavDrawerCmsRvAdapter
 import com.webkul.mobikul.adapters.NavDrawerPreferencesRvAdapter
-import com.webkul.mobikul.databinding.FragmentNavDrawerStartBinding
+import com.libraltraders.android.databinding.FragmentNavDrawerStartBinding
 import com.webkul.mobikul.handlers.NavDrawerStartFragmentHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.models.ImageUploadResponseData

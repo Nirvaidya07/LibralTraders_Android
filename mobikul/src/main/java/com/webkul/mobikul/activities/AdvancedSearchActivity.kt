@@ -20,8 +20,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityAdvancedSearchBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityAdvancedSearchBinding
 import com.webkul.mobikul.handlers.AdvancedSearchActivityHandler
 import com.webkul.mobikul.helpers.AlertDialogHelper
 import com.webkul.mobikul.helpers.AppSharedPref

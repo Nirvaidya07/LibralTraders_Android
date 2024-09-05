@@ -13,7 +13,7 @@
 
 package com.webkul.mobikul.models.product
 
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.fragments.ProductCreateReviewBottomSheetFragment
 import com.webkul.mobikul.helpers.Utils
 

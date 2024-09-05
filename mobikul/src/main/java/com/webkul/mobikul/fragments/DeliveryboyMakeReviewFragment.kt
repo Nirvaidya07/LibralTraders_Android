@@ -6,8 +6,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentDeliveryboyMakeReviewBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentDeliveryboyMakeReviewBinding
 import com.webkul.mobikul.handlers.DeliveryboyMakeReviewHandler
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CUSTOMER_ID

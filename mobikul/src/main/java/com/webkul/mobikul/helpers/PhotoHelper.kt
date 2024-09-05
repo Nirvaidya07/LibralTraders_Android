@@ -17,7 +17,7 @@ import android.content.Context
 import android.hardware.Camera
 import android.os.Environment
 import android.util.Log
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat

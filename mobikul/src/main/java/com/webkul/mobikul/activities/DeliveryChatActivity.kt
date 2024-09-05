@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.*
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.adapters.DeliveryChatMessageAdapter
-import com.webkul.mobikul.databinding.ActivityDeliveryChatBinding
+import com.libraltraders.android.databinding.ActivityDeliveryChatBinding
 import com.webkul.mobikul.handlers.DeliveryChatActivityHandler
 import com.webkul.mobikul.helpers.*
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_CHAT_IDENTIFIER_CUSTOMER

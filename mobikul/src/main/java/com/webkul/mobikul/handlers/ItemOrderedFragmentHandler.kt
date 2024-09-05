@@ -5,7 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.BaseActivity
 import com.webkul.mobikul.activities.DeliveryChatActivity
 import com.webkul.mobikul.activities.OrderDetailsActivity

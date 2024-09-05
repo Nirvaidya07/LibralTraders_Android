@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.webkul.mobikul">
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -41,7 +40,7 @@
     </queries>
 
     <application
-        android:name=".helpers.MobikulApplication"
+        android:name="com.webkul.mobikul.helpers.MobikulApplication"
         android:allowBackup="false"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
@@ -54,25 +53,23 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".activities.OrderAgainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_order_again"
-            android:theme="@style/AppTheme" />
+            android:name="com.webkul.mobikul.activities.OfferPageActivity"
+            android:exported="false" />
         <activity
-            android:name=".activities.OnBoardingActivity"
+            android:name="com.webkul.mobikul.activities.OnBoardingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".activities.CategoryActivity"
+            android:name="com.webkul.mobikul.activities.CategoryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.BaseActivity"
+            android:name="com.webkul.mobikul.activities.BaseActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name="com.webkul.mobikul.activities.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
@@ -82,37 +79,13 @@
         </activity>
 
         <activity-alias
-            android:name=".launcherAlias.DefaultLauncherAlias"
-            android:enabled="true"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:targetActivity=".activities.SplashScreenActivity">
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="https" />
-                <data android:host="www.libraltraders.com" />
-                <data android:host="dev.libraltraders.com" />
-            </intent-filter>
-        </activity-alias>
-        <activity-alias
-            android:name=".launcherAlias.SecondLauncherAlias"
+            android:name="com.webkul.mobikul.launcherAlias.FifthLauncherAlias"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher1"
+            android:icon="@mipmap/ic_launcher4"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher1_round"
-            android:targetActivity=".activities.SplashScreenActivity">
+            android:roundIcon="@mipmap/ic_launcher4_round"
+            android:targetActivity="com.webkul.mobikul.activities.SplashScreenActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.MAIN" />
 
@@ -130,37 +103,13 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".launcherAlias.ThirdLauncherAlias"
-            android:enabled="false"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher2"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher2_round"
-            android:targetActivity=".activities.SplashScreenActivity">
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="https" />
-                <data android:host="www.libraltraders.com" />
-                <data android:host="dev.libraltraders.com" />
-            </intent-filter>
-        </activity-alias>
-        <activity-alias
-            android:name=".launcherAlias.FourthLauncherAlias"
+            android:name="com.webkul.mobikul.launcherAlias.FourthLauncherAlias"
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher3"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher3_round"
-            android:targetActivity=".activities.SplashScreenActivity">
+            android:targetActivity="com.webkul.mobikul.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -178,13 +127,61 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".launcherAlias.FifthLauncherAlias"
+            android:name="com.webkul.mobikul.launcherAlias.ThirdLauncherAlias"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher4"
+            android:icon="@mipmap/ic_launcher2"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher4_round"
-            android:targetActivity=".activities.SplashScreenActivity">
+            android:roundIcon="@mipmap/ic_launcher2_round"
+            android:targetActivity="com.webkul.mobikul.activities.SplashScreenActivity">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="www.libraltraders.com" />
+                <data android:host="dev.libraltraders.com" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="com.webkul.mobikul.launcherAlias.SecondLauncherAlias"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher1"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher1_round"
+            android:targetActivity="com.webkul.mobikul.activities.SplashScreenActivity">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="www.libraltraders.com" />
+                <data android:host="dev.libraltraders.com" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="com.webkul.mobikul.launcherAlias.DefaultLauncherAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:targetActivity="com.webkul.mobikul.activities.SplashScreenActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.MAIN" />
 
@@ -203,46 +200,46 @@
         </activity-alias>
 
         <activity
-            android:name=".activities.HomeActivity"
+            android:name="com.webkul.mobikul.activities.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Home" />
         <activity
-            android:name=".activities.LoginAndSignUpActivity"
+            android:name="com.webkul.mobikul.activities.LoginAndSignUpActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.MyOrdersActivity"
+            android:name="com.webkul.mobikul.activities.MyOrdersActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.MyDownloadableProductsActivity"
+            android:name="com.webkul.mobikul.activities.MyDownloadableProductsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.MyWishListActivity"
+            android:name="com.webkul.mobikul.activities.MyWishListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.MyReviewListActivity"
+            android:name="com.webkul.mobikul.activities.MyReviewListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.AddressBookActivity"
+            android:name="com.webkul.mobikul.activities.AddressBookActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.AccountInfoActivity"
+            android:name="com.webkul.mobikul.activities.AccountInfoActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.OrderDetailsActivity"
+            android:name="com.webkul.mobikul.activities.OrderDetailsActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:launchMode="singleTop"
             android:resizeableActivity="true"
@@ -251,28 +248,34 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.ReviewDetailsActivity"
+            android:name="com.webkul.mobikul.activities.ReviewDetailsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.AddEditAddressActivity"
+            android:name="com.webkul.mobikul.activities.AddEditAddressActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.WishListSharingActivity"
+            android:name="com.webkul.mobikul.activities.WishListSharingActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.CatalogActivity"
+            android:name="com.webkul.mobikul.activities.CatalogActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.SubCategoryActivity"
+            android:name="com.webkul.mobikul.activities.BrandCatActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.webkul.mobikul.activities.SubCategoryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
@@ -281,65 +284,65 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.AdvancedSearchActivity"
+            android:name="com.webkul.mobikul.activities.AdvancedSearchActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.ProductDetailsActivity"
+            android:name="com.webkul.mobikul.activities.ProductDetailsActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.SearchTermsActivity"
+            android:name="com.webkul.mobikul.activities.SearchTermsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.CmsPageActivity"
+            android:name="com.webkul.mobikul.activities.CmsPageActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.CompareProductsActivity"
+            android:name="com.webkul.mobikul.activities.CompareProductsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.ContactUsActivity"
+            android:name="com.webkul.mobikul.activities.ContactUsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.OrdersAndReturnsActivity"
+            android:name="com.webkul.mobikul.activities.OrdersAndReturnsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.OtherNotificationActivity"
-            android:label=""
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".activities.CheckoutActivity"
+            android:name="com.webkul.mobikul.activities.OtherNotificationActivity"
             android:label=""
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.WebPaymentActivity"
+            android:name="com.webkul.mobikul.activities.CheckoutActivity"
+            android:label=""
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.OrderPlacedActivity"
+            android:name="com.webkul.mobikul.activities.WebPaymentActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.webkul.mobikul.activities.OrderPlacedActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme.OrderPlace"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.FullScreenImageScrollActivity"
+            android:name="com.webkul.mobikul.activities.FullScreenImageScrollActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme"
@@ -355,16 +358,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".activities.DashboardActivity"
+            android:name="com.webkul.mobikul.activities.DashboardActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.MediaPlayerWebviewActivity"
+            android:name="com.webkul.mobikul.activities.MediaPlayerWebviewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".activities.DeliveryChatActivity"
+            android:name="com.webkul.mobikul.activities.DeliveryChatActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" /> <!-- Image Cropping Activity -->
@@ -385,7 +388,7 @@
         <!-- android:name="com.google.firebase.messaging.default_notification_color" -->
         <!-- android:resource="@color/colorAccent" /> -->
         <service
-            android:name=".firebase.FCMMessageReceiverService"
+            android:name="com.webkul.mobikul.firebase.FCMMessageReceiverService"
             android:exported="false"
             android:stopWithTask="false">
             <intent-filter>
@@ -414,6 +417,9 @@
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/maps_api_key" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.HomeActivity
-import com.webkul.mobikul.databinding.ItemNavDrawerStoresBinding
+import com.libraltraders.android.databinding.ItemNavDrawerStoresBinding
 import com.webkul.mobikul.fragments.LanguagesBottomSheetFragment
 import com.webkul.mobikul.helpers.AppSharedPref
 import com.webkul.mobikul.helpers.LocaleUtils

@@ -33,7 +33,8 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:onClick="@{()->handler.onClickItem(data.id, data.name, data.thumbNail, data.dominantColor)}"
-        android:padding="@dimen/spacing_generic">
+        android:padding="@dimen/spacing_generic"
+       >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -128,11 +129,12 @@
             android:gravity="center_vertical|start"
             android:orientation="horizontal">
 
-            <com.webkul.mobikul.customviews.FlowLayout
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|bottom"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 android:gravity="center_vertical|start">
 
                 <TextView
@@ -141,11 +143,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_tiny"
-                    android:maxLines="1"
-                    android:text="@{data.formattedFinalPrice}"
+                    android:maxLines="2"
+                    android:text="@{data.newFormattedPrice()}"
                     android:textColor="@color/product_price_color"
                     android:textAlignment="viewStart"
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/text_size_tiny"
                     android:textStyle="bold"
                     android:visibility="@{data.hasPrice() ? View.VISIBLE : View.GONE}"
                     tools:text="$210.00" />
@@ -213,15 +215,15 @@
                     fontPath="fonts/Montserrat-SemiBold.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:text="@{data.groupedPrice}"
+                    android:maxLines="2"
+                    android:text="@{data.newGroupPrice()}"
                     android:textAlignment="viewStart"
                     android:textColor="@color/product_price_color"
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="9dp"
                     android:textStyle="bold"
                     android:visibility="@{data.hasGroupedPrice() ? View.VISIBLE : View.GONE}"
                     tools:text="$410.00" />
-            </com.webkul.mobikul.customviews.FlowLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/wishlist_animation_view"
@@ -235,6 +237,7 @@
                 app:lottie_fileName="wishlist_heart.json"
                 app:lottie_loop="false" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/product_label"

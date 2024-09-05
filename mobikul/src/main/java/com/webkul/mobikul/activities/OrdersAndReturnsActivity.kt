@@ -19,8 +19,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ActivityOrdersAndReturnsBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ActivityOrdersAndReturnsBinding
 import com.webkul.mobikul.handlers.OrdersAndReturnsActivityHandler
 import java.util.*
 

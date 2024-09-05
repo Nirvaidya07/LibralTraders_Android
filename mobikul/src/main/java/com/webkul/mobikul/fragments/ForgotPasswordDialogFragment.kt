@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentForgotPasswordDialogBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentForgotPasswordDialogBinding
 import com.webkul.mobikul.handlers.ForgotPasswordDialogHandler
 import com.webkul.mobikul.helpers.BundleKeysHelper
 import com.webkul.mobikul.helpers.BundleKeysHelper.BUNDLE_KEY_EMAIL

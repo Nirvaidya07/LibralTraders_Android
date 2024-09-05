@@ -19,8 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.FragmentDeleteAccountDialogBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.FragmentDeleteAccountDialogBinding
 import com.webkul.mobikul.handlers.DeleteAccountDialogHandler
 import com.webkul.mobikul.models.user.LoginFormModel
 

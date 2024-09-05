@@ -18,8 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
-import com.webkul.mobikul.databinding.ItemOrderItemsForReviewBinding
+import com.libraltraders.android.R
+import com.libraltraders.android.databinding.ItemOrderItemsForReviewBinding
 import com.webkul.mobikul.fragments.OrderItemListBottomSheetFragment
 import com.webkul.mobikul.handlers.OrderItemsForReviewRvHandler
 import com.webkul.mobikul.models.user.OrderItem

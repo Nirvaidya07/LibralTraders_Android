@@ -20,10 +20,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.webkul.mobikul.R
+import com.libraltraders.android.R
 import com.webkul.mobikul.activities.CatalogActivity
-import com.webkul.mobikul.databinding.ItemCatalogProductGridBinding
-import com.webkul.mobikul.databinding.ItemCatalogProductListBinding
+import com.libraltraders.android.databinding.ItemCatalogProductGridBinding
+import com.libraltraders.android.databinding.ItemCatalogProductListBinding
 import com.webkul.mobikul.handlers.ProductTileHandler
 import com.webkul.mobikul.helpers.ConstantsHelper.VIEW_TYPE_GRID
 import com.webkul.mobikul.helpers.ConstantsHelper.VIEW_TYPE_LIST
