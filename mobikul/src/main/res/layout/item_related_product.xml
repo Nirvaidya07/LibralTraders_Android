@@ -91,7 +91,7 @@
                         android:maxLines="1"
                         android:paddingStart="2dp"
                         android:paddingEnd="2dp"
-                        android:text="@{data.formattedPrice}"
+                        android:text="@{data.newFormattedPrice}"
                         android:textColor="@color/grey_400"
                         android:textSize="@dimen/text_size_small"
                         android:visibility="@{data.hasSpecialPrice() ? View.VISIBLE : View.GONE}"

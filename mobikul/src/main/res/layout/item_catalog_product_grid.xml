@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_tiny"
                     android:maxLines="1"
-                    android:text="@{data.formattedFinalPrice}"
+                    android:text="@{data.newFormattedPrice()}"
                     android:textColor="@color/product_price_color"
                     android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"

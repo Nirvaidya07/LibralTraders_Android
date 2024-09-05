@@ -269,6 +269,7 @@ class ProductTileData() : Parcelable, BaseObservable() {
     }
 
     fun newFormattedPrice():String{
+        Log.d("TAG", "newFormattedPrice: $typeId >>${name}")
         return if (typeId=="grouped" || typeId=="configurable") "Starting at : $formattedFinalPrice" else "$formattedFinalPrice";
     }
 
