@@ -272,13 +272,7 @@ class ProductTileData() : Parcelable, BaseObservable() {
         return if (typeId=="simple") "$formattedFinalPrice" else "Starting at : $formattedFinalPrice";
     }
 
-    fun newGroupPrice():String{
-        return "Starting at : $groupedPrice";
-    }
 
-    fun newFormattedPrice():String{
-        return if (typeId=="grouped" || typeId=="configurable") "Starting at : $formattedFinalPrice" else "$formattedFinalPrice";
-    }
 
 
     fun isArEnabled(context: Context): Boolean {
