@@ -262,6 +262,15 @@ get() = field?:""
 
     }
 
+    fun newGroupPrice():String{
+        return "Starting at : $groupedPrice";
+    }
+
+    fun newFormattedPrice():String{
+        return if (typeId=="grouped" || typeId=="configurable") "Starting at : $formattedFinalPrice" else "$formattedFinalPrice";
+    }
+
+
     fun isArEnabled(context: Context): Boolean {
         if (ApplicationConstants.ENABLE_AR_CORE) {
             if (arModelUrl.isNullOrEmpty()) {

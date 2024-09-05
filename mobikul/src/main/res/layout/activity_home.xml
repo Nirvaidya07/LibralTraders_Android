@@ -106,7 +106,8 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/grey_700"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/text_size_medium"/>
                 </LinearLayout>
             </LinearLayout>
 

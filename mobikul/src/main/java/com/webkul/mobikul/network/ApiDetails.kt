@@ -727,8 +727,7 @@ interface ApiDetails {
         @Query("quoteId") quoteId: Int,
         @Query("width") width: Int,
         @Query("currency") currency: String
-    ):
-            Observable<CartDetailsResponseModel>
+    ): Observable<CartDetailsResponseModel>
 
     @FormUrlEncoded
     @POST(MOBIKUL_CHECKOUT_WISH_LIST_FROM_CART)

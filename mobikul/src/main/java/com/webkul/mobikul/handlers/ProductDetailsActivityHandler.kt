@@ -26,6 +26,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -545,6 +546,7 @@ class ProductDetailsActivityHandler(private val mContext: ProductDetailsActivity
                                 } else {
                                     try {
                                         val filePart = prepareFilePart("options_" + mContext.mContentViewBinding.data!!.customOptions[noOfCustomOpt].option_id + "_file", mContext.mSelectedImageUri[noOfCustomOpt]!!)
+                                        Log.d("TAG", "collectAllOptionData: ${filePart}")
                                         if (filePart != null) {
                                             mFiles.add(filePart)
                                         }
