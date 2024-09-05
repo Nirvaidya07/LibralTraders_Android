@@ -262,17 +262,15 @@ class ProductTileData() : Parcelable, BaseObservable() {
         return Math.round((100 - finalPrice / price * 100)).toString() + "%"
 
     }
+
+
     fun newGroupPrice():String{
-        Log.d("TAG", "newGroupPrice: ${name}>>$groupedPrice")
         return "Starting at : $groupedPrice";
     }
 
     fun newFormattedPrice():String{
-        Log.d("TAG", "newGroupPrice2: ${formattedMinPrice}>>$formattedFinalPrice>>${formattedMaxPrice}>>${price}")
-        return if (typeId=="simple") "$formattedFinalPrice" else "Starting at : $formattedFinalPrice";
+        return if (typeId=="grouped" || typeId=="configurable") "Starting at : $formattedFinalPrice" else "$formattedFinalPrice";
     }
-
-
 
 
     fun isArEnabled(context: Context): Boolean {
