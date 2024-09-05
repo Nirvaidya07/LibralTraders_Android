@@ -42,8 +42,8 @@ android {
         minSdk 21 // Updated to a reasonable minimum SDK version
         targetSdk 34
 
-        versionCode 62
-        versionName "6.2"
+        versionCode 63
+        versionName "6.3"
 
         multiDexEnabled true
 
